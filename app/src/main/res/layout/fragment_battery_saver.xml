@@ -14,9 +14,9 @@
         android:layout_marginTop="50dp"
         android:text="@string/title_battery_saver"
         android:textAlignment="center"
-
+        android:fontFamily="@font/montserrat"
         android:textColor="@color/fragment_name"
-        android:textSize="17sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,31 +52,33 @@
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/text_running_processes"
+        android:id="@+id/text_charging_time_remaining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="78dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="79dp"
+        android:fontFamily="@font/montserrat"
         android:text="@string/charging_time_remaining"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_ram_usage" />
+        app:layout_constraintTop_toBottomOf="@+id/text_time" />
 
     <TextView
-        android:id="@+id/text_ram_usage"
+        android:id="@+id/text_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="111dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="102dp"
+        android:fontFamily="@font/montserrat"
         android:text="@string/time"
         android:textAlignment="center"
         android:textColor="@color/gradient_start"
-        android:textSize="17sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -86,6 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="18%"
+        android:fontFamily="@font/montserrat"
         android:textStyle="bold"
         android:textColor="@color/gradient_start"
         android:textSize="36sp"
@@ -105,6 +108,7 @@
         android:layout_marginBottom="116dp"
         android:background="@drawable/ic_progress_bar_horizontal"
         android:text="@string/optimize"
+        android:fontFamily="@font/montserrat"
         android:textAllCaps="false"
         android:textColor="@color/btn_opt"
         android:textSize="17dp"
@@ -112,7 +116,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_running_processes"
+        app:layout_constraintTop_toBottomOf="@+id/text_charging_time_remaining"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
