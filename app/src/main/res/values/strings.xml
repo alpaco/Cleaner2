@@ -4,4 +4,7 @@
     <string name="title_phone_booster">Phone Booster</string>
     <string name="title_battery_saver">Battery Saver</string>
     <string name="title_junk_cleaner">Junk Cleaner</string>
+    <string name="title_running_processes">Running Processes</string>
+    <string name="title_ram_usage">Ram Usage</string>
+
 </resources>

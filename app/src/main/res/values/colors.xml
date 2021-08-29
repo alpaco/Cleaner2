@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="fragment_name">#F4F4F4</color>
+    <color name="running_processes">#FFFFFF</color>
+    <color name="ram_usage">#FFFFFF</color>
 </resources>
