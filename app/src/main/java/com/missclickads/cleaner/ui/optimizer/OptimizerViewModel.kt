@@ -1,10 +1,10 @@
-package com.missclickads.cleaner.ui.home
+package com.missclickads.cleaner.ui.optimizer
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class OptimizerViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"

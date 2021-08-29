@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_phone_booster">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.missclickads.cleaner.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_optimizer"
+        android:name="com.missclickads.cleaner.ui.optimizer.OptimizerFragment"
+        android:label="@string/title_optimizer"
+        tools:layout="@layout/fragment_optimizer" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.missclickads.cleaner.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_phone_booster"
+        android:name="com.missclickads.cleaner.ui.phonebooster.PhoneBoosterFragment"
+        android:label="@string/title_phone_booster"
+        tools:layout="@layout/fragment_phone_booster" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.missclickads.cleaner.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_battery_saver"
+        android:name="com.missclickads.cleaner.ui.batterysaver.BatterySaverFragment"
+        android:label="@string/title_battery_saver"
+        tools:layout="@layout/fragment_battery_saver" />
+
+    <fragment
+        android:id="@+id/navigation_junk_cleaner"
+        android:name="com.missclickads.cleaner.ui.junkcleaner.JunkCleanerFragment"
+        android:label="@string/title_junk_cleaner"
+        tools:layout="@layout/fragment_junk_cleaner" />
 </navigation>

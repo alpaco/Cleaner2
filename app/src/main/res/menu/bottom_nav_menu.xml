@@ -2,18 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:id="@+id/navigation_phone_booster"
+        android:icon="@drawable/ic_tabpb"
+        android:title="@string/title_phone_booster" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/navigation_battery_saver"
+        android:icon="@drawable/ic_tabbs"
+        android:title="@string/title_battery_saver" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_optimizer"
+        android:icon="@drawable/ic_tabopt"
+        android:title="@string/title_optimizer" />
+
+    <item
+        android:id="@+id/navigation_junk_cleaner"
+        android:icon="@drawable/ic_tabjc"
+        android:title="@string/title_junk_cleaner" />
 
 </menu>

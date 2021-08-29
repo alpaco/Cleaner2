@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Cleaner</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_optimizer">Optimizer</string>
+    <string name="title_phone_booster">Phone Booster</string>
+    <string name="title_battery_saver">Battery Saver</string>
+    <string name="title_junk_cleaner">Junk Cleaner</string>
 </resources>
