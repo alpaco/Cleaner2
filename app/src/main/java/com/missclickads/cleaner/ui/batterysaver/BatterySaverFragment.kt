@@ -22,10 +22,7 @@ class BatterySaverFragment : Fragment() {
         batterySaverViewModel =
                 ViewModelProvider(this).get(BatterySaverViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_battery_saver, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        batterySaverViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 }

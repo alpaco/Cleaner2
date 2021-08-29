@@ -7,5 +7,11 @@
     <string name="title_running_processes">Running Processes</string>
     <string name="title_ram_usage">Ram Usage</string>
     <string name="optimize">Optimize</string>
-
+    <string name="charging_time_remaining">charging time remaining</string>
+    <string name="cache_memory">Cache memory</string>
+    <string name="temporary_files">Temporary files</string>
+    <string name="residual_files">Residual files</string>
+    <string name="system_junk">System junk</string>
+    <string name="cleaning_required">cleaning required</string>
+    <string name="time">1 h 30 m</string>
 </resources>
