@@ -22,10 +22,6 @@ class PhoneBoosterFragment : Fragment() {
         phoneBoosterViewModel =
                 ViewModelProvider(this).get(PhoneBoosterViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_phone_booster, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        phoneBoosterViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 }

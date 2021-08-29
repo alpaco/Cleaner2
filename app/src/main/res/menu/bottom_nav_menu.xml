@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/navigation_phone_booster"
-        android:icon="@drawable/ic_tabpb"
+        android:icon="@drawable/ic_tab_phone_boost"
         android:title="@string/title_phone_booster" />
 
     <item
         android:id="@+id/navigation_battery_saver"
-        android:icon="@drawable/ic_tabpb"
+        android:icon="@drawable/ic_tab_battery"
         android:title="@string/title_battery_saver" />
 
     <item
         android:id="@+id/navigation_optimizer"
-        android:icon="@drawable/ic_tabpb"
+        android:icon="@drawable/ic_tab_snow"
         android:title="@string/title_optimizer" />
 
     <item
         android:id="@+id/navigation_junk_cleaner"
-        android:icon="@drawable/ic_tabjc"
+        android:icon="@drawable/ic_tab_delete"
         android:title="@string/title_junk_cleaner" />
 
 </menu>
