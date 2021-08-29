@@ -12,4 +12,6 @@
     <color name="gradient_start">#FF512F</color>
     <color name="gradient_end">#F09819</color>
 
+    <color name="btn_opt">#EBEBEB</color>
+
 </resources>
