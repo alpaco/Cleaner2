@@ -22,10 +22,7 @@ class OptimizerFragment : Fragment() {
         optimizerViewModel =
                 ViewModelProvider(this).get(OptimizerViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_optimizer, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        optimizerViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 }
