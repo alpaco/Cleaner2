@@ -11,10 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
+        android:fontFamily="@font/montserrat"
         android:layout_marginEnd="41dp"
         android:text="@string/cleaning_required"
         android:textColor="@color/gradient_start"
-        android:textSize="15sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line2" />
 
@@ -22,11 +23,12 @@
         android:id="@+id/text_cleaning_required3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="41dp"
         android:text="@string/cleaning_required"
         android:textColor="@color/gradient_start"
-        android:textSize="15sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line3" />
 
@@ -34,11 +36,12 @@
         android:id="@+id/text_cleaning_required4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="41dp"
         android:text="@string/cleaning_required"
         android:textColor="@color/gradient_start"
-        android:textSize="15sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line4" />
 
@@ -46,12 +49,13 @@
         android:id="@+id/text_fragment_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:layout_marginTop="50dp"
         android:text="@string/title_junk_cleaner"
         android:textAlignment="center"
 
         android:textColor="@color/fragment_name"
-        android:textSize="17sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -134,12 +138,13 @@
         android:id="@+id/text_cache_memory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:layout_marginStart="42dp"
         android:layout_marginTop="39dp"
         android:text="@string/cache_memory"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="17sp"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -147,12 +152,13 @@
         android:id="@+id/text_temporary_files"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:layout_marginStart="42dp"
         android:layout_marginTop="6dp"
         android:text="@string/temporary_files"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="17sp"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line4" />
 
@@ -160,12 +166,13 @@
         android:id="@+id/text_residual_files"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:layout_marginStart="42dp"
         android:layout_marginTop="6dp"
         android:text="@string/residual_files"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="17sp"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line3" />
 
@@ -173,12 +180,13 @@
         android:id="@+id/text_system_junk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:layout_marginStart="42dp"
         android:layout_marginTop="6dp"
         android:text="@string/system_junk"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="17sp"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line2" />
 
@@ -186,6 +194,7 @@
         android:id="@+id/text_process"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:text="1.5 GB"
         android:textStyle="bold"
         android:textColor="@color/gradient_start"
@@ -199,12 +208,13 @@
         android:id="@+id/text_cleaning_required"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:layout_marginTop="39dp"
         android:layout_marginEnd="41dp"
         android:text="@string/cleaning_required"
 
         android:textColor="@color/gradient_start"
-        android:textSize="15sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -217,6 +227,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginEnd="42dp"
         android:layout_marginBottom="116dp"
+        android:fontFamily="@font/montserrat"
         android:background="@drawable/ic_progress_bar_horizontal"
         android:text="@string/optimize"
         android:textAllCaps="false"
