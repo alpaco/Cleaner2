@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -34,10 +35,14 @@ class BatterySaverFragment : Fragment() {
 
         val bm = (activity as MainActivity).getSystemService(BATTERY_SERVICE) as BatteryManager
         val batteryInfo = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+        val textbattery = view.findViewById<TextView>(R.id.text_process)
+        val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
+        textbattery.text ="$batteryInfo %"
+        btnOptimize.setOnClickListener {
+            println("loh")
+            println(batteryInfo)
 
-//        btnOptimize.setOnClickListener {
-//            println(batteryInfo)
-//        }
+        }
 
     }
 }
