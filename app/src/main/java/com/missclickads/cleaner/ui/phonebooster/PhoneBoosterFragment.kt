@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.missclickads.cleaner.MainActivity
@@ -21,6 +22,7 @@ import kotlin.math.roundToInt
 class PhoneBoosterFragment : Fragment() {
 
     private lateinit var phoneBoosterViewModel: PhoneBoosterViewModel
+    var optimized = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +36,7 @@ class PhoneBoosterFragment : Fragment() {
     }
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -67,13 +69,32 @@ class PhoneBoosterFragment : Fragment() {
         textMemory.text = "$usageMemory GB / $totalMemory GB"
         textResult.text = "$usageMemory GB"
 
+//        val textShader: Shader =
+//            LinearGradient(
+//            0f,
+//            0f,
+//            0f,
+//            1f,
+//                Color.BLUE,
+//                Color.GREEN,
+//            TileMode.CLAMP
+//        )
+//        textResult.paint.shader = textShader
+
         btnOptimize.setOnClickListener {
-            textResult.visibility = View.INVISIBLE
-            imageOk.visibility = View.VISIBLE
-            textRunningProcess.text = "$runningProcessAfter"
-            textPercent.text = "$usageMemoryPercentAfter%"
-            textMemory.text = "$usageMemoryAfter GB / $totalMemory GB"
-            imageCircle.setImageResource(R.drawable.ellipse_blue)
+            if(!optimized){
+                textResult.visibility = View.INVISIBLE
+                imageOk.visibility = View.VISIBLE
+                textRunningProcess.text = "$runningProcessAfter"
+                textPercent.text = "$usageMemoryPercentAfter%"
+                textMemory.text = "$usageMemoryAfter GB / $totalMemory GB"
+                imageCircle.setImageResource(R.drawable.ellipse_blue)
+                //todo change button back
+                textPercent.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                textRunningProcess.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                optimized = true
+            }
+
         }
     }
 }
