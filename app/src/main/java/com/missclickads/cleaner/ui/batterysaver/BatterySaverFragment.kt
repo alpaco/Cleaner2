@@ -28,7 +28,6 @@ class BatterySaverFragment : Fragment() {
 
         return root
     }
-}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,8 +35,12 @@ class BatterySaverFragment : Fragment() {
         val bm = (activity as MainActivity).getSystemService(BATTERY_SERVICE) as BatteryManager
         val batteryInfo = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
 
-        btnOptimize.setOnClickListener {
-            println(batteryInfo)
-        }
+//        btnOptimize.setOnClickListener {
+//            println(batteryInfo)
+//        }
 
     }
+}
+
+
+
