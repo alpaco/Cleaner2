@@ -47,6 +47,7 @@ class OptimizerFragment : Fragment() {
 
         textResult.text = "$temp °C"
         btnOptimize.setOnClickListener {
+            btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.text = "$tempAfter °C"
             imageCircle.setImageResource(R.drawable.ellipse_blue)
             textResult.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))

@@ -59,6 +59,7 @@ class BatterySaverFragment : Fragment() {
 
         textTime.text="$batteryhours h $batteryminutes m"
         btnOptimize.setOnClickListener {
+            btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textTime.text = "$batteryhoursafter h $batteryminutesafter m"
             textResult.visibility = View.INVISIBLE
             imageOk.visibility = View.VISIBLE
