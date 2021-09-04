@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -25,9 +27,9 @@ class PhoneBoosterFragment : Fragment() {
     var optimized = false
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         phoneBoosterViewModel =
                 ViewModelProvider(this).get(PhoneBoosterViewModel::class.java)
@@ -36,7 +38,7 @@ class PhoneBoosterFragment : Fragment() {
     }
 
 
-    @SuppressLint("SetTextI18n", "ResourceAsColor")
+    @SuppressLint("SetTextI18n", "ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -69,32 +71,37 @@ class PhoneBoosterFragment : Fragment() {
         textMemory.text = "$usageMemory GB / $totalMemory GB"
         textResult.text = "$usageMemory GB"
 
-//        val textShader: Shader =
-//            LinearGradient(
-//            0f,
-//            0f,
-//            0f,
-//            1f,
-//                Color.BLUE,
-//                Color.GREEN,
-//            TileMode.CLAMP
-//        )
-//        textResult.paint.shader = textShader
+        val bar = view.findViewById<ProgressBar>(R.id.progressBar)
+
+        fun optimize(){
+            btnOptimize.text = "Optimize"
+            btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
+            textResult.visibility = View.INVISIBLE
+            imageOk.visibility = View.VISIBLE
+            textRunningProcess.text = "$runningProcessAfter"
+            textPercent.text = "$usageMemoryPercentAfter%"
+            textMemory.text = "$usageMemoryAfter GB / $totalMemory GB"
+            imageCircle.setImageResource(R.drawable.ellipse_blue)
+            //todo change button back
+            textPercent.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+            textRunningProcess.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+            optimized = true
+        }
+
+        bar.progress = 60
+        bar.progressDrawable =  activity?.resources?.getDrawable(R.drawable.ic_gradient_blue)
+        bar.setProgressDrawableTiled(activity?.resources?.getDrawable(R.drawable.ic_gradient_orange))
+
 
         btnOptimize.setOnClickListener {
             if(!optimized){
-                textResult.visibility = View.INVISIBLE
-                imageOk.visibility = View.VISIBLE
-                textRunningProcess.text = "$runningProcessAfter"
-                textPercent.text = "$usageMemoryPercentAfter%"
-                textMemory.text = "$usageMemoryAfter GB / $totalMemory GB"
-                imageCircle.setImageResource(R.drawable.ellipse_blue)
-                //todo change button back
-                textPercent.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
-                textRunningProcess.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
-                optimized = true
+                btnOptimize.text = "Optimizing..."
+                btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
+                Handler().postDelayed({ optimize() }, (5 * 1000).toLong())
             }
 
         }
+
+
     }
 }
