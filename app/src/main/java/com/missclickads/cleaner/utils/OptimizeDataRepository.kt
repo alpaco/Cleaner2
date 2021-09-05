@@ -13,7 +13,7 @@ const val S_OPTIMIZER = "opt"
 const val S_PHONE_BOOSTER = "pb"
 
 const val S_PREF_NAME = "shpr"
-const val DATA_PATTERN = "dd-MMM-yyyy HH:mm:ss"
+const val DATA_PATTERN = "dd-MM-yyyy HH:mm:ss"
 
 class OptimizeDataRepository(context: Context) {
 
@@ -21,6 +21,7 @@ class OptimizeDataRepository(context: Context) {
 
     fun putData(data : Date,screen: Screen){
         val dateFormat: DateFormat = SimpleDateFormat(DATA_PATTERN)
+        println(dateFormat.format(data))
         when(screen){
             Screen.BATTERY_SAVER -> sPrefs.edit().putString(S_BATTERY_SAVER,dateFormat.format(data)).apply()
             Screen.JUNK_CLEANER-> sPrefs.edit().putString(S_JUNK_CLEANER,dateFormat.format(data)).apply()

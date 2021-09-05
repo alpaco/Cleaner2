@@ -21,13 +21,26 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var data: OptimizeDataRepository
+    var optimizedPB = false
+    var optimizedJC = false
+    var optimizedOpt = false
+    var optimizedBS = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         data = OptimizeDataRepository(this)
+        val states = data.getData()
+        val currentData = Date()
+        optimizedBS = currentData.time - states.batterySaver.time <= 60 * 60 * 2 * 1000
+        optimizedPB = currentData.time - states.phoneBooster.time <= 60 * 60 * 2 * 1000
+        optimizedJC = currentData.time - states.junkCleaner.time <= 60 * 60 * 2 * 1000
+        optimizedOpt = currentData.time - states.optimizer.time <= 60 * 60 * 2 * 1000
 
-
+        println(optimizedPB)
+        println(optimizedJC)
+        println(optimizedOpt)
+        println(optimizedBS)
 
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)

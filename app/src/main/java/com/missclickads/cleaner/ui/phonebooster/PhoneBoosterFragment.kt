@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
+import com.missclickads.cleaner.utils.Screen
 import kotlin.math.ceil
 import kotlin.math.roundToInt
 
@@ -24,7 +25,6 @@ import kotlin.math.roundToInt
 class PhoneBoosterFragment : Fragment() {
 
     private lateinit var phoneBoosterViewModel: PhoneBoosterViewModel
-    var optimized = false
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -85,16 +85,17 @@ class PhoneBoosterFragment : Fragment() {
             //todo change button back
             textPercent.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
             textRunningProcess.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
-            optimized = true
+            (activity as MainActivity).optimizedPB = true
+            (activity as MainActivity).optimizeSmth(Screen.PHONE_BOOSTER)
         }
-
+        if ((activity as MainActivity).optimizedPB) optimize()
         bar.progress = 60
         bar.progressDrawable =  activity?.resources?.getDrawable(R.drawable.ic_gradient_blue)
         bar.setProgressDrawableTiled(activity?.resources?.getDrawable(R.drawable.ic_gradient_orange))
 
 
         btnOptimize.setOnClickListener {
-            if(!optimized){
+            if(!(activity as MainActivity).optimizedPB ){
                 btnOptimize.text = "Optimizing..."
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimize() }, (5 * 1000).toLong())
