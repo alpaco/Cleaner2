@@ -134,9 +134,13 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
+
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="317dp"
-        android:layout_height="9dp"
+        android:layout_height="20dp"
+        android:maxHeight="20dp"
+        android:maxWidth="20dp"
+        android:progressDrawable="@drawable/progress_bar_hor"
         android:layout_marginStart="41dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="41dp"
@@ -181,7 +185,18 @@
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-
+    <ProgressBar
+        android:id="@+id/progressBarCircle"
+        style="?android:attr/progressBarStyle"
+        android:maxWidth="5dp"
+        android:maxHeight="5dp"
+        android:layout_width="300dp"
+        android:progressDrawable="@drawable/progress_bar_circle"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_running_processes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

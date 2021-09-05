@@ -71,10 +71,11 @@ class PhoneBoosterFragment : Fragment() {
         textMemory.text = "$usageMemory GB / $totalMemory GB"
         textResult.text = "$usageMemory GB"
 
-        val bar = view.findViewById<ProgressBar>(R.id.progressBar)
+        val barBot = view.findViewById<ProgressBar>(R.id.progressBar)
 
+        //after optimization
         fun optimized(){
-            btnOptimize.text = "Optimize"
+            btnOptimize.text = "Optimized"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.visibility = View.INVISIBLE
             imageOk.visibility = View.VISIBLE
@@ -87,11 +88,13 @@ class PhoneBoosterFragment : Fragment() {
             textRunningProcess.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
             (activity as MainActivity).optimizedPB = true
             (activity as MainActivity).optimizeSmth(Screen.PHONE_BOOSTER)
+            barBot.progress = usageMemoryPercentAfter
         }
+        barBot.progress = usageMemoryPercent
         if ((activity as MainActivity).optimizedPB) optimized()
-        bar.progress = 60
-        bar.progressDrawable =  activity?.resources?.getDrawable(R.drawable.ic_gradient_blue)
-        bar.setProgressDrawableTiled(activity?.resources?.getDrawable(R.drawable.ic_gradient_orange))
+
+//        bar.progressDrawable =  activity?.resources?.getDrawable(R.drawable.ic_gradient_blue)
+//        bar.setProgressDrawableTiled(activity?.resources?.getDrawable(R.drawable.ic_gradient_orange))
 
 
         btnOptimize.setOnClickListener {
