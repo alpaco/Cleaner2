@@ -73,7 +73,7 @@ class PhoneBoosterFragment : Fragment() {
 
         val bar = view.findViewById<ProgressBar>(R.id.progressBar)
 
-        fun optimize(){
+        fun optimized(){
             btnOptimize.text = "Optimize"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.visibility = View.INVISIBLE
@@ -88,7 +88,7 @@ class PhoneBoosterFragment : Fragment() {
             (activity as MainActivity).optimizedPB = true
             (activity as MainActivity).optimizeSmth(Screen.PHONE_BOOSTER)
         }
-        if ((activity as MainActivity).optimizedPB) optimize()
+        if ((activity as MainActivity).optimizedPB) optimized()
         bar.progress = 60
         bar.progressDrawable =  activity?.resources?.getDrawable(R.drawable.ic_gradient_blue)
         bar.setProgressDrawableTiled(activity?.resources?.getDrawable(R.drawable.ic_gradient_orange))
@@ -98,7 +98,7 @@ class PhoneBoosterFragment : Fragment() {
             if(!(activity as MainActivity).optimizedPB ){
                 btnOptimize.text = "Optimizing..."
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
-                Handler().postDelayed({ optimize() }, (5 * 1000).toLong())
+                Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
             }
 
         }
