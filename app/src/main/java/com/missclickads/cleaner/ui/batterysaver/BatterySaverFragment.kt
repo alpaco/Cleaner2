@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context.BATTERY_SERVICE
 import android.os.BatteryManager
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
+import com.missclickads.cleaner.utils.Screen
 
 class BatterySaverFragment : Fragment() {
 
@@ -55,19 +57,30 @@ class BatterySaverFragment : Fragment() {
 
         val batteryhoursafter = (batteryInfo * 1.2 * 4 / 60).toInt()
         val batteryminutesafter = (batteryInfo * 1.2 * 4 % 60).toInt()
-
-
-        textTime.text="$batteryhours h $batteryminutes m"
-        btnOptimize.setOnClickListener {
+        fun optimized(){
+            btnOptimize.text = "Optimized"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textTime.text = "$batteryhoursafter h $batteryminutesafter m"
             textResult.visibility = View.INVISIBLE
             imageOk.visibility = View.VISIBLE
             imageCircle.setImageResource(R.drawable.ellipse_blue)
             textTime.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+            (activity as MainActivity).optimizedBS = true
+            (activity as MainActivity).optimizeSmth(Screen.BATTERY_SAVER)
+
+
+        }
+        if ((activity as MainActivity).optimizedBS) optimized()
+        textTime.text="$batteryhours h $batteryminutes m"
+        btnOptimize.setOnClickListener {
+            if(!(activity as MainActivity).optimizedBS ){
+                btnOptimize.text = "Optimizing..."
+                btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
+                Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
         }
 
     }
+}
 }
 
 

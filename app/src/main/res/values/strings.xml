@@ -14,4 +14,5 @@
     <string name="system_junk">System junk</string>
     <string name="cleaning_required">cleaning required</string>
     <string name="time">1 h 30 m</string>
+    <string name="cleared">cleared</string>
 </resources>
