@@ -137,14 +137,13 @@
 
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="317dp"
-        android:layout_height="20dp"
+        android:layout_height="10dp"
         android:maxHeight="20dp"
         android:maxWidth="20dp"
         android:progressDrawable="@drawable/progress_bar_hor"
         android:layout_marginStart="41dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="41dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -187,16 +186,20 @@
 
     <ProgressBar
         android:id="@+id/progressBarCircle"
-        style="?android:attr/progressBarStyle"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="375dp"
+        android:layout_height="300dp"
+        android:indeterminate="false"
+        android:max="100"
         android:maxWidth="5dp"
         android:maxHeight="5dp"
-        android:layout_width="300dp"
+        android:visibility="invisible"
         android:progressDrawable="@drawable/progress_bar_circle"
-        android:layout_height="300dp"
         app:layout_constraintBottom_toTopOf="@+id/text_running_processes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adView" />
+        app:layout_constraintTop_toBottomOf="@+id/adView"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     var optimizedJC = false
     var optimizedOpt = false
     var optimizedBS = false
+    var navigationView: BottomNavigationView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,20 +44,23 @@ class MainActivity : AppCompatActivity() {
         println(optimizedBS)
 
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navigationView = findViewById(R.id.nav_view)
+
         supportActionBar?.hide()
        // window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        navView.itemIconTintList = null
+        navigationView?.itemIconTintList = null
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
                 R.id.navigation_phone_booster, R.id.navigation_battery_saver, R.id.navigation_optimizer, R.id.navigation_junk_cleaner))
+
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        navigationView?.setupWithNavController(navController)
     }
 
     fun optimizeSmth(type: Screen){
         data.putData( Date(),type)
     }
 }
+

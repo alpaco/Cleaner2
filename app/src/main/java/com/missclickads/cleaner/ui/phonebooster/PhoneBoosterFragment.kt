@@ -3,6 +3,7 @@ package com.missclickads.cleaner.ui.phonebooster
 import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -16,10 +17,14 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.missclickads.cleaner.MainActivity
-import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
 import kotlin.math.ceil
 import kotlin.math.roundToInt
+import android.animation.ObjectAnimator
+import android.content.res.Resources
+
+import android.graphics.drawable.Drawable
+import com.missclickads.cleaner.R
 
 
 class PhoneBoosterFragment : Fragment() {
@@ -41,6 +46,9 @@ class PhoneBoosterFragment : Fragment() {
     @SuppressLint("SetTextI18n", "ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //todo enable other
+        //HERE I OFF BUTTOn
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
 
         val actManager = (activity as MainActivity).getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val memInfo = ActivityManager.MemoryInfo()
@@ -65,6 +73,7 @@ class PhoneBoosterFragment : Fragment() {
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
         val imageOk = view.findViewById<ImageView>(R.id.image_ok)
         val imageCircle = view.findViewById<ImageView>(R.id.imageView)
+        val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
 
         textRunningProcess.text = "$runningProcess"
         textPercent.text = "$usageMemoryPercent%"
@@ -89,6 +98,8 @@ class PhoneBoosterFragment : Fragment() {
             (activity as MainActivity).optimizedPB = true
             (activity as MainActivity).optimizeSmth(Screen.PHONE_BOOSTER)
             barBot.progress = usageMemoryPercentAfter
+            progressBarCircle.visibility = View.GONE
+            barBot.progressDrawable = resources.getDrawable(R.drawable.progress_bar_hor_blue)
         }
         barBot.progress = usageMemoryPercent
         if ((activity as MainActivity).optimizedPB) optimized()
@@ -100,6 +111,10 @@ class PhoneBoosterFragment : Fragment() {
         btnOptimize.setOnClickListener {
             if(!(activity as MainActivity).optimizedPB ){
                 btnOptimize.text = "Optimizing..."
+                val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
+                progressBarCircle.visibility = View.VISIBLE
+                animation.duration = 5 * 1000
+                animation.start()
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
             }

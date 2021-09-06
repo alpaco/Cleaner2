@@ -18,8 +18,8 @@ android:id="@android:id/progress">
         <size
             android:height="2dp"/>
         <gradient
-            android:startColor="@color/gradient_orange_start"
-            android:endColor="@color/gradient_orange_end" />
+            android:startColor="@color/gradient_blue_start"
+            android:endColor="@color/gradient_blue_end" />
         <corners
             android:radius="16dp"/>
     </shape>
