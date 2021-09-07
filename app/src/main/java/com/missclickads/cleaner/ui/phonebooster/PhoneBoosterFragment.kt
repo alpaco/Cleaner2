@@ -42,6 +42,10 @@ class PhoneBoosterFragment : Fragment() {
         return root
     }
 
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = true
+    }
 
     @SuppressLint("SetTextI18n", "ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -120,10 +124,14 @@ class PhoneBoosterFragment : Fragment() {
                 animation.start()
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
-                progressProc.text = "${progressBarCircle.progress} %"
+
 
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+                for( i in 0..99){
+                    Handler().postDelayed({ progressProc.text = "$i %" }, (i * 50).toLong())
+                }
+                println("tut")
             }
 
         }
