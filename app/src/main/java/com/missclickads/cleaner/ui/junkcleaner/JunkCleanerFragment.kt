@@ -65,6 +65,7 @@ class JunkCleanerFragment : Fragment() {
             (activity as MainActivity).optimizeSmth(Screen.JUNK_CLEANER)
             progressBarCircle.visibility = View.GONE
             progressProc.visibility = View.INVISIBLE
+            btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
         }
         if ((activity as MainActivity).optimizedJC) optimized()
         btnOptimize.setOnClickListener {
@@ -76,10 +77,12 @@ class JunkCleanerFragment : Fragment() {
                 textResult4.text = "cleaning..."
                 textResult5.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
+                btnOptimize.isClickable = false
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE
                 animation.duration = 5 * 1000
                 animation.start()
+                btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
                 for( i in 0..99){

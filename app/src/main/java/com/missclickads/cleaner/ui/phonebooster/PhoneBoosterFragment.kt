@@ -107,6 +107,7 @@ class PhoneBoosterFragment : Fragment() {
             progressBarCircle.visibility = View.GONE
             barBot.progressDrawable = resources.getDrawable(R.drawable.progress_bar_hor_blue)
             progressProc.visibility = View.INVISIBLE
+            btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
         }
         barBot.progress = usageMemoryPercent
         if ((activity as MainActivity).optimizedPB) optimized()
@@ -125,7 +126,8 @@ class PhoneBoosterFragment : Fragment() {
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
 
-
+                btnOptimize.isClickable = false
+                btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
                 for( i in 0..99){
@@ -134,7 +136,6 @@ class PhoneBoosterFragment : Fragment() {
                         progressProc.text = "$i %"
                                           }, (i * 50).toLong())
                 }
-                println("tut")
             }
 
         }

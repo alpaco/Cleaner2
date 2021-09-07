@@ -61,6 +61,7 @@ class OptimizerFragment : Fragment() {
             progressBarCircle.visibility = View.GONE
             progressProc.visibility = View.INVISIBLE
             textResult.visibility = View.VISIBLE
+            btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
         }
         if ((activity as MainActivity).optimizedOpt) optimized()
         btnOptimize.setOnClickListener {
@@ -68,11 +69,12 @@ class OptimizerFragment : Fragment() {
                 btnOptimize.text = "Optimizing..."
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
-
+                btnOptimize.isClickable = false
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE
                 animation.duration = 5 * 1000
                 animation.start()
+                btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
                 for( i in 0..99){

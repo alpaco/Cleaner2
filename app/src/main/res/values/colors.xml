@@ -15,8 +15,8 @@
     <color name="gradient_blue_start">#12D8FA</color>
     <color name="gradient_blue_end">#A6FFCB</color>
 
-    <color name="gradient_blue_dark_start">#1FA2FF</color>
-    <color name="gradient_blue_dark_end">#A60FCB</color>
+    <color name="gradient_blue_dark_start">#0b7199</color>
+    <color name="gradient_blue_dark_end">#48736d</color>
 
     <color name="gray">#8C8C8C</color>
     <color name="btn_opt">#EBEBEB</color>
