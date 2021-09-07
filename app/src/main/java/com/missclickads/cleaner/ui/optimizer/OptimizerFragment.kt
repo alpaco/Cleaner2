@@ -63,6 +63,7 @@ class OptimizerFragment : Fragment() {
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedOpt) {
                 btnOptimize.text = "Optimizing..."
+
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE
                 animation.duration = 5 * 1000

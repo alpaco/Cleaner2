@@ -74,13 +74,15 @@ class PhoneBoosterFragment : Fragment() {
         val imageOk = view.findViewById<ImageView>(R.id.image_ok)
         val imageCircle = view.findViewById<ImageView>(R.id.imageView)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
-
+        val progressProc = view.findViewById<TextView>(R.id.text_progressproc)
         textRunningProcess.text = "$runningProcess"
         textPercent.text = "$usageMemoryPercent%"
         textMemory.text = "$usageMemory GB / $totalMemory GB"
         textResult.text = "$usageMemory GB"
 
+
         val barBot = view.findViewById<ProgressBar>(R.id.progressBar)
+
 
         //after optimization
         fun optimized(){
@@ -100,6 +102,7 @@ class PhoneBoosterFragment : Fragment() {
             barBot.progress = usageMemoryPercentAfter
             progressBarCircle.visibility = View.GONE
             barBot.progressDrawable = resources.getDrawable(R.drawable.progress_bar_hor_blue)
+            progressProc.visibility = View.INVISIBLE
         }
         barBot.progress = usageMemoryPercent
         if ((activity as MainActivity).optimizedPB) optimized()
@@ -115,6 +118,10 @@ class PhoneBoosterFragment : Fragment() {
                 progressBarCircle.visibility = View.VISIBLE
                 animation.duration = 5 * 1000
                 animation.start()
+                textResult.visibility = View.INVISIBLE
+                progressProc.visibility = View.VISIBLE
+                progressProc.text = "${progressBarCircle.progress} %"
+
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
             }
