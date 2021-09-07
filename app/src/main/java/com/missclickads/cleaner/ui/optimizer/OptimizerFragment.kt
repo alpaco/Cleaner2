@@ -43,6 +43,7 @@ class OptimizerFragment : Fragment() {
         val imageCircle = view.findViewById<ImageView>(R.id.imageView)
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
+        val progressProc = view.findViewById<TextView>(R.id.text_progressproc)
 
         //before optimize
         val temp = (40..50).random()
@@ -58,11 +59,15 @@ class OptimizerFragment : Fragment() {
             (activity as MainActivity).optimizedOpt = true
             (activity as MainActivity).optimizeSmth(Screen.OPTIMIZER)
             progressBarCircle.visibility = View.GONE
+            progressProc.visibility = View.INVISIBLE
+            textResult.visibility = View.VISIBLE
         }
         if ((activity as MainActivity).optimizedOpt) optimized()
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedOpt) {
                 btnOptimize.text = "Optimizing..."
+                textResult.visibility = View.INVISIBLE
+                progressProc.visibility = View.VISIBLE
 
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE
@@ -70,6 +75,12 @@ class OptimizerFragment : Fragment() {
                 animation.start()
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+                for( i in 0..99){
+                    Handler().postDelayed({
+                        if (i == 50) progressProc.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                        progressProc.text = "$i %"
+                    }, (i * 50).toLong())
+                }
 
                 }
             }

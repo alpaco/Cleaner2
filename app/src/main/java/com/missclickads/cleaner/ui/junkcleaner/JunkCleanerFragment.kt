@@ -42,6 +42,7 @@ class JunkCleanerFragment : Fragment() {
         val textResult5 = view.findViewById<TextView>(R.id.text_process)
         val imageOk = view.findViewById<ImageView>(R.id.image_ok)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
+        val progressProc = view.findViewById<TextView>(R.id.text_progressproc)
         textResult5.text = "$usageMemory MB"
         fun optimized() {
 
@@ -63,6 +64,7 @@ class JunkCleanerFragment : Fragment() {
             (activity as MainActivity).optimizedJC = true
             (activity as MainActivity).optimizeSmth(Screen.JUNK_CLEANER)
             progressBarCircle.visibility = View.GONE
+            progressProc.visibility = View.INVISIBLE
         }
         if ((activity as MainActivity).optimizedJC) optimized()
         btnOptimize.setOnClickListener {
@@ -72,12 +74,20 @@ class JunkCleanerFragment : Fragment() {
                 textResult2.text = "cleaning..."
                 textResult3.text = "cleaning..."
                 textResult4.text = "cleaning..."
+                textResult5.visibility = View.INVISIBLE
+                progressProc.visibility = View.VISIBLE
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE
                 animation.duration = 5 * 1000
                 animation.start()
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+                for( i in 0..99){
+                    Handler().postDelayed({
+                        if (i == 50) progressProc.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                        progressProc.text = "$i %"
+                    }, (i * 50).toLong())
+                }
 
             }
         }
