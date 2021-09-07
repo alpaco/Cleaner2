@@ -129,7 +129,10 @@ class PhoneBoosterFragment : Fragment() {
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
                 for( i in 0..99){
-                    Handler().postDelayed({ progressProc.text = "$i %" }, (i * 50).toLong())
+                    Handler().postDelayed({
+                        if (i == 50) progressProc.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                        progressProc.text = "$i %"
+                                          }, (i * 50).toLong())
                 }
                 println("tut")
             }
