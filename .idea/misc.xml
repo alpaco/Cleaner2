@@ -30,10 +30,23 @@
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/fragment_optimizer.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/fragment_phone_booster.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21927083333333333" />
+        <entry key="app/src/main/res/drawable/ic_tab_battery_off.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tab_battery_on.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tab_delete.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tab_delete_off.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tab_phone_boost_of.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tab_phone_boost_on.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/drawable/ic_tab_snow.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tab_snow_off.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tab_snow_on.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tabbs.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tabjc.xml" value="0.21388888888888888" />
+        <entry key="app/src/main/res/drawable/ic_tabopt.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/progress_bar_circle.xml" value="0.2518518518518518" />
         <entry key="app/src/main/res/drawable/progress_bar_hor.xml" value="0.2518518518518518" />
         <entry key="app/src/main/res/layout/fragment_optimizer.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/fragment_phone_booster.xml" value="0.39265780026319513" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.30512820512820515" />
       </map>
     </option>
   </component>

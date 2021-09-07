@@ -1,5 +1,6 @@
 package com.missclickads.cleaner
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     var optimizedBS = false
     var navigationView: BottomNavigationView? = null
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,7 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         navigationView = findViewById(R.id.nav_view)
-
+        //todo all
+        //navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.setIcon(R.drawable.ic_tabjc)
         supportActionBar?.hide()
        // window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         navigationView?.itemIconTintList = null
