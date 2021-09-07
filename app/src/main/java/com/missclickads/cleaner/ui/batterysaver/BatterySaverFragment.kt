@@ -1,5 +1,6 @@
 package com.missclickads.cleaner.ui.batterysaver
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context.BATTERY_SERVICE
 import android.os.BatteryManager
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -47,6 +49,7 @@ class BatterySaverFragment : Fragment() {
         val imageOk = view.findViewById<ImageView>(R.id.image_ok)
         val imageCircle = view.findViewById<ImageView>(R.id.imageView)
         val textResult = view.findViewById<TextView>(R.id.text_process)
+        val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
         textbattery.text ="$batteryInfo %"
 
         //before optimize
@@ -67,6 +70,7 @@ class BatterySaverFragment : Fragment() {
             textTime.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
             (activity as MainActivity).optimizedBS = true
             (activity as MainActivity).optimizeSmth(Screen.BATTERY_SAVER)
+            progressBarCircle.visibility = View.GONE
 
 
         }
@@ -75,6 +79,10 @@ class BatterySaverFragment : Fragment() {
         btnOptimize.setOnClickListener {
             if(!(activity as MainActivity).optimizedBS ){
                 btnOptimize.text = "Optimizing..."
+                val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
+                progressBarCircle.visibility = View.VISIBLE
+                animation.duration = 5 * 1000
+                animation.start()
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
         }

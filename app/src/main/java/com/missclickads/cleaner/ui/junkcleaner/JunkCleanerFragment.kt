@@ -1,5 +1,6 @@
 package com.missclickads.cleaner.ui.junkcleaner
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -39,6 +41,7 @@ class JunkCleanerFragment : Fragment() {
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
         val textResult5 = view.findViewById<TextView>(R.id.text_process)
         val imageOk = view.findViewById<ImageView>(R.id.image_ok)
+        val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
         textResult5.text = "$usageMemory MB"
         fun optimized() {
 
@@ -59,6 +62,7 @@ class JunkCleanerFragment : Fragment() {
             imageOk.visibility = View.VISIBLE
             (activity as MainActivity).optimizedJC = true
             (activity as MainActivity).optimizeSmth(Screen.JUNK_CLEANER)
+            progressBarCircle.visibility = View.GONE
         }
         if ((activity as MainActivity).optimizedJC) optimized()
         btnOptimize.setOnClickListener {
@@ -68,6 +72,10 @@ class JunkCleanerFragment : Fragment() {
                 textResult2.text = "cleaning..."
                 textResult3.text = "cleaning..."
                 textResult4.text = "cleaning..."
+                val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
+                progressBarCircle.visibility = View.VISIBLE
+                animation.duration = 5 * 1000
+                animation.start()
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
 
