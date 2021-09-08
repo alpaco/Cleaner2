@@ -2,6 +2,10 @@ package com.missclickads.cleaner.ui.optimizer
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.Color.parseColor
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -49,10 +53,29 @@ class OptimizerFragment : Fragment() {
         val temp = (40..50).random()
         //after optimize
         val tempAfter = (temp * 0.85).toInt()
+
+
+
+        val paint = textResult.paint
+        val width = paint.measureText(textResult.text.toString())
+        val textShader: Shader = LinearGradient(0f, 0f, width, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        // Color.parseColor("#F97C3C"),
+            //Color.parseColor("#FDB54E"),
+            /*Color.parseColor("#64B678"),
+            Color.parseColor("#478AEA"),*/
+            //Color.parseColor("#8446CC")
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader)
+
+
+
         fun optimized() {
             btnOptimize.text = "Optimized"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
-            textResult.text = "$tempAfter °C"
+            textResult.text = "$tempAfter°C"
             imageCircle.setImageResource(R.drawable.ellipse_blue)
             textResult.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
             imageCircle.setImageResource(R.drawable.ellipse_blue)
@@ -88,3 +111,4 @@ class OptimizerFragment : Fragment() {
             }
     }
 }
+
