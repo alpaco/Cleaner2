@@ -22,6 +22,8 @@ import kotlin.math.ceil
 import kotlin.math.roundToInt
 import android.animation.ObjectAnimator
 import android.content.res.Resources
+import android.graphics.LinearGradient
+import android.graphics.Shader
 
 import android.graphics.drawable.Drawable
 import com.missclickads.cleaner.R
@@ -85,7 +87,35 @@ class PhoneBoosterFragment : Fragment() {
         textResult.text = "$usageMemory GB"
 
 
+
         val barBot = view.findViewById<ProgressBar>(R.id.progressBar)
+
+        val paint = textRunningProcess.paint
+        val width = paint.measureText(textRunningProcess.text.toString())
+        val textShader: Shader = LinearGradient(0f, 0f, width, textRunningProcess.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textRunningProcess.paint.setShader(textShader)
+
+        val paint2 = textPercent.paint
+        val width2 = paint2.measureText(textPercent.text.toString())
+        val textShader2: Shader = LinearGradient(0f, 0f, width2, textPercent.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textPercent.paint.setShader(textShader2)
+
+        val paint3 = textResult.paint
+        val width3 = paint3.measureText(textResult.text.toString())
+        val textShader3: Shader = LinearGradient(0f, 0f, width3, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader3)
 
 
         //after optimization
@@ -108,6 +138,33 @@ class PhoneBoosterFragment : Fragment() {
             barBot.progressDrawable = resources.getDrawable(R.drawable.progress_bar_hor_blue)
             progressProc.visibility = View.INVISIBLE
             btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
+
+            val paint = textRunningProcess.paint
+            val width = paint.measureText(textRunningProcess.text.toString())
+            val textShader: Shader = LinearGradient(0f, 0f, width, textRunningProcess.textSize, intArrayOf(
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+            ), null, Shader.TileMode.CLAMP)
+            textRunningProcess.paint.setShader(textShader)
+
+            val paint2 = textPercent.paint
+            val width2 = paint2.measureText(textPercent.text.toString())
+            val textShader2: Shader = LinearGradient(0f, 0f, width2, textPercent.textSize, intArrayOf(
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+            ), null, Shader.TileMode.CLAMP)
+            textPercent.paint.setShader(textShader2)
+
+            val paint3 = textResult.paint
+            val width3 = paint3.measureText(textResult.text.toString())
+            val textShader3: Shader = LinearGradient(0f, 0f, width3, textResult.textSize, intArrayOf(
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+            ), null, Shader.TileMode.CLAMP)
+            textResult.paint.setShader(textShader3)
         }
         barBot.progress = usageMemoryPercent
         if ((activity as MainActivity).optimizedPB) optimized()
@@ -130,9 +187,27 @@ class PhoneBoosterFragment : Fragment() {
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+                val paint = progressProc.paint
+                val width = paint.measureText(progressProc.text.toString())
+                val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+
+                ), null, Shader.TileMode.CLAMP)
+                progressProc.paint.setShader(textShader)
+
                 for( i in 0..99){
                     Handler().postDelayed({
-                        if (i == 50) progressProc.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                        if (i == 50) {val paint = progressProc.paint
+                            val width = paint.measureText(progressProc.text.toString())
+                            val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+
+                            ), null, Shader.TileMode.CLAMP)
+                            progressProc.paint.setShader(textShader) }
                         progressProc.text = "$i %"
                                           }, (i * 50).toLong())
                 }

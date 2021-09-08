@@ -3,6 +3,8 @@ package com.missclickads.cleaner.ui.batterysaver
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context.BATTERY_SERVICE
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.BatteryManager
 import android.os.Bundle
 import android.os.Handler
@@ -57,8 +59,28 @@ class BatterySaverFragment : Fragment() {
         val batteryhours = batteryInfo * 4 /60
         val batteryminutes = batteryInfo *4 % 60
 
-        //after optimize
 
+        val paint = textResult.paint
+        val width = paint.measureText(textResult.text.toString())
+        val textShader: Shader = LinearGradient(0f, 0f, width, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader)
+
+        val paint2 = textTime.paint
+        val width2 = paint2.measureText(textTime.text.toString())
+        val textShader2: Shader = LinearGradient(0f, 0f, width2, textTime.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textTime.paint.setShader(textShader2)
+
+
+        //after optimize
         val batteryhoursafter = (batteryInfo * 1.2 * 4 / 60).toInt()
         val batteryminutesafter = (batteryInfo * 1.2 * 4 % 60).toInt()
         fun optimized(){
@@ -74,6 +96,24 @@ class BatterySaverFragment : Fragment() {
             progressBarCircle.visibility = View.GONE
             progressProc.visibility = View.INVISIBLE
             btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
+
+            val paint = textResult.paint
+            val width = paint.measureText(textResult.text.toString())
+            val textShader: Shader = LinearGradient(0f, 0f, width, textResult.textSize, intArrayOf(
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+            ), null, Shader.TileMode.CLAMP)
+            textResult.paint.setShader(textShader)
+
+            val paint2 = textTime.paint
+            val width2 = paint2.measureText(textTime.text.toString())
+            val textShader2: Shader = LinearGradient(0f, 0f, width2, textTime.textSize, intArrayOf(
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+            ), null, Shader.TileMode.CLAMP)
+            textTime.paint.setShader(textShader2)
 
 
         }
@@ -92,9 +132,32 @@ class BatterySaverFragment : Fragment() {
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+
+
+
+                val paint = progressProc.paint
+                val width = paint.measureText(progressProc.text.toString())
+                val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+                ), null, Shader.TileMode.CLAMP)
+                progressProc.paint.setShader(textShader)
+
+
+
                 for( i in 0..99){
                     Handler().postDelayed({
-                        if (i == 50) progressProc.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                        if (i == 50) {
+                            val paint = progressProc.paint
+                            val width = paint.measureText(progressProc.text.toString())
+                            val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+                            ), null, Shader.TileMode.CLAMP)
+                            progressProc.paint.setShader(textShader) }
+
                         progressProc.text = "$i %"
                     }, (i * 50).toLong())
                 }

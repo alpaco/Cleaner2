@@ -2,6 +2,8 @@ package com.missclickads.cleaner.ui.junkcleaner
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -44,6 +46,52 @@ class JunkCleanerFragment : Fragment() {
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
         val progressProc = view.findViewById<TextView>(R.id.text_progressproc)
         textResult5.text = "$usageMemory MB"
+
+        val paint = textResult5.paint
+        val width = paint.measureText(textResult5.text.toString())
+        val textShader: Shader = LinearGradient(0f, 0f, width, textResult5.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult5.paint.setShader(textShader)
+
+        val paint2 = textResult.paint
+        val width2 = paint2.measureText(textResult.text.toString())
+        val textShader2: Shader = LinearGradient(0f, 0f, width2, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader2)
+
+        val paint3 = textResult2.paint
+        val width3 = paint3.measureText(textResult2.text.toString())
+        val textShader3: Shader = LinearGradient(0f, 0f, width3, textResult2.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult2.paint.setShader(textShader3)
+
+        val paint4 = textResult3.paint
+        val width4 = paint4.measureText(textResult3.text.toString())
+        val textShader4: Shader = LinearGradient(0f, 0f, width4, textResult3.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult3.paint.setShader(textShader4)
+
+        val paint5 = textResult4.paint
+        val width5 = paint5.measureText(textResult4.text.toString())
+        val textShader5: Shader = LinearGradient(0f, 0f, width5, textResult4.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult4.paint.setShader(textShader5)
+
         fun optimized() {
 
             btnOptimize.text = "Optimized"
@@ -66,6 +114,50 @@ class JunkCleanerFragment : Fragment() {
             progressBarCircle.visibility = View.GONE
             progressProc.visibility = View.INVISIBLE
             btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
+            val paint = textResult5.paint
+            val width = paint.measureText(textResult5.text.toString())
+            val textShader: Shader = LinearGradient(0f, 0f, width, textResult5.textSize, intArrayOf(
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+            ), null, Shader.TileMode.CLAMP)
+            textResult5.paint.setShader(textShader)
+
+            val paint2 = textResult.paint
+            val width2 = paint2.measureText(textResult.text.toString())
+            val textShader2: Shader = LinearGradient(0f, 0f, width2, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader2)
+
+        val paint3 = textResult2.paint
+        val width3 = paint3.measureText(textResult2.text.toString())
+        val textShader3: Shader = LinearGradient(0f, 0f, width3, textResult2.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult2.paint.setShader(textShader3)
+
+        val paint4 = textResult3.paint
+        val width4 = paint4.measureText(textResult3.text.toString())
+        val textShader4: Shader = LinearGradient(0f, 0f, width4, textResult3.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult3.paint.setShader(textShader4)
+
+        val paint5 = textResult4.paint
+        val width5 = paint5.measureText(textResult4.text.toString())
+        val textShader5: Shader = LinearGradient(0f, 0f, width5, textResult4.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult4.paint.setShader(textShader5)
         }
         if ((activity as MainActivity).optimizedJC) optimized()
         btnOptimize.setOnClickListener {
@@ -85,9 +177,103 @@ class JunkCleanerFragment : Fragment() {
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+
+                val paint = progressProc.paint
+                val width = paint.measureText(progressProc.text.toString())
+                val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+                ), null, Shader.TileMode.CLAMP)
+                progressProc.paint.setShader(textShader)
+
+                        val paint2 = textResult.paint
+        val width2 = paint2.measureText(textResult.text.toString())
+        val textShader2: Shader = LinearGradient(0f, 0f, width2, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader2)
+
+        val paint3 = textResult2.paint
+        val width3 = paint3.measureText(textResult2.text.toString())
+        val textShader3: Shader = LinearGradient(0f, 0f, width3, textResult2.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult2.paint.setShader(textShader3)
+
+        val paint4 = textResult3.paint
+        val width4 = paint4.measureText(textResult3.text.toString())
+        val textShader4: Shader = LinearGradient(0f, 0f, width4, textResult3.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult3.paint.setShader(textShader4)
+
+        val paint5 = textResult4.paint
+        val width5 = paint5.measureText(textResult4.text.toString())
+        val textShader5: Shader = LinearGradient(0f, 0f, width5, textResult4.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult4.paint.setShader(textShader5)
+
+
+
                 for( i in 0..99){
                     Handler().postDelayed({
-                        if (i == 50) progressProc.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                        if (i == 50) {
+
+                            val paint = progressProc.paint
+                            val width = paint.measureText(progressProc.text.toString())
+                            val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+                            ), null, Shader.TileMode.CLAMP)
+                            progressProc.paint.setShader(textShader)
+
+                                    val paint2 = textResult.paint
+        val width2 = paint2.measureText(textResult.text.toString())
+        val textShader2: Shader = LinearGradient(0f, 0f, width2, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader2)
+
+        val paint3 = textResult2.paint
+        val width3 = paint3.measureText(textResult2.text.toString())
+        val textShader3: Shader = LinearGradient(0f, 0f, width3, textResult2.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult2.paint.setShader(textShader3)
+
+        val paint4 = textResult3.paint
+        val width4 = paint4.measureText(textResult3.text.toString())
+        val textShader4: Shader = LinearGradient(0f, 0f, width4, textResult3.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult3.paint.setShader(textShader4)
+
+        val paint5 = textResult4.paint
+        val width5 = paint5.measureText(textResult4.text.toString())
+        val textShader5: Shader = LinearGradient(0f, 0f, width5, textResult4.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult4.paint.setShader(textShader5)
+                        }
                         progressProc.text = "$i %"
                     }, (i * 50).toLong())
                 }

@@ -62,11 +62,7 @@ class OptimizerFragment : Fragment() {
             ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
             ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
             ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
-        // Color.parseColor("#F97C3C"),
-            //Color.parseColor("#FDB54E"),
-            /*Color.parseColor("#64B678"),
-            Color.parseColor("#478AEA"),*/
-            //Color.parseColor("#8446CC")
+
         ), null, Shader.TileMode.CLAMP)
         textResult.paint.setShader(textShader)
 
@@ -85,6 +81,16 @@ class OptimizerFragment : Fragment() {
             progressProc.visibility = View.INVISIBLE
             textResult.visibility = View.VISIBLE
             btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
+            val paint = textResult.paint
+            val width = paint.measureText(textResult.text.toString())
+            val textShader: Shader = LinearGradient(0f, 0f, width, textResult.textSize, intArrayOf(
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+
+            ), null, Shader.TileMode.CLAMP)
+            textResult.paint.setShader(textShader)
+
         }
         if ((activity as MainActivity).optimizedOpt) optimized()
         btnOptimize.setOnClickListener {
@@ -100,11 +106,33 @@ class OptimizerFragment : Fragment() {
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+                val paint = progressProc.paint
+                val width = paint.measureText(progressProc.text.toString())
+                val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+
+                ), null, Shader.TileMode.CLAMP)
+                progressProc.paint.setShader(textShader)
+
+
                 for( i in 0..99){
+
                     Handler().postDelayed({
-                        if (i == 50) progressProc.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+                        if (i == 50)
+                        {val paint = progressProc.paint
+                        val width = paint.measureText(progressProc.text.toString())
+                        val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+
+                        ), null, Shader.TileMode.CLAMP)
+                        progressProc.paint.setShader(textShader) }
                         progressProc.text = "$i %"
                     }, (i * 50).toLong())
+
                 }
 
                 }
