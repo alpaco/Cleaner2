@@ -59,7 +59,7 @@ class BatterySaverFragment : Fragment() {
         val batteryhours = batteryInfo * 4 /60
         val batteryminutes = batteryInfo *4 % 60
 
-
+        textTime.text="$batteryhours h $batteryminutes m"
         val paint = textResult.paint
         val width = paint.measureText(textResult.text.toString())
         val textShader: Shader = LinearGradient(0f, 0f, width, textResult.textSize, intArrayOf(
@@ -86,7 +86,7 @@ class BatterySaverFragment : Fragment() {
         fun optimized(){
             btnOptimize.text = "Optimized"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
-            textTime.text = "$batteryhoursafter h $batteryminutesafter m"
+
             textResult.visibility = View.INVISIBLE
             imageOk.visibility = View.VISIBLE
             imageCircle.setImageResource(R.drawable.ellipse_blue)
@@ -114,11 +114,12 @@ class BatterySaverFragment : Fragment() {
                 ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
             ), null, Shader.TileMode.CLAMP)
             textTime.paint.setShader(textShader2)
+            textTime.text = "$batteryhoursafter h $batteryminutesafter m"
 
 
         }
         if ((activity as MainActivity).optimizedBS) optimized()
-        textTime.text="$batteryhours h $batteryminutes m"
+
         btnOptimize.setOnClickListener {
             if(!(activity as MainActivity).optimizedBS ){
                 btnOptimize.text = "Optimizing..."
