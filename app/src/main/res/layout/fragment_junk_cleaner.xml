@@ -267,7 +267,7 @@
         app:layout_constraintTop_toBottomOf="@+id/adView"
         app:layout_constraintVertical_bias="0.0" />
     <TextView
-        android:id="@+id/text_progressproc"
+        android:id="@+id/text_progressProc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="60%"

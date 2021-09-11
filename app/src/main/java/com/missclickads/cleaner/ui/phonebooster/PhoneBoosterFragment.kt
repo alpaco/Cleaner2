@@ -80,7 +80,7 @@ class PhoneBoosterFragment : Fragment() {
         val imageOk = view.findViewById<ImageView>(R.id.image_ok)
         val imageCircle = view.findViewById<ImageView>(R.id.imageView)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
-        val progressProc = view.findViewById<TextView>(R.id.text_progressproc)
+        val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
         textRunningProcess.text = "$runningProcess"
         textPercent.text = "$usageMemoryPercent%"
         textMemory.text = "$usageMemory GB / $totalMemory GB"

@@ -52,7 +52,7 @@ class BatterySaverFragment : Fragment() {
         val imageCircle = view.findViewById<ImageView>(R.id.imageView)
         val textResult = view.findViewById<TextView>(R.id.text_process)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
-        val progressProc = view.findViewById<TextView>(R.id.text_progressproc)
+        val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
         textbattery.text ="$batteryInfo %"
 
         //before optimize

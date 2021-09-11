@@ -44,7 +44,7 @@ class JunkCleanerFragment : Fragment() {
         val textResult5 = view.findViewById<TextView>(R.id.text_process)
         val imageOk = view.findViewById<ImageView>(R.id.image_ok)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
-        val progressProc = view.findViewById<TextView>(R.id.text_progressproc)
+        val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
         textResult5.text = "$usageMemory MB"
 
         val paint = textResult5.paint

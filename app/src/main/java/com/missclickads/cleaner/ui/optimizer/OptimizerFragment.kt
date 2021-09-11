@@ -2,12 +2,13 @@ package com.missclickads.cleaner.ui.optimizer
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.graphics.Color.parseColor
+import android.content.ContentValues.TAG
+import android.content.pm.PackageManager
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +18,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
@@ -47,12 +48,26 @@ class OptimizerFragment : Fragment() {
         val imageCircle = view.findViewById<ImageView>(R.id.imageView)
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
-        val progressProc = view.findViewById<TextView>(R.id.text_progressproc)
+        val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
+
 
         //before optimize
         val temp = (40..50).random()
         //after optimize
         val tempAfter = (temp * 0.85).toInt()
+
+
+
+        //telephone's apps info
+        val pm: PackageManager = (activity as MainActivity).packageManager
+        val packages = pm.getInstalledApplications(PackageManager.GET_META_DATA)
+        for (packageInfo in packages) {
+            Log.d(TAG, "Installed package :" + packageInfo.packageName)
+            Log.d(TAG, "Source dir : " + packageInfo.sourceDir)
+            Log.d(TAG, "Launch Activity :" + pm.getLaunchIntentForPackage(packageInfo.packageName))
+        }
+
+
 
 
 
@@ -99,6 +114,7 @@ class OptimizerFragment : Fragment() {
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
                 btnOptimize.isClickable = false
+
                 imageCircle.setImageResource(R.drawable.ellipse_blue)
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE
