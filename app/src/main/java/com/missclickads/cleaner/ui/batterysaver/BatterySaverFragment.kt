@@ -92,6 +92,9 @@ class BatterySaverFragment : Fragment() {
             btnOptimize.text = "Optimized"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
 
+            (activity as MainActivity).onBottomBar()
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+
             textResult.visibility = View.INVISIBLE
             imageOk.visibility = View.VISIBLE
             imageCircle.setImageResource(R.drawable.ellipse_blue)
@@ -130,6 +133,9 @@ class BatterySaverFragment : Fragment() {
                 btnOptimize.text = "Optimizing..."
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
+
+                (activity as MainActivity).offBottomBar()
+
                 btnOptimize.isClickable = false
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE

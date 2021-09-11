@@ -109,6 +109,9 @@ class JunkCleanerFragment : Fragment() {
             textResult4.text = "cleared"
             imageCircle.setImageResource(R.drawable.ellipse_blue)
 
+            (activity as MainActivity).onBottomBar()
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+
             textResult.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
             textResult2.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
             textResult3.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
@@ -174,6 +177,9 @@ class JunkCleanerFragment : Fragment() {
                 textResult2.text = "cleaning..."
                 textResult3.text = "cleaning..."
                 textResult4.text = "cleaning..."
+
+                (activity as MainActivity).offBottomBar()
+
                 textResult5.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
                 btnOptimize.isClickable = false
