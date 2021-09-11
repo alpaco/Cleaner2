@@ -166,6 +166,11 @@ class PhoneBoosterFragment : Fragment() {
                 ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
             ), null, Shader.TileMode.CLAMP)
             textResult.paint.setShader(textShader3)
+
+            (activity as MainActivity).onBottomBar()
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+
+
         }
         barBot.progress = usageMemoryPercent
         if ((activity as MainActivity).optimizedPB) optimized()
@@ -183,6 +188,9 @@ class PhoneBoosterFragment : Fragment() {
                 animation.start()
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
+
+                (activity as MainActivity).offBottomBar()
+
                 imageCircle.setImageResource(R.drawable.ellipse_blue)
                 btnOptimize.isClickable = false
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
