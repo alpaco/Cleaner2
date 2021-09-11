@@ -112,7 +112,7 @@ class OptimizerFragment : Fragment() {
 
 
             (activity as MainActivity).onBottomBar()
-
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
         }
         if ((activity as MainActivity).optimizedOpt) optimized()
         btnOptimize.setOnClickListener {
