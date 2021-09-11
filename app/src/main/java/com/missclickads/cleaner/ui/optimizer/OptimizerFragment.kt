@@ -39,11 +39,15 @@ class OptimizerFragment : Fragment() {
 
         return root
     }
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = true
+    }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
         val textResult = view.findViewById<TextView>(R.id.text_process)
         val imageCircle = view.findViewById<ImageView>(R.id.imageView)
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)

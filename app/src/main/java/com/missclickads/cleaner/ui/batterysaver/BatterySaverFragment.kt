@@ -39,10 +39,15 @@ class BatterySaverFragment : Fragment() {
         return root
     }
 
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
         val bm = (activity as MainActivity).getSystemService(BATTERY_SERVICE) as BatteryManager
         val batteryInfo = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
         val textbattery = view.findViewById<TextView>(R.id.text_process)

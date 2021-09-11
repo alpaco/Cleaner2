@@ -30,11 +30,18 @@ class JunkCleanerFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_junk_cleaner, container, false)
     }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
+    }
+
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val usageMemory = (150..500).random()
-
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
         val textResult = view.findViewById<TextView>(R.id.text_cleaning_required)
         val textResult2 = view.findViewById<TextView>(R.id.text_cleaning_required2)
         val textResult3 = view.findViewById<TextView>(R.id.text_cleaning_required3)

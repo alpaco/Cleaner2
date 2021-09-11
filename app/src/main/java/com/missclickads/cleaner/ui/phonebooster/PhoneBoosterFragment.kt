@@ -118,6 +118,7 @@ class PhoneBoosterFragment : Fragment() {
         textResult.paint.setShader(textShader3)
 
 
+
         //after optimization
         fun optimized(){
             btnOptimize.text = "Optimized"
@@ -215,6 +216,9 @@ class PhoneBoosterFragment : Fragment() {
 
         }
 
-
     }
+
+//    fun doNotClickYourSelf(){
+//
+//    }
 }

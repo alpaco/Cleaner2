@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         navigationView = findViewById(R.id.nav_view)
+        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+
         //todo all
         //navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.setIcon(R.drawable.ic_tabjc)
         supportActionBar?.hide()
