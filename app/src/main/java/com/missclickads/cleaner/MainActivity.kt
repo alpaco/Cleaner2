@@ -62,9 +62,18 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navigationView?.setupWithNavController(navController)
+        if(!optimizedPB) navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.icon = resources.getDrawable(R.drawable.ic_tab_phone_boost_fire)
+        //todo uncommit it after fix xml
+//        if(!optimizedBS) navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.icon = resources.getDrawable(R.drawable.ic_tab_battery_fire)
+        if(!optimizedOpt) navigationView?.menu?.findItem(R.id.navigation_optimizer)?.icon = resources.getDrawable(R.drawable.ic_tab_snow_fire)
+        if(!optimizedJC) navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.icon = resources.getDrawable(R.drawable.ic_tab_delete_fire)
     }
 
     fun optimizeSmth(type: Screen){
+        if(type == Screen.PHONE_BOOSTER) navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.setIcon(R.drawable.ic_tab_phone_boost)
+        if(type == Screen.BATTERY_SAVER) navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.setIcon(R.drawable.ic_tab_battery)
+        if(type == Screen.OPTIMIZER) navigationView?.menu?.findItem(R.id.navigation_optimizer)?.setIcon(R.drawable.ic_tab_snow)
+        if(type == Screen.JUNK_CLEANER) navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.setIcon(R.drawable.ic_tab_delete)
         data.putData( Date(),type)
     }
 
