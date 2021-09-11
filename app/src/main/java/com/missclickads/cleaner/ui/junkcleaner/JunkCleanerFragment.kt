@@ -110,7 +110,7 @@ class JunkCleanerFragment : Fragment() {
             imageCircle.setImageResource(R.drawable.ellipse_blue)
 
             (activity as MainActivity).onBottomBar()
-            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
 
             textResult.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
             textResult2.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))

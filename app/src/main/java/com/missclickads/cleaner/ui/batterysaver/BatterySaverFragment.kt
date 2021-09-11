@@ -93,7 +93,7 @@ class BatterySaverFragment : Fragment() {
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
 
             (activity as MainActivity).onBottomBar()
-            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
 
             textResult.visibility = View.INVISIBLE
             imageOk.visibility = View.VISIBLE

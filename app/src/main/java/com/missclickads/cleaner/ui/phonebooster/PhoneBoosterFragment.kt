@@ -168,7 +168,7 @@ class PhoneBoosterFragment : Fragment() {
             textResult.paint.setShader(textShader3)
 
             (activity as MainActivity).onBottomBar()
-            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
 
 
         }
