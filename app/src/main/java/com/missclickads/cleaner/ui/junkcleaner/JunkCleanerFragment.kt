@@ -2,10 +2,12 @@ package com.missclickads.cleaner.ui.junkcleaner
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +20,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.ui.junkcleaner.JunkCleanerViewModel
@@ -46,6 +50,7 @@ class JunkCleanerFragment : Fragment() {
 
         var mAdView : AdView = view.findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
+        var mInterstitialAd: InterstitialAd? = null
         mAdView.loadAd(adRequest)
         super.onViewCreated(view, savedInstanceState)
         val usageMemory = (150..500).random()
@@ -106,6 +111,13 @@ class JunkCleanerFragment : Fragment() {
             ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
         ), null, Shader.TileMode.CLAMP)
         textResult4.paint.setShader(textShader5)
+
+        fun showAd(){
+            if (mInterstitialAd != null && App.isActivityVisible) {
+                mInterstitialAd?.show(activity as MainActivity)
+                println("Ads go!")
+            }
+        }
 
         fun optimized() {
 
@@ -210,7 +222,8 @@ class JunkCleanerFragment : Fragment() {
                 animation.start()
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
-                Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+                Handler().postDelayed({ optimized()
+                    showAd()}, (5 * 1000).toLong())
 
                 val paint = progressProc.paint
                 val width = paint.measureText(progressProc.text.toString())
@@ -315,7 +328,39 @@ class JunkCleanerFragment : Fragment() {
             }
         }
 
+        //ads
+        InterstitialAd.load(
+            activity as MainActivity,
+            "ca-app-pub-3940256099942544/1033173712",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(ContentValues.TAG, adError?.message)
+                    mInterstitialAd = null
+                }
 
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(ContentValues.TAG, "Ad was loaded")
+                    mInterstitialAd = interstitialAd
+                    mInterstitialAd?.fullScreenContentCallback =
+                        object : FullScreenContentCallback() {
+                            override fun onAdDismissedFullScreenContent() {
+                                Log.d(ContentValues.TAG, "Ad was dismissed.")
+
+                            }
+
+                            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                                Log.d(ContentValues.TAG, "Ad failed to show.")
+                            }
+
+
+                            override fun onAdShowedFullScreenContent() {
+                                Log.d(ContentValues.TAG, "Ad showed fullscreen content.")
+                                mInterstitialAd = null
+                            }
+                        }
+                }
+            })
 
     }
 }

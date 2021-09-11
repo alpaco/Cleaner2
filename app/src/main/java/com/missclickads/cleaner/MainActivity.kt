@@ -98,5 +98,15 @@ class MainActivity : AppCompatActivity() {
         navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
         navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
     }
+
+    override fun onResume() {
+        super.onResume()
+        App.activityResumed()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        App.activityPaused()
+    }
 }
 

@@ -21,15 +21,18 @@ import com.missclickads.cleaner.utils.Screen
 import kotlin.math.ceil
 import kotlin.math.roundToInt
 import android.animation.ObjectAnimator
+import android.content.ContentValues
 import android.content.res.Resources
 import android.graphics.LinearGradient
 import android.graphics.Shader
 
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.animation.AnimationUtils
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.missclickads.cleaner.App
 import com.missclickads.cleaner.R
 import java.lang.Exception
 
@@ -61,7 +64,7 @@ class PhoneBoosterFragment : Fragment() {
         var mAdView : AdView = view.findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
-
+        var mInterstitialAd: InterstitialAd? = null
 
         //todo enable other
         //HERE I OFF BUTTOn
@@ -128,7 +131,12 @@ class PhoneBoosterFragment : Fragment() {
         ), null, Shader.TileMode.CLAMP)
         textResult.paint.setShader(textShader3)
 
-
+        fun showAd(){
+            if (mInterstitialAd != null && App.isActivityVisible) {
+                mInterstitialAd?.show(activity as MainActivity)
+                println("Ads go!")
+            }
+        }
 
         //after optimization
         fun optimized(){
@@ -217,7 +225,8 @@ class PhoneBoosterFragment : Fragment() {
                 btnOptimize.isClickable = false
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
-                Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+                Handler().postDelayed({ optimized()
+                    showAd()}, (5 * 1000).toLong())
                 val paint = progressProc.paint
                 val width = paint.measureText(progressProc.text.toString())
                 val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
@@ -245,6 +254,41 @@ class PhoneBoosterFragment : Fragment() {
             }
 
         }
+
+
+        //ads
+        InterstitialAd.load(
+            activity as MainActivity,
+            "ca-app-pub-3940256099942544/1033173712",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(ContentValues.TAG, adError?.message)
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(ContentValues.TAG, "Ad was loaded")
+                    mInterstitialAd = interstitialAd
+                    mInterstitialAd?.fullScreenContentCallback =
+                        object : FullScreenContentCallback() {
+                            override fun onAdDismissedFullScreenContent() {
+                                Log.d(ContentValues.TAG, "Ad was dismissed.")
+
+                            }
+
+                            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                                Log.d(ContentValues.TAG, "Ad failed to show.")
+                            }
+
+
+                            override fun onAdShowedFullScreenContent() {
+                                Log.d(ContentValues.TAG, "Ad showed fullscreen content.")
+                                mInterstitialAd = null
+                            }
+                        }
+                }
+            })
 
     }
 

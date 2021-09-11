@@ -21,8 +21,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
@@ -59,7 +61,7 @@ class OptimizerFragment : Fragment() {
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
         val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
 
-
+        var mInterstitialAd: InterstitialAd? = null
         var mAdView : AdView = view.findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
@@ -95,7 +97,12 @@ class OptimizerFragment : Fragment() {
         ), null, Shader.TileMode.CLAMP)
         textResult.paint.setShader(textShader)
 
-
+        fun showAd(){
+            if (mInterstitialAd != null && App.isActivityVisible) {
+                mInterstitialAd?.show(activity as MainActivity)
+                println("Ads go!")
+            }
+        }
 
         fun optimized() {
             btnOptimize.text = "Optimized"
@@ -154,7 +161,8 @@ class OptimizerFragment : Fragment() {
                 animation.start()
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
-                Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
+                Handler().postDelayed({ optimized()
+                    showAd()}, (5 * 1000).toLong())
                 val paint = progressProc.paint
                 val width = paint.measureText(progressProc.text.toString())
                 val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
@@ -186,6 +194,40 @@ class OptimizerFragment : Fragment() {
 
                 }
             }
+
+        //ads
+        InterstitialAd.load(
+            activity as MainActivity,
+            "ca-app-pub-3940256099942544/1033173712",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, adError?.message)
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(TAG, "Ad was loaded")
+                    mInterstitialAd = interstitialAd
+                    mInterstitialAd?.fullScreenContentCallback =
+                        object : FullScreenContentCallback() {
+                            override fun onAdDismissedFullScreenContent() {
+                                Log.d(TAG, "Ad was dismissed.")
+
+                            }
+
+                            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                                Log.d(TAG, "Ad failed to show.")
+                            }
+
+
+                            override fun onAdShowedFullScreenContent() {
+                                Log.d(TAG, "Ad showed fullscreen content.")
+                                mInterstitialAd = null
+                            }
+                        }
+                }
+            })
     }
 }
 
