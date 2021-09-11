@@ -67,5 +67,19 @@ class MainActivity : AppCompatActivity() {
     fun optimizeSmth(type: Screen){
         data.putData( Date(),type)
     }
+
+    fun offBottomBar(){
+        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+        navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+        navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
+        navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
+    }
+
+    fun onBottomBar(){
+        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = true
+        navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = true
+        navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
+        navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
+    }
 }
 

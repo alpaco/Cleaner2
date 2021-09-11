@@ -111,10 +111,7 @@ class OptimizerFragment : Fragment() {
             textResult.paint.setShader(textShader)
 
 
-            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = true
-            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = true
-            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
-            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
+            (activity as MainActivity).onBottomBar()
 
         }
         if ((activity as MainActivity).optimizedOpt) optimized()
@@ -126,10 +123,7 @@ class OptimizerFragment : Fragment() {
                 btnOptimize.isClickable = false
 
 
-                (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
-                (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
-                (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
-                (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
+                (activity as MainActivity).offBottomBar()
 
                 imageCircle.setImageResource(R.drawable.ellipse_blue)
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
