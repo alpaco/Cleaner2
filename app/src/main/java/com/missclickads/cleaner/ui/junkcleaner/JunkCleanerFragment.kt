@@ -170,6 +170,7 @@ class JunkCleanerFragment : Fragment() {
                 textResult5.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
                 btnOptimize.isClickable = false
+                imageCircle.setImageResource(R.drawable.ellipse_blue)
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE
                 animation.duration = 5 * 1000
@@ -181,9 +182,9 @@ class JunkCleanerFragment : Fragment() {
                 val paint = progressProc.paint
                 val width = paint.measureText(progressProc.text.toString())
                 val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
                 ), null, Shader.TileMode.CLAMP)
                 progressProc.paint.setShader(textShader)
 

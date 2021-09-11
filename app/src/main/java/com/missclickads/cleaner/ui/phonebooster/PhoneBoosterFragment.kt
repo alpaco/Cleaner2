@@ -182,7 +182,7 @@ class PhoneBoosterFragment : Fragment() {
                 animation.start()
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
-
+                imageCircle.setImageResource(R.drawable.ellipse_blue)
                 btnOptimize.isClickable = false
                 btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
@@ -190,9 +190,9 @@ class PhoneBoosterFragment : Fragment() {
                 val paint = progressProc.paint
                 val width = paint.measureText(progressProc.text.toString())
                 val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
 
                 ), null, Shader.TileMode.CLAMP)
                 progressProc.paint.setShader(textShader)

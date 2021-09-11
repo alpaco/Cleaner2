@@ -135,13 +135,13 @@ class BatterySaverFragment : Fragment() {
                 Handler().postDelayed({ optimized() }, (5 * 1000).toLong())
 
 
-
+                imageCircle.setImageResource(R.drawable.ellipse_blue)
                 val paint = progressProc.paint
                 val width = paint.measureText(progressProc.text.toString())
                 val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
                 ), null, Shader.TileMode.CLAMP)
                 progressProc.paint.setShader(textShader)
 
