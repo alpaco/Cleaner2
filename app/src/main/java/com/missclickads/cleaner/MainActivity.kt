@@ -11,6 +11,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.missclickads.cleaner.utils.DATA_PATTERN
 import com.missclickads.cleaner.utils.OptimizeData
 import com.missclickads.cleaner.utils.OptimizeDataRepository
@@ -28,9 +31,14 @@ class MainActivity : AppCompatActivity() {
     var optimizedBS = false
     var navigationView: BottomNavigationView? = null
 
+
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //ads
+        MobileAds.initialize(this) {}
+
 
         data = OptimizeDataRepository(this)
         val states = data.getData()

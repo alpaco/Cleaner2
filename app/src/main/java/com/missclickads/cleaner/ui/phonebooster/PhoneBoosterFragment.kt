@@ -27,7 +27,11 @@ import android.graphics.Shader
 
 import android.graphics.drawable.Drawable
 import android.view.animation.AnimationUtils
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.missclickads.cleaner.R
+import java.lang.Exception
 
 
 class PhoneBoosterFragment : Fragment() {
@@ -53,6 +57,12 @@ class PhoneBoosterFragment : Fragment() {
     @SuppressLint("SetTextI18n", "ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var mAdView : AdView = view.findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
+
         //todo enable other
         //HERE I OFF BUTTOn
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
@@ -176,8 +186,16 @@ class PhoneBoosterFragment : Fragment() {
         barBot.progress = usageMemoryPercent
         if ((activity as MainActivity).optimizedPB) optimized()
         else {
-            val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
-            btnOptimize.startAnimation(animation)
+            Handler().postDelayed({
+                try {
+                    val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                    btnOptimize.startAnimation(animation)
+                }
+                catch (e: Exception)
+                {
+                    println(e)
+                }
+            }, (1500).toLong())
         }
 //        bar.progressDrawable =  activity?.resources?.getDrawable(R.drawable.ic_gradient_blue)
 //        bar.setProgressDrawableTiled(activity?.resources?.getDrawable(R.drawable.ic_gradient_orange))

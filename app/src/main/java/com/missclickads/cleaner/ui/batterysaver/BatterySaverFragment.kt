@@ -20,9 +20,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
+import java.lang.Exception
 
 class BatterySaverFragment : Fragment() {
 
@@ -48,6 +52,12 @@ class BatterySaverFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var mAdView : AdView = view.findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
+
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
         val bm = (activity as MainActivity).getSystemService(BATTERY_SERVICE) as BatteryManager
         val batteryInfo = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
@@ -129,8 +139,16 @@ class BatterySaverFragment : Fragment() {
         }
         if ((activity as MainActivity).optimizedBS) optimized()
         else {
-            val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
-            btnOptimize.startAnimation(animation)
+            Handler().postDelayed({
+                try {
+                    val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                    btnOptimize.startAnimation(animation)
+                }
+                catch (e: Exception)
+                {
+                    println(e)
+                }
+            }, (1500).toLong())
         }
 
         btnOptimize.setOnClickListener {

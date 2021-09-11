@@ -21,9 +21,12 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
+import java.lang.Exception
 
 
 class OptimizerFragment : Fragment() {
@@ -57,7 +60,9 @@ class OptimizerFragment : Fragment() {
         val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
 
 
-
+        var mAdView : AdView = view.findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
 
         //before optimize
@@ -121,9 +126,17 @@ class OptimizerFragment : Fragment() {
         }
         if ((activity as MainActivity).optimizedOpt) optimized()
         else {
-            val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
-            btnOptimize.startAnimation(animation)
+            Handler().postDelayed({
+                try {
+                    val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                    btnOptimize.startAnimation(animation)
                 }
+                catch (e: Exception)
+                {
+                    println(e)
+                }
+            }, (1500).toLong())
+        }
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedOpt) {
                 btnOptimize.text = "Optimizing..."

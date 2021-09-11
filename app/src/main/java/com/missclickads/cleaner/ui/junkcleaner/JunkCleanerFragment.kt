@@ -18,10 +18,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.ui.junkcleaner.JunkCleanerViewModel
 import com.missclickads.cleaner.utils.Screen
+import java.lang.Exception
 
 class JunkCleanerFragment : Fragment() {
 
@@ -40,6 +43,10 @@ class JunkCleanerFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        var mAdView : AdView = view.findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
         super.onViewCreated(view, savedInstanceState)
         val usageMemory = (150..500).random()
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
@@ -172,8 +179,16 @@ class JunkCleanerFragment : Fragment() {
         }
         if ((activity as MainActivity).optimizedJC) optimized()
         else {
-            val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
-            btnOptimize.startAnimation(animation)
+            Handler().postDelayed({
+                try {
+                    val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                    btnOptimize.startAnimation(animation)
+                }
+                catch (e: Exception)
+                {
+                    println(e)
+                }
+            }, (1500).toLong())
         }
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedJC) {
