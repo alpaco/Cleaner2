@@ -106,6 +106,12 @@ class OptimizerFragment : Fragment() {
             ), null, Shader.TileMode.CLAMP)
             textResult.paint.setShader(textShader)
 
+
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = true
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = true
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
+            (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
+
         }
         if ((activity as MainActivity).optimizedOpt) optimized()
         btnOptimize.setOnClickListener {
@@ -114,6 +120,12 @@ class OptimizerFragment : Fragment() {
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
                 btnOptimize.isClickable = false
+
+
+                (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+                (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+                (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
+                (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
 
                 imageCircle.setImageResource(R.drawable.ellipse_blue)
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
