@@ -26,6 +26,7 @@ import android.graphics.LinearGradient
 import android.graphics.Shader
 
 import android.graphics.drawable.Drawable
+import android.view.animation.AnimationUtils
 import com.missclickads.cleaner.R
 
 
@@ -174,7 +175,10 @@ class PhoneBoosterFragment : Fragment() {
         }
         barBot.progress = usageMemoryPercent
         if ((activity as MainActivity).optimizedPB) optimized()
-
+        else {
+            val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+            btnOptimize.startAnimation(animation)
+        }
 //        bar.progressDrawable =  activity?.resources?.getDrawable(R.drawable.ic_gradient_blue)
 //        bar.setProgressDrawableTiled(activity?.resources?.getDrawable(R.drawable.ic_gradient_orange))
 

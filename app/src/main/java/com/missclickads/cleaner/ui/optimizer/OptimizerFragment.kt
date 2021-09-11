@@ -12,6 +12,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -19,10 +21,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
+
 
 class OptimizerFragment : Fragment() {
 
@@ -53,6 +55,9 @@ class OptimizerFragment : Fragment() {
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
         val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
+
+
+
 
 
         //before optimize
@@ -115,6 +120,10 @@ class OptimizerFragment : Fragment() {
             (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
         }
         if ((activity as MainActivity).optimizedOpt) optimized()
+        else {
+            val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+            btnOptimize.startAnimation(animation)
+                }
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedOpt) {
                 btnOptimize.text = "Optimizing..."

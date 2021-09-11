@@ -9,6 +9,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -170,6 +171,10 @@ class JunkCleanerFragment : Fragment() {
         textResult4.paint.setShader(textShader5)
         }
         if ((activity as MainActivity).optimizedJC) optimized()
+        else {
+            val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+            btnOptimize.startAnimation(animation)
+        }
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedJC) {
                 btnOptimize.text = "Optimizing..."
