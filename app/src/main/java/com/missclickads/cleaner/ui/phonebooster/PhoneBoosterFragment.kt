@@ -67,7 +67,7 @@ class PhoneBoosterFragment : Fragment() {
         val runningProcess = (1150..1483).random()
 
         //after optimize
-        val usageMemoryPercentAfter = (10..43).random()
+        val usageMemoryPercentAfter = (25..43).random()
         val usageMemoryAfter  = (totalMemory * usageMemoryPercentAfter.toDouble()).roundToInt() / 100.0
         val runningProcessAfter  = (240..470).random()
 
