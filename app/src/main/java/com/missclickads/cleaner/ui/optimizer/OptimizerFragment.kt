@@ -65,6 +65,45 @@ class OptimizerFragment : Fragment() {
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
         val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
+        val textApp1 = view.findViewById<TextView>(R.id.text_app1)
+        val textApp2 = view.findViewById<TextView>(R.id.text_app2)
+        val textApp3 = view.findViewById<TextView>(R.id.text_app3)
+        val textApp4 = view.findViewById<TextView>(R.id.text_app4)
+        val textApp5 = view.findViewById<TextView>(R.id.text_app5)
+        val textAppRandom1 = (100..300).random().toLong()
+        val textAppRandom2 = (100..300).random().toLong()
+        val textAppRandom3 = (100..300).random().toLong()
+        val textAppRandom4 = (100..300).random().toLong()
+        val textAppRandom5 = (100..300).random().toLong()
+        val textAppAfterR1 = textAppRandom1 / 10.0
+        val textAppAfterR2 = textAppRandom2 / 10.0
+        val textAppAfterR3 = textAppRandom3 / 10.0
+        val textAppAfterR4 = textAppRandom4 / 10.0
+        val textAppAfterR5 = textAppRandom5 / 10.0
+
+        textApp1.text = "$textAppAfterR1 MB"
+        textApp2.text = "$textAppAfterR2 MB"
+        textApp3.text = "$textAppAfterR3 MB"
+        textApp4.text = "$textAppAfterR4 MB"
+        textApp5.text = "$textAppAfterR5 MB"
+
+        val textAppRandomAfter1 = (10..50).random().toLong()
+        val textAppRandomAfter2 = (10..50).random().toLong()
+        val textAppRandomAfter3 = (10..50).random().toLong()
+        val textAppRandomAfter4 = (10..50).random().toLong()
+        val textAppRandomAfter5 = (10..50).random().toLong()
+        val textAppAfterOtp1 = textAppRandomAfter1 / 10.0
+        val textAppAfterOtp2 = textAppRandomAfter2 / 10.0
+        val textAppAfterOtp3 = textAppRandomAfter3 / 10.0
+        val textAppAfterOtp4 = textAppRandomAfter4 / 10.0
+        val textAppAfterOtp5 = textAppRandomAfter5 / 10.0
+
+
+
+
+
+
+
         val imageApps = listOf(
             view.findViewById<ImageView>(R.id.imageApp1),
             view.findViewById<ImageView>(R.id.imageApp2),
@@ -139,6 +178,14 @@ class OptimizerFragment : Fragment() {
 
         fun optimized() {
             btnOptimize.text = "Optimized"
+
+            textApp1.text = "$textAppAfterOtp1 MB"
+            textApp2.text = "$textAppAfterOtp2 MB"
+            textApp3.text = "$textAppAfterOtp3 MB"
+            textApp4.text = "$textAppAfterOtp4 MB"
+            textApp5.text = "$textAppAfterOtp5 MB"
+
+
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.text = "$tempAfter°C"
             imageCircle.setImageResource(R.drawable.ellipse_blue)

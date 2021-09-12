@@ -228,5 +228,79 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageApp" />
 
+    <TextView
+        android:id="@+id/text_app1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Первый"
+        android:textAlignment="center"
+        android:textColor="@color/fragment_name"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageApp1"
+        app:layout_constraintStart_toStartOf="@+id/imageApp1"
+        app:layout_constraintTop_toBottomOf="@+id/imageApp1" />
+
+    <TextView
+        android:id="@+id/text_app2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Второй"
+        android:textAlignment="center"
+        android:textColor="@color/fragment_name"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageApp2"
+        app:layout_constraintStart_toStartOf="@+id/imageApp2"
+        app:layout_constraintTop_toBottomOf="@+id/imageApp2" />
+
+    <TextView
+        android:id="@+id/text_app3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Третий"
+        android:textAlignment="center"
+        android:textColor="@color/fragment_name"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageApp3"
+        app:layout_constraintStart_toStartOf="@+id/imageApp3"
+        app:layout_constraintTop_toBottomOf="@+id/imageApp3" />
+
+    <TextView
+        android:id="@+id/text_app4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Четвёртый"
+        android:textAlignment="center"
+        android:textColor="@color/fragment_name"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageApp4"
+        app:layout_constraintStart_toStartOf="@+id/imageApp4"
+        app:layout_constraintTop_toBottomOf="@+id/imageApp4" />
+
+    <TextView
+        android:id="@+id/text_app5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Пятый"
+        android:textAlignment="center"
+        android:textColor="@color/fragment_name"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageApp5"
+        app:layout_constraintStart_toStartOf="@+id/imageApp5"
+        app:layout_constraintTop_toBottomOf="@+id/imageApp5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
