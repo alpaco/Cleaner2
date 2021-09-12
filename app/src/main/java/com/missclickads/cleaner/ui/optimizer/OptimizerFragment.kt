@@ -183,7 +183,7 @@ class OptimizerFragment : Fragment() {
 
         fun optimized() {
             btnOptimize.text = "Optimized"
-
+            (activity as MainActivity).viewPager?.isUserInputEnabled = true
             textApp1.text = "$textAppAfterOtp1 MB"
             textApp2.text = "$textAppAfterOtp2 MB"
             textApp3.text = "$textAppAfterOtp3 MB"
@@ -255,6 +255,7 @@ class OptimizerFragment : Fragment() {
         }
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedOpt) {
+                (activity as MainActivity).viewPager?.isUserInputEnabled = false
                 btnOptimize.text = "Optimizing..."
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE

@@ -146,6 +146,7 @@ class PhoneBoosterFragment : Fragment() {
 
         //after optimization
         fun optimized(){
+            (activity as MainActivity).viewPager?.isUserInputEnabled = true
             btnOptimize.text = "Optimized"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.visibility = View.INVISIBLE
@@ -227,6 +228,7 @@ class PhoneBoosterFragment : Fragment() {
         btnOptimize.setOnClickListener {
             if(!(activity as MainActivity).optimizedPB ){
                 btnOptimize.text = "Optimizing..."
+                (activity as MainActivity).viewPager?.isUserInputEnabled = false
                 val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
                 progressBarCircle.visibility = View.VISIBLE
                 animation.duration = 5 * 1000

@@ -129,7 +129,7 @@ class JunkCleanerFragment : Fragment() {
         }
 
         fun optimized() {
-
+            (activity as MainActivity).viewPager?.isUserInputEnabled = true
             btnOptimize.text = "Optimized"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.text = "cleared"
@@ -222,6 +222,7 @@ class JunkCleanerFragment : Fragment() {
         }
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedJC) {
+                (activity as MainActivity).viewPager?.isUserInputEnabled = false
                 btnOptimize.text = "Optimizing..."
                 textResult.text = "cleaning..."
                 textResult2.text = "cleaning..."

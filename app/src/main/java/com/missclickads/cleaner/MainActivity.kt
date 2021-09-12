@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
     var optimizedOpt = false
     var optimizedBS = false
     var navigationView: BottomNavigationView? = null
+    var viewPager : ViewPager2? = null
+
+    //var block = false
 
     //random values for Phone Booster
     val usageMemoryPercentGeneral = (60..95).random()
@@ -77,18 +80,23 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         navigationView = findViewById(R.id.nav_view)
-        val viewPager = findViewById<ViewPager2>(R.id.viewPager2)
-
+        viewPager = findViewById<ViewPager2>(R.id.viewPager2)
+//        viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+//            override fun onPageScrollStateChanged(state: Int) {
+//                super.onPageScrollStateChanged(state)
+//                viewPager!!.isUserInputEnabled = !block
+//            }
+//        })
         navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
         val viewPagerAdapter = ViewPagerAdapter(this)
-        viewPager.adapter = viewPagerAdapter
+        viewPager!!.adapter = viewPagerAdapter
         navigationView!!.setOnNavigationItemSelectedListener  {
             //Log.e("NavSetSelected", it.toString())
             when(it.itemId){
-                R.id.navigation_battery_saver -> viewPager.currentItem = 1
-                R.id.navigation_phone_booster -> viewPager.currentItem = 0
-                R.id.navigation_junk_cleaner -> viewPager.currentItem = 3
-                R.id.navigation_optimizer -> viewPager.currentItem = 2
+                R.id.navigation_battery_saver -> viewPager!!.currentItem = 1
+                R.id.navigation_phone_booster -> viewPager!!.currentItem = 0
+                R.id.navigation_junk_cleaner -> viewPager!!.currentItem = 3
+                R.id.navigation_optimizer -> viewPager!!.currentItem = 2
             }
             false
         }
@@ -111,7 +119,7 @@ class MainActivity : AppCompatActivity() {
 //            //viewPager.currentItem =
 //        }
 
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 when(position){

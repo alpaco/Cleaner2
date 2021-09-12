@@ -110,7 +110,7 @@ class BatterySaverFragment : Fragment() {
         fun optimized(){
             btnOptimize.text = "Optimized"
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
-
+            (activity as MainActivity).viewPager?.isUserInputEnabled = true
             (activity as MainActivity).onBottomBar()
             (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
 
@@ -178,6 +178,7 @@ class BatterySaverFragment : Fragment() {
         btnOptimize.setOnClickListener {
             if(!(activity as MainActivity).optimizedBS ){
                 btnOptimize.text = "Optimizing..."
+                (activity as MainActivity).viewPager?.isUserInputEnabled = false
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
                 boolForAnim = true
