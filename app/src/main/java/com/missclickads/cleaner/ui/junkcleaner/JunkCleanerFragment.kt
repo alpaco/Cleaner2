@@ -29,6 +29,8 @@ import com.missclickads.cleaner.R
 import com.missclickads.cleaner.ui.junkcleaner.JunkCleanerViewModel
 import com.missclickads.cleaner.utils.Screen
 import java.lang.Exception
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class JunkCleanerFragment : Fragment() {
 
@@ -48,6 +50,8 @@ class JunkCleanerFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+
+        var boolForAnim = (activity as MainActivity).optimizedJC
         var mAdView : AdView = view.findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         var mInterstitialAd: InterstitialAd? = null
@@ -192,15 +196,24 @@ class JunkCleanerFragment : Fragment() {
         if ((activity as MainActivity).optimizedJC) optimized()
         else {
             Handler().postDelayed({
-                try {
-                    val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
-                    btnOptimize.startAnimation(animation)
-                }
-                catch (e: Exception)
-                {
-                    println(e)
-                }
+                Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(Runnable {
+
+                    try {
+                        val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                        if (!boolForAnim) {
+                            btnOptimize.startAnimation(animation)
+                        }
+
+
+                    }
+                    catch (e: Exception)
+                    {
+                        println(e)
+                    }
+
+                }, 0, 5, TimeUnit.SECONDS)
             }, (1500).toLong())
+
         }
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedJC) {
@@ -209,7 +222,7 @@ class JunkCleanerFragment : Fragment() {
                 textResult2.text = "cleaning..."
                 textResult3.text = "cleaning..."
                 textResult4.text = "cleaning..."
-
+                boolForAnim = true
                 (activity as MainActivity).offBottomBar()
 
                 textResult5.visibility = View.INVISIBLE

@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context.BATTERY_SERVICE
-import android.content.Intent
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.BatteryManager
@@ -21,7 +20,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
@@ -30,7 +28,8 @@ import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
-import java.lang.Exception
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class BatterySaverFragment : Fragment() {
 
@@ -60,7 +59,7 @@ class BatterySaverFragment : Fragment() {
         var mAdView : AdView = view.findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
-
+        var boolForAnim = (activity as MainActivity).optimizedBS
 
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
         val bm = (activity as MainActivity).getSystemService(BATTERY_SERVICE) as BatteryManager
@@ -110,6 +109,8 @@ class BatterySaverFragment : Fragment() {
             (activity as MainActivity).onBottomBar()
             (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
 
+
+
             textResult.visibility = View.INVISIBLE
             imageOk.visibility = View.VISIBLE
             imageCircle.setImageResource(R.drawable.ellipse_blue)
@@ -144,15 +145,24 @@ class BatterySaverFragment : Fragment() {
         if ((activity as MainActivity).optimizedBS) optimized()
         else {
             Handler().postDelayed({
-                try {
-                    val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
-                    btnOptimize.startAnimation(animation)
-                }
-                catch (e: Exception)
-                {
-                    println(e)
-                }
+            Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(Runnable {
+
+                    try {
+                        val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                        if (!boolForAnim) {
+                            btnOptimize.startAnimation(animation)
+                        }
+
+
+                    }
+                    catch (e: Exception)
+                    {
+                        println(e)
+                    }
+
+            }, 0, 5, TimeUnit.SECONDS)
             }, (1500).toLong())
+
         }
         fun showAd(){
             if (mInterstitialAd != null && App.isActivityVisible) {
@@ -165,7 +175,7 @@ class BatterySaverFragment : Fragment() {
                 btnOptimize.text = "Optimizing..."
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
-
+                boolForAnim = true
                 (activity as MainActivity).offBottomBar()
 
                 btnOptimize.isClickable = false

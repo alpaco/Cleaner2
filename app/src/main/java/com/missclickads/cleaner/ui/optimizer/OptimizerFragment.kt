@@ -32,6 +32,8 @@ import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 
 class OptimizerFragment : Fragment() {
@@ -75,7 +77,7 @@ class OptimizerFragment : Fragment() {
         var mAdView : AdView = view.findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
-
+        var boolForAnim = (activity as MainActivity).optimizedOpt
 
         //before optimize
         val temp = (40..50).random()
@@ -180,16 +182,24 @@ class OptimizerFragment : Fragment() {
         if ((activity as MainActivity).optimizedOpt) optimized()
         else {
             Handler().postDelayed({
-                try {
-                    val animation = AnimationUtils.loadAnimation(
-                        (activity as MainActivity),
-                        R.anim.shake
-                    )
-                    btnOptimize.startAnimation(animation)
-                } catch (e: Exception) {
-                    println(e)
-                }
+                Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(Runnable {
+
+                    try {
+                        val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                        if (!boolForAnim) {
+                            btnOptimize.startAnimation(animation)
+                        }
+
+
+                    }
+                    catch (e: Exception)
+                    {
+                        println(e)
+                    }
+
+                }, 0, 5, TimeUnit.SECONDS)
             }, (1500).toLong())
+
         }
         btnOptimize.setOnClickListener {
             if (!(activity as MainActivity).optimizedOpt) {
@@ -197,7 +207,7 @@ class OptimizerFragment : Fragment() {
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
                 btnOptimize.isClickable = false
-
+                boolForAnim = true
 
                 (activity as MainActivity).offBottomBar()
 
