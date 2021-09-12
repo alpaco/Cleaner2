@@ -52,6 +52,11 @@ class BatterySaverFragment : Fragment() {
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,7 +66,7 @@ class BatterySaverFragment : Fragment() {
         mAdView.loadAd(adRequest)
         var boolForAnim = (activity as MainActivity).optimizedBS
 
-        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
+
         val bm = (activity as MainActivity).getSystemService(BATTERY_SERVICE) as BatteryManager
         val batteryInfo = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
         val textbattery = view.findViewById<TextView>(R.id.text_process)

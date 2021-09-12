@@ -47,6 +47,10 @@ class JunkCleanerFragment : Fragment() {
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
+    }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,7 +63,7 @@ class JunkCleanerFragment : Fragment() {
         mAdView.loadAd(adRequest)
         super.onViewCreated(view, savedInstanceState)
         val usageMemory = (activity as MainActivity).usageMemoryGeneral
-        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
+
         val textResult = view.findViewById<TextView>(R.id.text_cleaning_required)
         val textResult2 = view.findViewById<TextView>(R.id.text_cleaning_required2)
         val textResult3 = view.findViewById<TextView>(R.id.text_cleaning_required3)

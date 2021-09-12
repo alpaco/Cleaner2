@@ -59,6 +59,11 @@ class PhoneBoosterFragment : Fragment() {
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = true
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+    }
+
     @SuppressLint("SetTextI18n", "ResourceAsColor", "ResourceType", "UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,7 +75,6 @@ class PhoneBoosterFragment : Fragment() {
         var boolForAnim = (activity as MainActivity).optimizedPB
         //todo enable other
         //HERE I OFF BUTTOn
-        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
 
         val actManager = (activity as MainActivity).getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val memInfo = ActivityManager.MemoryInfo()

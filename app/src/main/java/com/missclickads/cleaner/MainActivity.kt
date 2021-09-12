@@ -3,18 +3,21 @@ package com.missclickads.cleaner
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.ads.MobileAds
+import com.missclickads.cleaner.adapters.ViewPagerAdapter
 import com.missclickads.cleaner.utils.DATA_PATTERN
 import com.missclickads.cleaner.utils.OptimizeData
 import com.missclickads.cleaner.utils.OptimizeDataRepository
@@ -74,21 +77,69 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         navigationView = findViewById(R.id.nav_view)
-        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+        val viewPager = findViewById<ViewPager2>(R.id.viewPager2)
 
-        //todo all
+        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+        val viewPagerAdapter = ViewPagerAdapter(this)
+        viewPager.adapter = viewPagerAdapter
+        navigationView!!.setOnNavigationItemSelectedListener  {
+            //Log.e("NavSetSelected", it.toString())
+            when(it.itemId){
+                R.id.navigation_battery_saver -> viewPager.currentItem = 1
+                R.id.navigation_phone_booster -> viewPager.currentItem = 0
+                R.id.navigation_junk_cleaner -> viewPager.currentItem = 3
+                R.id.navigation_optimizer -> viewPager.currentItem = 2
+            }
+            false
+        }
+
+
+
         //navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.setIcon(R.drawable.ic_tabjc)
         supportActionBar?.hide()
        // window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         navigationView?.itemIconTintList = null
-        val navController = findNavController(R.id.nav_host_fragment)
+        //val navController = findNavController(R.id.nav_host_fragment)
+
+//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+//            when(destination.id){
+//                R.id.navigation_battery_saver -> viewPager.currentItem = 1
+//                R.id.navigation_phone_booster -> viewPager.currentItem = 0
+//                R.id.navigation_junk_cleaner -> viewPager.currentItem = 3
+//                R.id.navigation_optimizer -> viewPager.currentItem = 2
+//            }
+//            //viewPager.currentItem =
+//        }
+
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                when(position){
+                    0 -> {
+                        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isChecked = true
+                    }//navController.navigate(R.id.navigation_phone_booster)
+                    1 -> {
+                        //navController.navigate(R.id.navigation_battery_saver)
+                        navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isChecked = true
+                    }
+                    2 -> {
+                       // navController.navigate(R.id.navigation_optimizer)
+                        navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isChecked = true
+                    }
+                    3 -> {
+                        //navController.navigate(R.id.navigation_junk_cleaner)
+                        navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isChecked = true
+                    }
+                }
+            }
+        })
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
                 R.id.navigation_phone_booster, R.id.navigation_battery_saver, R.id.navigation_optimizer, R.id.navigation_junk_cleaner))
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navigationView?.setupWithNavController(navController)
+       // setupActionBarWithNavController(navController, appBarConfiguration)
+        //navigationView?.setupWithNavController(navController)
         if(!optimizedPB) navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.icon = resources.getDrawable(R.drawable.ic_tab_phone_boost_fire)
         //todo uncommit it after fix xml
 //        if(!optimizedBS) navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.icon = resources.getDrawable(R.drawable.ic_tab_battery_fire)
@@ -117,8 +168,6 @@ class MainActivity : AppCompatActivity() {
         navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
         navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
     }
-
-
 
     override fun onResume() {
         super.onResume()
