@@ -32,6 +32,14 @@ class MainActivity : AppCompatActivity() {
     var optimizedBS = false
     var navigationView: BottomNavigationView? = null
 
+    //random values for Phone Booster
+    val usageMemoryPercentGeneral = (60..95).random()
+    val runningProcessGeneral = (1150..1483).random()
+    val usageMemoryPercentAfterGeneral = (25..43).random()
+    val runningProcessAfterGeneral  = (240..470).random()
+
+
+
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {

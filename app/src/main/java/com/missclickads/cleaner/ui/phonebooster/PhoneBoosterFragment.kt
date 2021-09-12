@@ -78,14 +78,14 @@ class PhoneBoosterFragment : Fragment() {
         val totalMemory = ceil((memInfo.totalMem / (1024 * 1024)).toDouble() / 1000).toInt()
 
         //before optimize
-        val usageMemoryPercent = (60..95).random()
+        val usageMemoryPercent = (activity as MainActivity).usageMemoryPercentGeneral
         val usageMemory = (totalMemory * usageMemoryPercent.toDouble()).roundToInt() / 100.0
-        val runningProcess = (1150..1483).random()
+        val runningProcess = (activity as MainActivity).runningProcessGeneral
 
         //after optimize
-        val usageMemoryPercentAfter = (25..43).random()
+        val usageMemoryPercentAfter = (activity as MainActivity).usageMemoryPercentAfterGeneral
         val usageMemoryAfter  = (totalMemory * usageMemoryPercentAfter.toDouble()).roundToInt() / 100.0
-        val runningProcessAfter  = (240..470).random()
+        val runningProcessAfter  = (activity as MainActivity).runningProcessAfterGeneral
 
 
         val textMemory = view.findViewById<TextView>(R.id.text_ram_usage_help)
