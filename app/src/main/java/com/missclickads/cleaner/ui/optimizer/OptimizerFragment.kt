@@ -256,6 +256,12 @@ class OptimizerFragment : Fragment() {
                 btnOptimize.isClickable = false
                 boolForAnim = true
 
+                textApp1.text = "..."
+                textApp2.text = "..."
+                textApp3.text = "..."
+                textApp4.text = "..."
+                textApp5.text = "..."
+
                 (activity as MainActivity).offBottomBar()
 
                 imageCircle.setImageResource(R.drawable.ellipse_blue)
