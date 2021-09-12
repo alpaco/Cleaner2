@@ -17,6 +17,7 @@
         android:fontFamily="@font/montserrat"
         android:textColor="@color/fragment_name"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,6 +73,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_time" />
@@ -88,6 +90,7 @@
         android:textAlignment="center"
         android:textColor="@color/gradient_orange_start"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -122,6 +125,7 @@
         android:textColor="@color/btn_opt"
         android:textSize="17dp"
         app:cornerRadius="12dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
