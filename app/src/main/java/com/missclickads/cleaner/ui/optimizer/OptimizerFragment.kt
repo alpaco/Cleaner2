@@ -4,15 +4,18 @@ import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.LinearGradient
 import android.graphics.Shader
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
@@ -28,7 +31,6 @@ import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.utils.Screen
-import java.lang.Exception
 
 
 class OptimizerFragment : Fragment() {
@@ -60,6 +62,12 @@ class OptimizerFragment : Fragment() {
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
         val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
+        val imageApps = listOf(view.findViewById<ImageView>(R.id.imageApp1),
+            view.findViewById<ImageView>(R.id.imageApp2),
+            view.findViewById<ImageView>(R.id.imageApp3),
+            view.findViewById<ImageView>(R.id.imageApp4),
+            view.findViewById<ImageView>(R.id.imageApp5),
+            )
 
         var mInterstitialAd: InterstitialAd? = null
         var mAdView : AdView = view.findViewById(R.id.adView)
@@ -77,10 +85,26 @@ class OptimizerFragment : Fragment() {
         //telephone's apps info
         val pm: PackageManager = (activity as MainActivity).packageManager
         val packages = pm.getInstalledApplications(PackageManager.GET_META_DATA)
-        for (packageInfo in packages) {
-            Log.d(TAG, "Installed package :" + packageInfo.packageName)
-            Log.d(TAG, "Source dir : " + packageInfo.sourceDir)
-            Log.d(TAG, "Launch Activity :" + pm.getLaunchIntentForPackage(packageInfo.packageName))
+        var image = 0
+        for (i in packages.indices) {
+            if (i==0) continue
+            val res: Resources = pm.getResourcesForApplication(packages[i])
+            val config: Configuration = res.getConfiguration()
+            val originalConfig = Configuration(config)
+            config.densityDpi = DisplayMetrics.DENSITY_XHIGH
+            val dm: DisplayMetrics = res.getDisplayMetrics()
+            res.updateConfiguration(config, dm)
+            lateinit var appIcon:Drawable
+            try {
+                appIcon = res.getDrawable(packages[i].icon)
+            }
+            catch (e:java.lang.Exception){
+                continue
+            }
+            res.updateConfiguration(originalConfig, dm)
+            imageApps[image].setImageDrawable(appIcon)
+            image +=1
+            if (image == 5) break
         }
 
 
@@ -89,12 +113,14 @@ class OptimizerFragment : Fragment() {
 
         val paint = textResult.paint
         val width = paint.measureText(textResult.text.toString())
-        val textShader: Shader = LinearGradient(0f, 0f, width, textResult.textSize, intArrayOf(
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        val textShader: Shader = LinearGradient(
+            0f, 0f, width, textResult.textSize, intArrayOf(
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start),
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle),
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
 
-        ), null, Shader.TileMode.CLAMP)
+            ), null, Shader.TileMode.CLAMP
+        )
         textResult.paint.setShader(textShader)
 
         fun showAd(){
@@ -109,22 +135,37 @@ class OptimizerFragment : Fragment() {
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.text = "$tempAfter°C"
             imageCircle.setImageResource(R.drawable.ellipse_blue)
-            textResult.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
+            textResult.setTextColor(
+                ContextCompat.getColor(
+                    (activity as MainActivity),
+                    R.color.gradient_blue_start
+                )
+            )
             imageCircle.setImageResource(R.drawable.ellipse_blue)
             (activity as MainActivity).optimizedOpt = true
             (activity as MainActivity).optimizeSmth(Screen.OPTIMIZER)
             progressBarCircle.visibility = View.GONE
             progressProc.visibility = View.INVISIBLE
             textResult.visibility = View.VISIBLE
-            btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
+            btnOptimize.setTextColor(
+                ContextCompat.getColor(
+                    (activity as MainActivity),
+                    R.color.white
+                )
+            )
             val paint = textResult.paint
             val width = paint.measureText(textResult.text.toString())
-            val textShader: Shader = LinearGradient(0f, 0f, width, textResult.textSize, intArrayOf(
-                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
-                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
-                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+            val textShader: Shader = LinearGradient(
+                0f, 0f, width, textResult.textSize, intArrayOf(
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end),
+                    ContextCompat.getColor(
+                        (activity as MainActivity),
+                        R.color.gradient_blue_middle
+                    ),
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
 
-            ), null, Shader.TileMode.CLAMP)
+                ), null, Shader.TileMode.CLAMP
+            )
             textResult.paint.setShader(textShader)
 
 
@@ -135,11 +176,12 @@ class OptimizerFragment : Fragment() {
         else {
             Handler().postDelayed({
                 try {
-                    val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                    val animation = AnimationUtils.loadAnimation(
+                        (activity as MainActivity),
+                        R.anim.shake
+                    )
                     btnOptimize.startAnimation(animation)
-                }
-                catch (e: Exception)
-                {
+                } catch (e: Exception) {
                     println(e)
                 }
             }, (1500).toLong())
@@ -159,34 +201,64 @@ class OptimizerFragment : Fragment() {
                 progressBarCircle.visibility = View.VISIBLE
                 animation.duration = 5 * 1000
                 animation.start()
-                btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
+                btnOptimize.setTextColor(
+                    ContextCompat.getColor(
+                        (activity as MainActivity),
+                        R.color.gray
+                    )
+                )
                 btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
-                Handler().postDelayed({ optimized()
-                    showAd()}, (5 * 1000).toLong())
+                Handler().postDelayed({
+                    optimized()
+                    showAd()
+                }, (5 * 1000).toLong())
                 val paint = progressProc.paint
                 val width = paint.measureText(progressProc.text.toString())
-                val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
-                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+                val textShader: Shader = LinearGradient(
+                    0f, 0f, width, progressProc.textSize, intArrayOf(
+                        ContextCompat.getColor(
+                            (activity as MainActivity),
+                            R.color.gradient_blue_end
+                        ),
+                        ContextCompat.getColor(
+                            (activity as MainActivity),
+                            R.color.gradient_blue_middle
+                        ),
+                        ContextCompat.getColor(
+                            (activity as MainActivity),
+                            R.color.gradient_blue_start
+                        )
 
-                ), null, Shader.TileMode.CLAMP)
+                    ), null, Shader.TileMode.CLAMP
+                )
                 progressProc.paint.setShader(textShader)
 
 
                 for( i in 0..99){
 
                     Handler().postDelayed({
-                        if (i == 50)
-                        {val paint = progressProc.paint
-                        val width = paint.measureText(progressProc.text.toString())
-                        val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
-                            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
-                            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
-                            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+                        if (i == 50) {
+                            val paint = progressProc.paint
+                            val width = paint.measureText(progressProc.text.toString())
+                            val textShader: Shader = LinearGradient(
+                                0f, 0f, width, progressProc.textSize, intArrayOf(
+                                    ContextCompat.getColor(
+                                        (activity as MainActivity),
+                                        R.color.gradient_blue_end
+                                    ),
+                                    ContextCompat.getColor(
+                                        (activity as MainActivity),
+                                        R.color.gradient_blue_middle
+                                    ),
+                                    ContextCompat.getColor(
+                                        (activity as MainActivity),
+                                        R.color.gradient_blue_start
+                                    )
 
-                        ), null, Shader.TileMode.CLAMP)
-                        progressProc.paint.setShader(textShader) }
+                                ), null, Shader.TileMode.CLAMP
+                            )
+                            progressProc.paint.setShader(textShader)
+                        }
                         progressProc.text = "$i %"
                     }, (i * 50).toLong())
 
