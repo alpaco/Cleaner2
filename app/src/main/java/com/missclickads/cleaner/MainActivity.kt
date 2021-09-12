@@ -39,8 +39,17 @@ class MainActivity : AppCompatActivity() {
     val runningProcessAfterGeneral  = (240..470).random()
     //random junk cleaner
     val usageMemoryGeneral = (150..500).random()
-
-
+    //random Optimizer
+    val textAppRandom1General = (100..300).random().toLong()
+    val textAppRandom2General = (100..300).random().toLong()
+    val textAppRandom3General = (100..300).random().toLong()
+    val textAppRandom4General = (100..300).random().toLong()
+    val textAppRandom5General = (100..300).random().toLong()
+    val textAppRandomAfter1General = (10..50).random().toLong()
+    val textAppRandomAfter2General = (10..50).random().toLong()
+    val textAppRandomAfter3General = (10..50).random().toLong()
+    val textAppRandomAfter4General = (10..50).random().toLong()
+    val textAppRandomAfter5General = (10..50).random().toLong()
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {

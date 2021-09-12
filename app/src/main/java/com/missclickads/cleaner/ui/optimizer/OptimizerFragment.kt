@@ -70,11 +70,11 @@ class OptimizerFragment : Fragment() {
         val textApp3 = view.findViewById<TextView>(R.id.text_app3)
         val textApp4 = view.findViewById<TextView>(R.id.text_app4)
         val textApp5 = view.findViewById<TextView>(R.id.text_app5)
-        val textAppRandom1 = (100..300).random().toLong()
-        val textAppRandom2 = (100..300).random().toLong()
-        val textAppRandom3 = (100..300).random().toLong()
-        val textAppRandom4 = (100..300).random().toLong()
-        val textAppRandom5 = (100..300).random().toLong()
+        val textAppRandom1 = (activity as MainActivity).textAppRandom1General
+        val textAppRandom2 = (activity as MainActivity).textAppRandom2General
+        val textAppRandom3 = (activity as MainActivity).textAppRandom3General
+        val textAppRandom4 = (activity as MainActivity).textAppRandom4General
+        val textAppRandom5 = (activity as MainActivity).textAppRandom5General
         val textAppAfterR1 = textAppRandom1 / 10.0
         val textAppAfterR2 = textAppRandom2 / 10.0
         val textAppAfterR3 = textAppRandom3 / 10.0
@@ -87,11 +87,11 @@ class OptimizerFragment : Fragment() {
         textApp4.text = "$textAppAfterR4 MB"
         textApp5.text = "$textAppAfterR5 MB"
 
-        val textAppRandomAfter1 = (10..50).random().toLong()
-        val textAppRandomAfter2 = (10..50).random().toLong()
-        val textAppRandomAfter3 = (10..50).random().toLong()
-        val textAppRandomAfter4 = (10..50).random().toLong()
-        val textAppRandomAfter5 = (10..50).random().toLong()
+        val textAppRandomAfter1 = (activity as MainActivity).textAppRandomAfter1General
+        val textAppRandomAfter2 = (activity as MainActivity).textAppRandomAfter2General
+        val textAppRandomAfter3 = (activity as MainActivity).textAppRandomAfter3General
+        val textAppRandomAfter4 = (activity as MainActivity).textAppRandomAfter4General
+        val textAppRandomAfter5 = (activity as MainActivity).textAppRandomAfter5General
         val textAppAfterOtp1 = textAppRandomAfter1 / 10.0
         val textAppAfterOtp2 = textAppRandomAfter2 / 10.0
         val textAppAfterOtp3 = textAppRandomAfter3 / 10.0
