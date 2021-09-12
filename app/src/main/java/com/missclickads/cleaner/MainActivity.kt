@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
     val runningProcessGeneral = (1150..1483).random()
     val usageMemoryPercentAfterGeneral = (25..43).random()
     val runningProcessAfterGeneral  = (240..470).random()
-
+    //random junk cleaner
+    val usageMemoryGeneral = (150..500).random()
 
 
 

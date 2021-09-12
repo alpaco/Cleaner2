@@ -2,6 +2,7 @@ package com.missclickads.cleaner.ui.junkcleaner
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.ContentValues
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -57,7 +58,7 @@ class JunkCleanerFragment : Fragment() {
         var mInterstitialAd: InterstitialAd? = null
         mAdView.loadAd(adRequest)
         super.onViewCreated(view, savedInstanceState)
-        val usageMemory = (150..500).random()
+        val usageMemory = (activity as MainActivity).usageMemoryGeneral
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
         val textResult = view.findViewById<TextView>(R.id.text_cleaning_required)
         val textResult2 = view.findViewById<TextView>(R.id.text_cleaning_required2)
