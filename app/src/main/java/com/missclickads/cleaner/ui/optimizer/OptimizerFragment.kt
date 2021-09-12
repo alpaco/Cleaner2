@@ -3,6 +3,7 @@ package com.missclickads.cleaner.ui.optimizer
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -62,12 +63,13 @@ class OptimizerFragment : Fragment() {
         val btnOptimize = view.findViewById<Button>(R.id.btn_optimize)
         val progressBarCircle = view.findViewById<ProgressBar>(R.id.progressBarCircle)
         val progressProc = view.findViewById<TextView>(R.id.text_progressProc)
-        val imageApps = listOf(view.findViewById<ImageView>(R.id.imageApp1),
+        val imageApps = listOf(
+            view.findViewById<ImageView>(R.id.imageApp1),
             view.findViewById<ImageView>(R.id.imageApp2),
             view.findViewById<ImageView>(R.id.imageApp3),
             view.findViewById<ImageView>(R.id.imageApp4),
             view.findViewById<ImageView>(R.id.imageApp5),
-            )
+        )
 
         var mInterstitialAd: InterstitialAd? = null
         var mAdView : AdView = view.findViewById(R.id.adView)
@@ -87,7 +89,10 @@ class OptimizerFragment : Fragment() {
         val packages = pm.getInstalledApplications(PackageManager.GET_META_DATA)
         var image = 0
         for (i in packages.indices) {
-            if (i==0) continue
+            val ai = pm.getApplicationInfo(packages[i].packageName, 0)
+            if (ai.flags and ApplicationInfo.FLAG_SYSTEM != 0) {
+                continue
+            }
             val res: Resources = pm.getResourcesForApplication(packages[i])
             val config: Configuration = res.getConfiguration()
             val originalConfig = Configuration(config)
@@ -98,7 +103,7 @@ class OptimizerFragment : Fragment() {
             try {
                 appIcon = res.getDrawable(packages[i].icon)
             }
-            catch (e:java.lang.Exception){
+            catch (e: java.lang.Exception){
                 continue
             }
             res.updateConfiguration(originalConfig, dm)
