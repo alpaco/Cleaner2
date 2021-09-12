@@ -35,6 +35,8 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.missclickads.cleaner.App
 import com.missclickads.cleaner.R
 import java.lang.Exception
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 
 class PhoneBoosterFragment : Fragment() {
@@ -65,7 +67,7 @@ class PhoneBoosterFragment : Fragment() {
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
         var mInterstitialAd: InterstitialAd? = null
-
+        var boolForAnim = (activity as MainActivity).optimizedPB
         //todo enable other
         //HERE I OFF BUTTOn
         (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
@@ -195,15 +197,24 @@ class PhoneBoosterFragment : Fragment() {
         if ((activity as MainActivity).optimizedPB) optimized()
         else {
             Handler().postDelayed({
-                try {
-                    val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
-                    btnOptimize.startAnimation(animation)
-                }
-                catch (e: Exception)
-                {
-                    println(e)
-                }
+                Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(Runnable {
+
+                    try {
+                        val animation = AnimationUtils.loadAnimation((activity as MainActivity), R.anim.shake)
+                        if (!boolForAnim) {
+                            btnOptimize.startAnimation(animation)
+                        }
+
+
+                    }
+                    catch (e: Exception)
+                    {
+                        println(e)
+                    }
+
+                }, 0, 5, TimeUnit.SECONDS)
             }, (1500).toLong())
+
         }
 //        bar.progressDrawable =  activity?.resources?.getDrawable(R.drawable.ic_gradient_blue)
 //        bar.setProgressDrawableTiled(activity?.resources?.getDrawable(R.drawable.ic_gradient_orange))
@@ -218,7 +229,7 @@ class PhoneBoosterFragment : Fragment() {
                 animation.start()
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
-
+                boolForAnim = true
                 (activity as MainActivity).offBottomBar()
 
                 imageCircle.setImageResource(R.drawable.ellipse_blue)

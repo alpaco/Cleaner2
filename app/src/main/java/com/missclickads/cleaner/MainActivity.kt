@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
+import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -98,6 +99,8 @@ class MainActivity : AppCompatActivity() {
         navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
         navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
     }
+
+
 
     override fun onResume() {
         super.onResume()
