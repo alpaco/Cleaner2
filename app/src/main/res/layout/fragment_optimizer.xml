@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="17dp"
-        ads:adSize="FULL_BANNER"
+        ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,9 +129,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/appsback"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageApp4"
@@ -141,7 +142,7 @@
         android:src="@drawable/ellipse_blue"
         app:layout_constraintEnd_toStartOf="@+id/imageView9"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle" />
+        app:layout_constraintTop_toTopOf="@+id/imageApp" />
 
     <ImageView
         android:id="@+id/imageApp5"
@@ -151,7 +152,7 @@
         android:layout_marginTop="44dp"
         android:src="@drawable/ellipse_blue"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle" />
+        app:layout_constraintTop_toTopOf="@+id/imageApp" />
 
     <ImageView
         android:id="@+id/imageApp3"
@@ -161,7 +162,7 @@
         android:src="@drawable/ellipse_blue"
         app:layout_constraintEnd_toStartOf="@+id/imageView8"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle" />
+        app:layout_constraintTop_toTopOf="@+id/imageApp" />
 
     <ImageView
         android:id="@+id/imageApp2"
@@ -171,7 +172,7 @@
         android:src="@drawable/ellipse_blue"
         app:layout_constraintEnd_toStartOf="@+id/imageView7"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle" />
+        app:layout_constraintTop_toTopOf="@+id/imageApp" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -181,7 +182,7 @@
         android:src="@drawable/vetricalline"
         app:layout_constraintBottom_toBottomOf="@+id/imageApp"
         app:layout_constraintStart_toStartOf="@+id/imageApp"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle"
+        app:layout_constraintTop_toTopOf="@+id/imageApp"
         app:layout_constraintVertical_bias="0.53" />
 
     <ImageView
@@ -192,7 +193,7 @@
         android:src="@drawable/vetricalline"
         app:layout_constraintBottom_toBottomOf="@+id/imageApp"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle"
+        app:layout_constraintTop_toTopOf="@+id/imageApp"
         app:layout_constraintVertical_bias="0.542" />
 
     <ImageView
@@ -203,7 +204,7 @@
         android:src="@drawable/vetricalline"
         app:layout_constraintBottom_toBottomOf="@+id/imageApp"
         app:layout_constraintEnd_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle"
+        app:layout_constraintTop_toTopOf="@+id/imageApp"
         app:layout_constraintVertical_bias="0.542" />
 
     <ImageView
@@ -214,7 +215,7 @@
         android:src="@drawable/vetricalline"
         app:layout_constraintBottom_toBottomOf="@+id/imageApp"
         app:layout_constraintEnd_toEndOf="@+id/imageApp"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle"
+        app:layout_constraintTop_toTopOf="@+id/imageApp"
         app:layout_constraintVertical_bias="0.542" />
 
     <ImageView
@@ -225,7 +226,7 @@
         android:layout_marginEnd="20dp"
         android:src="@drawable/ellipse_blue"
         app:layout_constraintEnd_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle" />
+        app:layout_constraintTop_toTopOf="@+id/imageApp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
