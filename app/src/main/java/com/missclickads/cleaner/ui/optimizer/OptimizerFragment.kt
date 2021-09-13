@@ -34,6 +34,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
+import com.missclickads.cleaner.ui.result.ResultFragment
 import com.missclickads.cleaner.utils.Screen
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -184,8 +185,8 @@ class OptimizerFragment : Fragment() {
                 println("Ads go!")
             }
             else{
-
-                view.findNavController().navigate(R.id.action_navigation_optimizer_to_resultFragment)
+                navigate()
+//                view.findNavController().navigate(R.id.action_navigation_optimizer_to_resultFragment)
 
             }
         }
@@ -439,6 +440,8 @@ class OptimizerFragment : Fragment() {
             }
             }
 
+
+
         //ads
         InterstitialAd.load(
             activity as MainActivity,
@@ -457,8 +460,8 @@ class OptimizerFragment : Fragment() {
                         object : FullScreenContentCallback() {
                             override fun onAdDismissedFullScreenContent() {
                                 Log.d(TAG, "Ad was dismissed.")
-                                view.findNavController().navigate(R.id.action_navigation_optimizer_to_resultFragment)
-
+//                                view.findNavController().navigate(R.id.action_navigation_optimizer_to_resultFragment)
+                                navigate()
                             }
 
                             override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
@@ -473,6 +476,15 @@ class OptimizerFragment : Fragment() {
                         }
                 }
             })
+    }
+    fun navigate(){
+        println("navigation")
+        val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction()
+        transaction.add(ResultFragment(),"kek")
+//        transaction.addToBackStack(null)
+        transaction.commit()
+
+
     }
 }
 
