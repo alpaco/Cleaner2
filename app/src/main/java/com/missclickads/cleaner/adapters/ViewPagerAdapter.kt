@@ -14,6 +14,7 @@ import com.missclickads.cleaner.ui.batterysaver.BatterySaverFragment
 import com.missclickads.cleaner.ui.junkcleaner.JunkCleanerFragment
 import com.missclickads.cleaner.ui.optimizer.OptimizerFragment
 import com.missclickads.cleaner.ui.phonebooster.PhoneBoosterFragment
+import com.missclickads.cleaner.ui.phonebooster.PhoneBoosterFragmentRefactor
 
 //class ViewPagerAdapter : RecyclerView.Adapter<PagerVH>() {
 //    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerVH =
@@ -36,7 +37,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> {
-                PhoneBoosterFragment()
+                PhoneBoosterFragmentRefactor()
             }
             1 -> {
                 BatterySaverFragment()
@@ -48,35 +49,11 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
                 JunkCleanerFragment()
             }
             else -> {
-                PhoneBoosterFragment()
+                PhoneBoosterFragmentRefactor()
             }
         }
     }
 
 }
 
-class ViewPagerStateAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm){
-    override fun getCount(): Int = 4
-
-    override fun getItem(position: Int): Fragment {
-        return when(position){
-            0 -> {
-                PhoneBoosterFragment()
-            }
-            1 -> {
-                BatterySaverFragment()
-            }
-            2 -> {
-                OptimizerFragment()
-            }
-            3 -> {
-                JunkCleanerFragment()
-            }
-            else -> {
-                PhoneBoosterFragment()
-            }
-        }
-    }
-
-}
 
