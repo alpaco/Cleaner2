@@ -9,59 +9,30 @@
         android:id="@+id/navigation_optimizer"
         android:name="com.missclickads.cleaner.ui.optimizer.OptimizerFragment"
         android:label="@string/title_optimizer"
-        tools:layout="@layout/fragment_optimizer" >
-        <action
-            android:id="@+id/action_navigation_optimizer_to_resultFragment"
-            app:destination="@id/resultFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_optimizer" />
 
     <fragment
         android:id="@+id/navigation_phone_booster"
         android:name="com.missclickads.cleaner.ui.phonebooster.PhoneBoosterFragment"
         android:label="@string/title_phone_booster"
-        tools:layout="@layout/fragment_phone_booster" >
-        <action
-            android:id="@+id/action_navigation_phone_booster_to_resultFragment"
-            app:destination="@id/resultFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_phone_booster" />
 
     <fragment
         android:id="@+id/navigation_battery_saver"
         android:name="com.missclickads.cleaner.ui.batterysaver.BatterySaverFragment"
         android:label="@string/title_battery_saver"
-        tools:layout="@layout/fragment_battery_saver" >
-        <action
-            android:id="@+id/action_navigation_battery_saver_to_resultFragment"
-            app:destination="@id/resultFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_battery_saver" />
 
     <fragment
         android:id="@+id/navigation_junk_cleaner"
         android:name="com.missclickads.cleaner.ui.junkcleaner.JunkCleanerFragment"
         android:label="@string/title_junk_cleaner"
-        tools:layout="@layout/fragment_junk_cleaner" >
-        <action
-            android:id="@+id/action_navigation_junk_cleaner_to_resultFragment"
-            app:destination="@id/resultFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_junk_cleaner" />
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.missclickads.cleaner.ui.result.ResultFragment"
         android:label="result_fragment"
-        tools:layout="@layout/result_fragment" >
-        <action
-            android:id="@+id/action_resultFragment_to_navigation_junk_cleaner"
-            app:destination="@id/navigation_junk_cleaner" />
-        <action
-            android:id="@+id/action_resultFragment_to_navigation_battery_saver"
-            app:destination="@id/navigation_battery_saver" />
-        <action
-            android:id="@+id/action_resultFragment_to_navigation_phone_booster"
-            app:destination="@id/navigation_phone_booster" />
-        <action
-            android:id="@+id/action_resultFragment_to_navigation_optimizer"
-            app:destination="@id/navigation_optimizer" />
-    </fragment>
+        tools:layout="@layout/result_fragment" />
     <fragment
         android:id="@+id/mainScreenFragment"
         android:name="com.missclickads.cleaner.MainScreenFragment"
