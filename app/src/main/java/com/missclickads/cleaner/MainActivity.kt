@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
     val textAppRandomAfter3General = (10..50).random().toLong()
     val textAppRandomAfter4General = (10..50).random().toLong()
     val textAppRandomAfter5General = (10..50).random().toLong()
+    val textResultGeneral = (40..50).random()
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {

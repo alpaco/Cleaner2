@@ -124,7 +124,8 @@ class OptimizerFragment : Fragment() {
         var boolForAnim = (activity as MainActivity).optimizedOpt
 
         //before optimize
-        val temp = (40..50).random()
+        val temp = (activity as MainActivity).textResultGeneral
+        textResult.text = "$temp°C"
         //after optimize
         val tempAfter = (temp * 0.85).toInt()
 
