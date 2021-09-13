@@ -25,6 +25,9 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -179,6 +182,11 @@ class OptimizerFragment : Fragment() {
             if (mInterstitialAd != null && App.isActivityVisible) {
                 mInterstitialAd?.show(activity as MainActivity)
                 println("Ads go!")
+            }
+            else{
+
+                view.findNavController().navigate(R.id.action_navigation_optimizer_to_resultFragment)
+
             }
         }
 
@@ -449,6 +457,7 @@ class OptimizerFragment : Fragment() {
                         object : FullScreenContentCallback() {
                             override fun onAdDismissedFullScreenContent() {
                                 Log.d(TAG, "Ad was dismissed.")
+                                view.findNavController().navigate(R.id.action_navigation_optimizer_to_resultFragment)
 
                             }
 

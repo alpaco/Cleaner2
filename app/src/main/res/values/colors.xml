@@ -20,6 +20,9 @@
     <color name="gradient_blue_dark_start">#0b7199</color>
     <color name="gradient_blue_dark_end">#48736d</color>
 
+    <color name="gradient_blue_result_start">#36D1DC</color>
+    <color name="gradient_blue_result_end">#5B86E5</color>
+
     <color name="gray">#8C8C8C</color>
     <color name="btn_opt">#EBEBEB</color>
 
