@@ -42,19 +42,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <TextView
+        <com.veeyaar.supergradienttextview.GradientTextView
             android:id="@+id/gradientTextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat"
             android:textStyle="bold"
+            app:startColor="@color/gradient_orange_start"
+            app:endColor="@color/gradient_orange_end"
+            app:isVertical="true"
+            android:textColor="@color/gradient_orange_start"
             android:text="18%"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gradientTextView"
-             />
+            app:layout_constraintTop_toBottomOf="@+id/gradientTextView" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/appCompatButton"
@@ -68,6 +71,8 @@
             android:padding="8dp"
             android:text="Battery Saver"
             android:textAllCaps="false"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clipToPadding="false"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -90,6 +95,8 @@
             android:text="Quite"
             android:textAllCaps="false"
             android:textColor="@color/white"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clipToPadding="false"
             android:textSize="18sp"
             android:textStyle="bold"
             app:cornerRadius="12dp"
