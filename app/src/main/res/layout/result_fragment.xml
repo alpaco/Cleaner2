@@ -7,6 +7,24 @@
     tools:context=".ui.result.ResultFragment">
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appCompatButton4"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_gradient_orange"
+        android:fontFamily="@font/montserrat"
+        android:padding="8dp"
+        android:text="@string/title_junk_cleaner"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatButton3" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/appCompatButton3"
         android:layout_width="290dp"
         android:layout_height="50dp"
@@ -14,7 +32,7 @@
         android:background="@drawable/ic_gradient_orange"
         android:fontFamily="@font/montserrat"
         android:padding="8dp"
-        android:text="Battery Saver"
+        android:text="@string/title_optimizer"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -33,7 +51,7 @@
         android:background="@drawable/ic_gradient_orange"
         android:fontFamily="@font/montserrat"
         android:padding="8dp"
-        android:text="Battery Saver"
+        android:text="@string/title_battery_saver"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -107,7 +125,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-    <com.veeyaar.supergradienttextview.GradientTextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textCountOptimized"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -115,9 +133,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:fontFamily="@font/montserrat"
-        app:startColor="@color/gradient_blue_result_start"
-        app:isVertical="true"
-        app:endColor="@color/gradient_blue_result_end"
+
         android:text="1/4 optimization completed!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +160,8 @@
         android:background="@drawable/ic_gradient_orange"
         android:fontFamily="@font/montserrat"
         android:padding="8dp"
-        android:text="Battery Saver"
+        android:text="@string/title_phone_booster"
+
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"

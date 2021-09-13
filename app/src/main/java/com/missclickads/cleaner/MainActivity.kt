@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity() {
     var navigationView: BottomNavigationView? = null
     var viewPager : ViewPager2? = null
 
-    //var block = false
-        //kek
     //random values for Phone Booster
     val usageMemoryPercentGeneral = (60..95).random()
     val runningProcessGeneral = (1150..1483).random()
@@ -155,7 +153,6 @@ class MainActivity : AppCompatActivity() {
 //        })
 
         if(!optimizedPB) navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.icon = resources.getDrawable(R.drawable.ic_tab_booster_fire_new)
-        //todo uncommit it after fix xml
         if(!optimizedBS) navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.icon = resources.getDrawable(R.drawable.ic_tab_battery_fire_new)
         if(!optimizedOpt) navigationView?.menu?.findItem(R.id.navigation_optimizer)?.icon = resources.getDrawable(R.drawable.ic_tab_optimize_fire_new)
         if(!optimizedJC) navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.icon = resources.getDrawable(R.drawable.ic_tab_delete_fire_new)

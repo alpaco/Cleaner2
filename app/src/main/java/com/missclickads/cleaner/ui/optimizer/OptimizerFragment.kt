@@ -34,6 +34,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
+import com.missclickads.cleaner.ui.result.FROM
 import com.missclickads.cleaner.ui.result.ResultFragment
 import com.missclickads.cleaner.utils.Screen
 import java.util.concurrent.Executors
@@ -478,7 +479,7 @@ class OptimizerFragment : Fragment() {
             })
     }
     fun navigate(){
-        findNavController().navigate(R.id.resultFragment)
+        findNavController().navigate(R.id.resultFragment,Bundle().apply { putString(FROM,"Optimizer") })
     }
 }
 
