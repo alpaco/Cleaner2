@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     var viewPager : ViewPager2? = null
 
     //var block = false
-
+        //kek
     //random values for Phone Booster
     val usageMemoryPercentGeneral = (60..95).random()
     val runningProcessGeneral = (1150..1483).random()
