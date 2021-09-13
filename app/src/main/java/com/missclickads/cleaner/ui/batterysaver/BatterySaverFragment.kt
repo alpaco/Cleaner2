@@ -112,6 +112,7 @@ class BatterySaverFragment : Fragment() {
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             (activity as MainActivity).viewPager?.isUserInputEnabled = true
             (activity as MainActivity).onBottomBar()
+            btnOptimize.isClickable = true
             (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
 
 
@@ -177,6 +178,53 @@ class BatterySaverFragment : Fragment() {
         }
         btnOptimize.setOnClickListener {
             if(!(activity as MainActivity).optimizedBS ){
+                btnOptimize.text = "Optimizing..."
+                (activity as MainActivity).viewPager?.isUserInputEnabled = false
+                textResult.visibility = View.INVISIBLE
+                progressProc.visibility = View.VISIBLE
+                boolForAnim = true
+                (activity as MainActivity).offBottomBar()
+
+                btnOptimize.isClickable = false
+                val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
+                progressBarCircle.visibility = View.VISIBLE
+                animation.duration = 5 * 1000
+                animation.start()
+                btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
+                btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
+                Handler().postDelayed({ optimized()
+                                            showAd()}, (5 * 1000).toLong())
+
+
+                imageCircle.setImageResource(R.drawable.ellipse_blue)
+                val paint = progressProc.paint
+                val width = paint.measureText(progressProc.text.toString())
+                val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+                ), null, Shader.TileMode.CLAMP)
+                progressProc.paint.setShader(textShader)
+
+
+
+                for( i in 0..99){
+                    Handler().postDelayed({
+                        if (i == 50) {
+                            val paint = progressProc.paint
+                            val width = paint.measureText(progressProc.text.toString())
+                            val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+                            ), null, Shader.TileMode.CLAMP)
+                            progressProc.paint.setShader(textShader) }
+
+                        progressProc.text = "$i %"
+                    }, (i * 50).toLong())
+                }
+        }
+            else{
                 btnOptimize.text = "Optimizing..."
                 (activity as MainActivity).viewPager?.isUserInputEnabled = false
                 textResult.visibility = View.INVISIBLE
