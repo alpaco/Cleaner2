@@ -478,13 +478,7 @@ class OptimizerFragment : Fragment() {
             })
     }
     fun navigate(){
-        println("navigation")
-        val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction()
-        transaction.add(ResultFragment(),"kek")
-//        transaction.addToBackStack(null)
-        transaction.commit()
-
-
+        findNavController().navigate(R.id.resultFragment)
     }
 }
 

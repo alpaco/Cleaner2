@@ -23,12 +23,12 @@
         app:menu="@menu/bottom_nav_menu" />
 
     <fragment
-        android:id="@+id/navi"
+        android:id="@+id/kek"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

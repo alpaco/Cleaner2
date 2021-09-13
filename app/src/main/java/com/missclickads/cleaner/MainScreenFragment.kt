@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
+import com.missclickads.cleaner.adapters.ViewPagerAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,43 +18,38 @@ private const val ARG_PARAM2 = "param2"
  * Use the [MainScreenFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainScreenFragment : Fragment() {
+class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
     var viewPager : ViewPager2? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_screen, container, false)
-    }
-
-
+    var act : MainActivity? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        act = (activity as MainActivity)
+        viewPager = view.findViewById<ViewPager2>(R.id.viewPager2)
+        val viewPagerAdapter = ViewPagerAdapter(act!!)
+        viewPager!!.adapter = viewPagerAdapter
 
-
-
+        act!!.setupViewPagerFromFragment(viewPager!!)
         viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 when(position){
                     0 -> {
-                        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isChecked = true
+                        act!!.navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isChecked = true
                     }//navController.navigate(R.id.navigation_phone_booster)
                     1 -> {
                         //navController.navigate(R.id.navigation_battery_saver)
-                        navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isChecked = true
+                        act!!.navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isChecked = true
                     }
                     2 -> {
                         // navController.navigate(R.id.navigation_optimizer)
-                        navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isChecked = true
+                        act!!.navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isChecked = true
                     }
                     3 -> {
                         //navController.navigate(R.id.navigation_junk_cleaner)
-                        navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isChecked = true
+                        act!!.navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isChecked = true
                     }
                 }
             }

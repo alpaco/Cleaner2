@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     var optimizedOpt = false
     var optimizedBS = false
     var navigationView: BottomNavigationView? = null
-
+    var viewPager : ViewPager2? = null
 
     //var block = false
         //kek
@@ -66,6 +66,10 @@ class MainActivity : AppCompatActivity() {
        viewPager?.currentItem = id
     }
 
+    fun setupViewPagerFromFragment(viewPager2: ViewPager2){
+        viewPager = viewPager2
+    }
+
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         navigationView = findViewById(R.id.nav_view)
-        viewPager = findViewById<ViewPager2>(R.id.viewPager2)
+       // viewPager = findViewById<ViewPager2>(R.id.viewPager2)
 //        viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 //            override fun onPageScrollStateChanged(state: Int) {
 //                super.onPageScrollStateChanged(state)
@@ -97,15 +101,15 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        })
         navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
-        val viewPagerAdapter = ViewPagerAdapter(this)
-        viewPager!!.adapter = viewPagerAdapter
+
+
         navigationView!!.setOnNavigationItemSelectedListener  {
             //Log.e("NavSetSelected", it.toString())
             when(it.itemId){
-                R.id.navigation_battery_saver -> viewPager!!.currentItem = 1
-                R.id.navigation_phone_booster -> viewPager!!.currentItem = 0
-                R.id.navigation_junk_cleaner -> viewPager!!.currentItem = 3
-                R.id.navigation_optimizer -> viewPager!!.currentItem = 2
+                R.id.navigation_battery_saver -> viewPager?.currentItem = 1
+                R.id.navigation_phone_booster -> viewPager?.currentItem = 0
+                R.id.navigation_junk_cleaner -> viewPager?.currentItem = 3
+                R.id.navigation_optimizer -> viewPager?.currentItem = 2
             }
             false
         }
@@ -127,14 +131,29 @@ class MainActivity : AppCompatActivity() {
 //            //viewPager.currentItem =
 //        }
 
+//        viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+//            override fun onPageSelected(position: Int) {
+//                super.onPageSelected(position)
+//                when(position){
+//                    0 -> {
+//                        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isChecked = true
+//                    }//navController.navigate(R.id.navigation_phone_booster)
+//                    1 -> {
+//                        //navController.navigate(R.id.navigation_battery_saver)
+//                        navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isChecked = true
+//                    }
+//                    2 -> {
+//                       // navController.navigate(R.id.navigation_optimizer)
+//                        navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isChecked = true
+//                    }
+//                    3 -> {
+//                        //navController.navigate(R.id.navigation_junk_cleaner)
+//                        navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isChecked = true
+//                    }
+//                }
+//            }
+//        })
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_phone_booster, R.id.navigation_battery_saver, R.id.navigation_optimizer, R.id.navigation_junk_cleaner))
-
-       // setupActionBarWithNavController(navController, appBarConfiguration)
-        //navigationView?.setupWithNavController(navController)
         if(!optimizedPB) navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.icon = resources.getDrawable(R.drawable.ic_tab_booster_fire_new)
         //todo uncommit it after fix xml
         if(!optimizedBS) navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.icon = resources.getDrawable(R.drawable.ic_tab_battery_fire_new)
@@ -191,6 +210,11 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         App.activityPaused()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewPager = null
     }
 }
 

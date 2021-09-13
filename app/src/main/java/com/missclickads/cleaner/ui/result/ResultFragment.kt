@@ -25,16 +25,16 @@ class ResultFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.result_fragment, container, false)
 
-        val textCount = view.findViewById<TextView>(R.id.textCountOptimized)
-
-        val paint = textCount.paint
-        val width = paint.measureText(textCount.text.toString())
-        val textShader: Shader = LinearGradient(0f, 0f, width, textCount.textSize, intArrayOf(
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
-        ), null, Shader.TileMode.CLAMP)
-        textCount.paint.setShader(textShader)
+//        val textCount = view?.findViewById<TextView>(R.id.textCountOptimized)
+//
+//        val paint = textCount?.paint
+//        val width = paint?.measureText(textCount?.text.toString())
+//        val textShader: Shader = LinearGradient(0f, 0f, width, textCount.textSize, intArrayOf(
+//            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+//            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+//            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+//        ), null, Shader.TileMode.CLAMP)
+//        textCount?.paint?.setShader(textShader)
 
     }
 
