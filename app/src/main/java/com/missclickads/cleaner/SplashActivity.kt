@@ -35,6 +35,7 @@ class SplashActivity : AppCompatActivity() {
             } else {
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
 
         }, (8.5 * 1000).toLong())

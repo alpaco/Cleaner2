@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
-
+    <color name="background_dialog">#314959</color>
     <color name="fragment_name">#F4F4F4</color>
     <color name="gradient_orange_start">#FF512F</color>
     <color name="gradient_orange_middle">#e66f35</color>

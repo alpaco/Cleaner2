@@ -1,10 +1,12 @@
 package com.missclickads.cleaner
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.Window
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
@@ -18,6 +20,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.ads.MobileAds
 import com.missclickads.cleaner.adapters.ViewPagerAdapter
+import com.missclickads.cleaner.dialog.ExitDialogFragment
 import com.missclickads.cleaner.utils.DATA_PATTERN
 import com.missclickads.cleaner.utils.OptimizeData
 import com.missclickads.cleaner.utils.OptimizeDataRepository
@@ -175,6 +178,22 @@ class MainActivity : AppCompatActivity() {
         navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = true
         navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
         navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
+    }
+
+    fun customExitDialog(){
+//        val dialog = Dialog(this)
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        dialog.setContentView(R.layout.custom_exit_dialog)
+//        val v = window.decorView
+//        v.setBackgroundResource(android.R.color.transparent)
+//        dialog.show()
+        val dialog = ExitDialogFragment()
+        dialog.show(supportFragmentManager, "exit")
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        customExitDialog()
     }
 
     override fun onResume() {
