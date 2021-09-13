@@ -29,22 +29,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.veeyaar.supergradienttextview.GradientTextView
+        <TextView
             android:id="@+id/gradientTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat"
             android:text="Battery Saver still not optimized!"
+            android:textColor="#E37329"
             android:textSize="16sp"
-            app:endColor="@color/gradient_orange_end"
-            app:isVertical="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:startColor="@color/gradient_orange_start" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <com.veeyaar.supergradienttextview.GradientTextView
+        <TextView
             android:id="@+id/gradientTextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,12 +51,10 @@
             android:textStyle="bold"
             android:text="18%"
             android:textSize="36sp"
-            app:endColor="@color/gradient_orange_end"
-            app:isVertical="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gradientTextView"
-            app:startColor="@color/gradient_orange_start" />
+             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/appCompatButton"
