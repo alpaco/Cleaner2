@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     var optimizedOpt = false
     var optimizedBS = false
     var navigationView: BottomNavigationView? = null
-    var viewPager : ViewPager2? = null
+
 
     //var block = false
         //kek
@@ -127,28 +127,7 @@ class MainActivity : AppCompatActivity() {
 //            //viewPager.currentItem =
 //        }
 
-        viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                when(position){
-                    0 -> {
-                        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isChecked = true
-                    }//navController.navigate(R.id.navigation_phone_booster)
-                    1 -> {
-                        //navController.navigate(R.id.navigation_battery_saver)
-                        navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isChecked = true
-                    }
-                    2 -> {
-                       // navController.navigate(R.id.navigation_optimizer)
-                        navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isChecked = true
-                    }
-                    3 -> {
-                        //navController.navigate(R.id.navigation_junk_cleaner)
-                        navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isChecked = true
-                    }
-                }
-            }
-        })
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
