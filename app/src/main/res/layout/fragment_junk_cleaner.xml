@@ -242,6 +242,8 @@
         android:layout_marginBottom="116dp"
         android:fontFamily="@font/montserrat"
         android:background="@drawable/ic_gradient_orange"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:clipToPadding="false"
         android:text="@string/optimize"
         android:textAllCaps="false"
         android:textColor="@color/btn_opt"

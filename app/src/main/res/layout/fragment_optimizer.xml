@@ -84,6 +84,8 @@
         android:layout_marginEnd="42dp"
         android:layout_marginBottom="116dp"
         android:background="@drawable/ic_gradient_orange"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:clipToPadding="false"
         android:text="@string/optimize"
         android:textColor="@color/btn_opt"
         android:textSize="17dp"
@@ -93,22 +95,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
     <ProgressBar
         android:id="@+id/progressBarCircle"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="375dp"
         android:layout_height="300dp"
+        android:layout_marginTop="76dp"
         android:indeterminate="false"
         android:max="100"
         android:maxWidth="5dp"
         android:maxHeight="5dp"
-        android:visibility="invisible"
         android:progressDrawable="@drawable/progress_bar_circle"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="77dp"
-        app:layout_constraintTop_toBottomOf="@+id/text_fragment_name"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/text_fragment_name" />
+
     <TextView
         android:id="@+id/text_progressProc"
         android:layout_width="wrap_content"

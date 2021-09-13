@@ -119,6 +119,8 @@
         android:layout_marginEnd="42dp"
         android:layout_marginBottom="116dp"
         android:background="@drawable/ic_gradient_orange"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:clipToPadding="false"
         android:text="@string/optimize"
         android:fontFamily="@font/montserrat"
         android:textAllCaps="false"
