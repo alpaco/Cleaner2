@@ -148,6 +148,7 @@ class PhoneBoosterFragment : Fragment() {
         fun optimized(){
             (activity as MainActivity).viewPager?.isUserInputEnabled = true
             btnOptimize.text = "Optimized"
+            btnOptimize.isClickable = true
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.visibility = View.INVISIBLE
             imageOk.visibility = View.VISIBLE
@@ -236,6 +237,50 @@ class PhoneBoosterFragment : Fragment() {
                 textResult.visibility = View.INVISIBLE
                 progressProc.visibility = View.VISIBLE
                 boolForAnim = true
+                (activity as MainActivity).offBottomBar()
+
+                imageCircle.setImageResource(R.drawable.ellipse_blue)
+                btnOptimize.isClickable = false
+                btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
+                btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
+                Handler().postDelayed({ optimized()
+                    showAd()}, (5 * 1000).toLong())
+                val paint = progressProc.paint
+                val width = paint.measureText(progressProc.text.toString())
+                val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+
+                ), null, Shader.TileMode.CLAMP)
+                progressProc.paint.setShader(textShader)
+
+                for( i in 0..99){
+                    Handler().postDelayed({
+                        if (i == 50) {val paint = progressProc.paint
+                            val width = paint.measureText(progressProc.text.toString())
+                            val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+
+                            ), null, Shader.TileMode.CLAMP)
+                            progressProc.paint.setShader(textShader) }
+                        progressProc.text = "$i %"
+                                          }, (i * 50).toLong())
+                }
+            }
+            else{
+                btnOptimize.text = "Optimizing..."
+                (activity as MainActivity).viewPager?.isUserInputEnabled = false
+                val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
+                progressBarCircle.visibility = View.VISIBLE
+                animation.duration = 5 * 1000
+                animation.start()
+                textResult.visibility = View.INVISIBLE
+                progressProc.visibility = View.VISIBLE
+                boolForAnim = true
+                imageOk.visibility=View.INVISIBLE
                 (activity as MainActivity).offBottomBar()
 
                 imageCircle.setImageResource(R.drawable.ellipse_blue)

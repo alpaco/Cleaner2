@@ -190,7 +190,7 @@ class OptimizerFragment : Fragment() {
             textApp3.text = "$textAppAfterOtp3 MB"
             textApp4.text = "$textAppAfterOtp4 MB"
             textApp5.text = "$textAppAfterOtp5 MB"
-
+            btnOptimize.isClickable = true
 
             btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
             textResult.text = "$tempAfter°C"
@@ -231,7 +231,11 @@ class OptimizerFragment : Fragment() {
 
             (activity as MainActivity).onBottomBar()
             (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+
+
+
         }
+
         if ((activity as MainActivity).optimizedOpt) optimized()
         else {
             Handler().postDelayed({
@@ -340,6 +344,91 @@ class OptimizerFragment : Fragment() {
                 }
 
                 }
+            else{
+                (activity as MainActivity).viewPager?.isUserInputEnabled = false
+                btnOptimize.text = "Optimizing..."
+                textResult.visibility = View.INVISIBLE
+                progressProc.visibility = View.VISIBLE
+                btnOptimize.isClickable = false
+                boolForAnim = true
+
+                textApp1.text = "..."
+                textApp2.text = "..."
+                textApp3.text = "..."
+                textApp4.text = "..."
+                textApp5.text = "..."
+
+                (activity as MainActivity).offBottomBar()
+
+                imageCircle.setImageResource(R.drawable.ellipse_blue)
+                val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
+                progressBarCircle.visibility = View.VISIBLE
+                animation.duration = 5 * 1000
+                animation.start()
+                btnOptimize.setTextColor(
+                    ContextCompat.getColor(
+                        (activity as MainActivity),
+                        R.color.gray
+                    )
+                )
+                btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
+                Handler().postDelayed({
+                    optimized()
+                    showAd()
+                }, (5 * 1000).toLong())
+                val paint = progressProc.paint
+                val width = paint.measureText(progressProc.text.toString())
+                val textShader: Shader = LinearGradient(
+                    0f, 0f, width, progressProc.textSize, intArrayOf(
+                        ContextCompat.getColor(
+                            (activity as MainActivity),
+                            R.color.gradient_blue_end
+                        ),
+                        ContextCompat.getColor(
+                            (activity as MainActivity),
+                            R.color.gradient_blue_middle
+                        ),
+                        ContextCompat.getColor(
+                            (activity as MainActivity),
+                            R.color.gradient_blue_start
+                        )
+
+                    ), null, Shader.TileMode.CLAMP
+                )
+                progressProc.paint.setShader(textShader)
+
+
+                for( i in 0..99){
+
+                    Handler().postDelayed({
+                        if (i == 50) {
+                            val paint = progressProc.paint
+                            val width = paint.measureText(progressProc.text.toString())
+                            val textShader: Shader = LinearGradient(
+                                0f, 0f, width, progressProc.textSize, intArrayOf(
+                                    ContextCompat.getColor(
+                                        (activity as MainActivity),
+                                        R.color.gradient_blue_end
+                                    ),
+                                    ContextCompat.getColor(
+                                        (activity as MainActivity),
+                                        R.color.gradient_blue_middle
+                                    ),
+                                    ContextCompat.getColor(
+                                        (activity as MainActivity),
+                                        R.color.gradient_blue_start
+                                    )
+
+                                ), null, Shader.TileMode.CLAMP
+                            )
+                            progressProc.paint.setShader(textShader)
+                        }
+                        progressProc.text = "$i %"
+                    }, (i * 50).toLong())
+
+                }
+
+            }
             }
 
         //ads

@@ -136,6 +136,7 @@ class JunkCleanerFragment : Fragment() {
             textResult2.text = "cleared"
             textResult3.text = "cleared"
             textResult4.text = "cleared"
+            btnOptimize.isClickable = true
             imageCircle.setImageResource(R.drawable.ellipse_blue)
 
             (activity as MainActivity).onBottomBar()
@@ -345,7 +346,133 @@ class JunkCleanerFragment : Fragment() {
                 }
 
             }
-        }
+            else{
+                (activity as MainActivity).viewPager?.isUserInputEnabled = false
+                btnOptimize.text = "Optimizing..."
+                textResult.text = "cleaning..."
+                textResult2.text = "cleaning..."
+                textResult3.text = "cleaning..."
+                textResult4.text = "cleaning..."
+                imageOk.visibility= View.INVISIBLE
+                boolForAnim = true
+                (activity as MainActivity).offBottomBar()
+
+                textResult5.visibility = View.INVISIBLE
+                progressProc.visibility = View.VISIBLE
+                btnOptimize.isClickable = false
+                imageCircle.setImageResource(R.drawable.ellipse_blue)
+                val animation = ObjectAnimator.ofInt(progressBarCircle, "progress", 0, 100)
+                progressBarCircle.visibility = View.VISIBLE
+                animation.duration = 5 * 1000
+                animation.start()
+                btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
+                btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
+                Handler().postDelayed({ optimized()
+                    showAd()}, (5 * 1000).toLong())
+
+                val paint = progressProc.paint
+                val width = paint.measureText(progressProc.text.toString())
+                val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+                ), null, Shader.TileMode.CLAMP)
+                progressProc.paint.setShader(textShader)
+
+                        val paint2 = textResult.paint
+        val width2 = paint2.measureText(textResult.text.toString())
+        val textShader2: Shader = LinearGradient(0f, 0f, width2, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader2)
+
+        val paint3 = textResult2.paint
+        val width3 = paint3.measureText(textResult2.text.toString())
+        val textShader3: Shader = LinearGradient(0f, 0f, width3, textResult2.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult2.paint.setShader(textShader3)
+
+        val paint4 = textResult3.paint
+        val width4 = paint4.measureText(textResult3.text.toString())
+        val textShader4: Shader = LinearGradient(0f, 0f, width4, textResult3.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult3.paint.setShader(textShader4)
+
+        val paint5 = textResult4.paint
+        val width5 = paint5.measureText(textResult4.text.toString())
+        val textShader5: Shader = LinearGradient(0f, 0f, width5, textResult4.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_start) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_orange_end)
+        ), null, Shader.TileMode.CLAMP)
+        textResult4.paint.setShader(textShader5)
+
+
+
+                for( i in 0..99){
+                    Handler().postDelayed({
+                        if (i == 50) {
+
+                            val paint = progressProc.paint
+                            val width = paint.measureText(progressProc.text.toString())
+                            val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+                                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+                            ), null, Shader.TileMode.CLAMP)
+                            progressProc.paint.setShader(textShader)
+
+                                    val paint2 = textResult.paint
+        val width2 = paint2.measureText(textResult.text.toString())
+        val textShader2: Shader = LinearGradient(0f, 0f, width2, textResult.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult.paint.setShader(textShader2)
+
+        val paint3 = textResult2.paint
+        val width3 = paint3.measureText(textResult2.text.toString())
+        val textShader3: Shader = LinearGradient(0f, 0f, width3, textResult2.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult2.paint.setShader(textShader3)
+
+        val paint4 = textResult3.paint
+        val width4 = paint4.measureText(textResult3.text.toString())
+        val textShader4: Shader = LinearGradient(0f, 0f, width4, textResult3.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult3.paint.setShader(textShader4)
+
+        val paint5 = textResult4.paint
+        val width5 = paint5.measureText(textResult4.text.toString())
+        val textShader5: Shader = LinearGradient(0f, 0f, width5, textResult4.textSize, intArrayOf(
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
+            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
+        ), null, Shader.TileMode.CLAMP)
+        textResult4.paint.setShader(textShader5)
+                        }
+                        progressProc.text = "$i %"
+                    }, (i * 50).toLong())
+                }
+
+            }
+            }
+
 
         //ads
         InterstitialAd.load(
