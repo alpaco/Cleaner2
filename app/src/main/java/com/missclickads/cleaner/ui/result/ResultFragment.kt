@@ -46,7 +46,7 @@ class ResultFragment : Fragment() {
         val act = activity as MainActivity
         var completed = 0
 
-
+        act.navigationView?.visibility = View.GONE
         setGradient(textCount,act)
         textFrom.text = from
         if (act.optimizedPB){

@@ -49,6 +49,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
     override fun onResume() {
         super.onResume()
+        act?.navigationView?.visibility = View.VISIBLE
         to?.let {
 //            viewPager?.currentItem = it
 //            choosePosition(it)
