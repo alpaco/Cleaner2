@@ -11,7 +11,8 @@
         android:name=".App"
         android:theme="@style/Theme.Cleaner">
         <activity android:name=".SplashActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

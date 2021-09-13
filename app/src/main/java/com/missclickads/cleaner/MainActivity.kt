@@ -28,6 +28,7 @@ import com.missclickads.cleaner.utils.Screen
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,6 +61,10 @@ class MainActivity : AppCompatActivity() {
     val textAppRandomAfter4General = (10..50).random().toLong()
     val textAppRandomAfter5General = (10..50).random().toLong()
     val textResultGeneral = (40..50).random()
+
+    fun callbackFromDialog(id : Int){
+       viewPager?.currentItem = id
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,7 +109,6 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
-
 
 
         //navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.setIcon(R.drawable.ic_tabjc)
@@ -194,7 +198,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         //super.onBackPressed()
-        customExitDialog()
+        if(optimizedPB && optimizedJC && optimizedOpt && optimizedBS) {
+            finish()
+        }
+        else customExitDialog()
     }
 
     override fun onResume() {

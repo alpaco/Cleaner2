@@ -16,6 +16,8 @@ class SplashActivity : AppCompatActivity() {
 
     private var mInterstitialAd: InterstitialAd? = null
     private var TAG = "Splash"
+    var close = false
+
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +35,9 @@ class SplashActivity : AppCompatActivity() {
                 mInterstitialAd?.show(this@SplashActivity)
                 println("Ads go!")
             } else {
+                close = true
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent)
                 finish()
             }
@@ -89,7 +93,8 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        App.activityResumed()
+        if(close) finish()
+        else App.activityResumed()
     }
 
     override fun onPause() {
