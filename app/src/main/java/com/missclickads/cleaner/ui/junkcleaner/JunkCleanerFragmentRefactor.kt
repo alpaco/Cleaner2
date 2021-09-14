@@ -73,10 +73,6 @@ class JunkCleanerFragmentRefactor : Fragment(R.layout.fragment_junk_cleaner) {
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
 
-
-
-
-
         viewModel.viewStates.observe(viewLifecycleOwner){ state ->
             when(state){
                 is OptimizationStates.NotOptimize -> {
