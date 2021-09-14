@@ -265,12 +265,12 @@ class JunkCleanerFragmentRefactor : Fragment(R.layout.fragment_junk_cleaner) {
 
     override fun onPause() {
         super.onPause()
-        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
+        //(activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
     }
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
+        act!!.unblockAllExcept(Screen.JUNK_CLEANER)
     }
 
     fun configAd(adRequest : AdRequest){

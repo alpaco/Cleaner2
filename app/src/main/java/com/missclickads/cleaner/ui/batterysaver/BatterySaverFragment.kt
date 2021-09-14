@@ -54,7 +54,7 @@ class BatterySaverFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
+        (activity as MainActivity).unblockAllExcept(Screen.BATTERY_SAVER)
     }
 
     @SuppressLint("SetTextI18n")

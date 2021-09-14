@@ -40,13 +40,13 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         viewPager = view.findViewById<ViewPager2>(R.id.viewPager2)
         val viewPagerAdapter = ViewPagerAdapter(act!!)
         viewPager!!.adapter = viewPagerAdapter
-        act!!.setupViewPagerFromFragment(viewPager!!)
         viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 choosePosition(position)
             }
         })
+        act!!.setupViewPagerFromFragment(viewPager!!)
         if(to != null){
             when (to){
                 0-> act!!.unblockAllExcept(Screen.PHONE_BOOSTER)
@@ -55,7 +55,11 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 3-> act!!.unblockAllExcept(Screen.JUNK_CLEANER)
             }
             Log.e("MainScreen", to.toString())
-            viewPager!!.currentItem = to!!
+            //Хз почему, но без задержки нихуя не работает
+            viewPager!!.postDelayed(Runnable {
+                viewPager!!.currentItem = to!!
+            }, 10)
+
         }
     }
 
@@ -64,10 +68,6 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         Log.e("MainScreen", "OnResume")
         act?.navigationView?.visibility = View.VISIBLE
         viewPager?.let { act?.setupViewPagerFromFragment(it) }
-        to?.let {
-//            viewPager?.currentItem = it
-//            choosePosition(it)
-        }
     }
 
     fun choosePosition(position: Int){

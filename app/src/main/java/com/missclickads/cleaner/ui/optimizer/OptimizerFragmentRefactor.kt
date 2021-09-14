@@ -264,7 +264,8 @@ class OptimizerFragmentRefactor : Fragment(R.layout.fragment_optimizer) {
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+        act!!.unblockAllExcept(Screen.OPTIMIZER)
+        //(activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
     }
 
     fun configAd(adRequest : AdRequest){

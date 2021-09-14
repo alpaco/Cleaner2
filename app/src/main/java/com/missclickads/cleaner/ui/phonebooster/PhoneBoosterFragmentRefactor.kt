@@ -61,9 +61,9 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         act = activity as MainActivity
-        boolForAnim = act!!.optimizedPB
-        act!!.unblockAllExcept(Screen.PHONE_BOOSTER)
+
         //Get Ad Request
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
@@ -249,7 +249,8 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+        act?.unblockAllExcept(Screen.PHONE_BOOSTER)
+        //(activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
     }
 
     fun configAd(adRequest : AdRequest){
