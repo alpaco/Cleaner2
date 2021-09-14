@@ -17,6 +17,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -29,6 +30,7 @@ import com.missclickads.cleaner.R
 import com.missclickads.cleaner.databinding.CustomExitDialogBinding
 import com.missclickads.cleaner.databinding.FragmentPhoneBoosterBinding
 import com.missclickads.cleaner.states.OptimizationStates
+import com.missclickads.cleaner.ui.result.FROM
 import com.missclickads.cleaner.utils.Screen
 import java.lang.Exception
 import java.util.concurrent.Executors
@@ -215,6 +217,9 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
             mInterstitialAd?.show(activity as MainActivity)
             println("Ads go!")
         }
+        else{
+            navigate()
+        }
     }
 
     fun progressText(){
@@ -265,7 +270,7 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
                         object : FullScreenContentCallback() {
                             override fun onAdDismissedFullScreenContent() {
                                 Log.d(ContentValues.TAG, "Ad was dismissed.")
-
+                                navigate()
                             }
 
                             override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
@@ -280,5 +285,9 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
                         }
                 }
             })
+    }
+
+    fun navigate(){
+        findNavController().navigate(R.id.resultFragment,Bundle().apply { putString(FROM,"Phone Booster") })
     }
 }

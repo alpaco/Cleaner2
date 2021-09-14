@@ -22,6 +22,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -32,9 +33,9 @@ import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.databinding.FragmentOptimizerBinding
-import com.missclickads.cleaner.databinding.FragmentPhoneBoosterBinding
 import com.missclickads.cleaner.states.OptimizationStates
 import com.missclickads.cleaner.ui.phonebooster.PhoneBoosterViewModel
+import com.missclickads.cleaner.ui.result.FROM
 import com.missclickads.cleaner.utils.Screen
 import java.lang.Exception
 import java.util.concurrent.Executors
@@ -231,6 +232,9 @@ class OptimizerFragmentRefactor : Fragment(R.layout.fragment_optimizer) {
             mInterstitialAd?.show(activity as MainActivity)
             println("Ads go!")
         }
+        else{
+            navigate()
+        }
     }
 
     fun progressText(){
@@ -281,7 +285,7 @@ class OptimizerFragmentRefactor : Fragment(R.layout.fragment_optimizer) {
                         object : FullScreenContentCallback() {
                             override fun onAdDismissedFullScreenContent() {
                                 Log.d(ContentValues.TAG, "Ad was dismissed.")
-
+                                navigate()
                             }
 
                             override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
@@ -334,5 +338,9 @@ class OptimizerFragmentRefactor : Fragment(R.layout.fragment_optimizer) {
             image +=1
             if (image == 5) break
         }
+    }
+
+    fun navigate(){
+        findNavController().navigate(R.id.resultFragment,Bundle().apply { putString(FROM,"Optimizer") })
     }
 }

@@ -21,6 +21,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -34,6 +35,7 @@ import com.missclickads.cleaner.databinding.FragmentJunkCleanerBinding
 import com.missclickads.cleaner.databinding.FragmentOptimizerBinding
 import com.missclickads.cleaner.states.OptimizationStates
 import com.missclickads.cleaner.ui.optimizer.OptimizerViewModel
+import com.missclickads.cleaner.ui.result.FROM
 import com.missclickads.cleaner.utils.Screen
 import java.lang.Exception
 import java.util.concurrent.Executors
@@ -142,8 +144,8 @@ class JunkCleanerFragmentRefactor : Fragment(R.layout.fragment_junk_cleaner) {
                         imageOk.visibility = View.VISIBLE
                         imageView.setImageResource(R.drawable.ellipse_blue)
                         //todo change button back
-                        act?.optimizedPB = true
-                        act?.optimizeSmth(Screen.PHONE_BOOSTER)
+                        act?.optimizedJC = true
+                        act?.optimizeSmth(Screen.JUNK_CLEANER)
                         progressBarCircle.visibility = View.GONE
                         textProgressProc.visibility = View.INVISIBLE
                         btnOptimize.setTextColor(ContextCompat.getColor(act!!, R.color.white))
@@ -237,6 +239,9 @@ class JunkCleanerFragmentRefactor : Fragment(R.layout.fragment_junk_cleaner) {
             mInterstitialAd?.show(activity as MainActivity)
             println("Ads go!")
         }
+        else{
+            navigate()
+        }
     }
 
     fun progressText(){
@@ -287,7 +292,7 @@ class JunkCleanerFragmentRefactor : Fragment(R.layout.fragment_junk_cleaner) {
                         object : FullScreenContentCallback() {
                             override fun onAdDismissedFullScreenContent() {
                                 Log.d(ContentValues.TAG, "Ad was dismissed.")
-
+                                navigate()
                             }
 
                             override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
@@ -302,6 +307,10 @@ class JunkCleanerFragmentRefactor : Fragment(R.layout.fragment_junk_cleaner) {
                         }
                 }
             })
+    }
+
+    fun navigate(){
+        findNavController().navigate(R.id.resultFragment,Bundle().apply { putString(FROM,"Junk Cleaner") })
     }
 
 }
