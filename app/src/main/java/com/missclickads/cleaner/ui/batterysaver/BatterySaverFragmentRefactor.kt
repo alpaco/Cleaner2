@@ -76,9 +76,10 @@ class BatterySaverFragmentRefactor : Fragment(R.layout.fragment_battery_saver){
 
                     binding.apply {
                         configAd(adRequest)
-                        configGradients(0)
+
                         textProcess.text= "$batteryInfo %"
                         textTime.text = (batteryInfo * 4 /60 ).toString() + "M" + (batteryInfo * 4%60 ).toString()
+                        configGradients(0)
                         Log.e("asadsadad","SAFDsadf")
                     }
                     if (act!!.optimizedBS) viewModel.endOptimization()
@@ -120,11 +121,12 @@ class BatterySaverFragmentRefactor : Fragment(R.layout.fragment_battery_saver){
                 }
                 is OptimizationStates.Optimized -> {
                     binding.apply {
-                        configGradients(1)
+
                         act?.viewPager?.isUserInputEnabled = true
                         btnOptimize.text = "Optimized"
-                        textTime.text = (batteryInfo * 1.2 * 4 / 60).toString() + "M" + (batteryInfo * 1.2 * 4 % 60).toString()
+                        textTime.text = (batteryInfo * 1.2 * 4 / 60).toInt().toString() + " h " + (batteryInfo * 1.2 * 4 % 60).toInt().toString()+ " m"
                         btnOptimize.isClickable = true
+                        configGradients(1)
                         btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
                         textProcess.visibility = View.INVISIBLE
                         imageOk.visibility = View.VISIBLE
