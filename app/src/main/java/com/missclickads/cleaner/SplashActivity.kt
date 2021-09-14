@@ -44,11 +44,8 @@ class SplashActivity : AppCompatActivity() {
 
         }, (8.5 * 1000).toLong())
 
-
         //ads
         var adRequest = AdRequest.Builder().build()
-
-
 
         InterstitialAd.load(
             this,
@@ -76,7 +73,6 @@ class SplashActivity : AppCompatActivity() {
                                 Log.d(TAG, "Ad failed to show.")
                             }
 
-
                             override fun onAdShowedFullScreenContent() {
                                 Log.d(TAG, "Ad showed fullscreen content.")
                                 mInterstitialAd = null
@@ -84,9 +80,6 @@ class SplashActivity : AppCompatActivity() {
                         }
                 }
             })
-
-
-
 
     }
 
@@ -101,8 +94,5 @@ class SplashActivity : AppCompatActivity() {
         super.onPause()
         App.activityPaused()
     }
-
-
-
 
 }

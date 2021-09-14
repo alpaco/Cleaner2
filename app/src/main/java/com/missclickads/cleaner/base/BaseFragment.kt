@@ -22,7 +22,8 @@ import java.lang.Exception
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-open class BaseFragment() : Fragment() {
+open class BaseFragment : Fragment() {
+
     fun shakeAnim(boolForAnim : Boolean, btnOptimize : Button){
         Handler().postDelayed({
             Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate({

@@ -44,8 +44,7 @@ class OptimizeDataRepository(context: Context) {
         val dataStr = sPrefs.getString(type,"20-10-2020 12:12:12")
         return formatter.parse(dataStr!!)!!
     }
-
-
+    
 }
 
 enum class Screen{

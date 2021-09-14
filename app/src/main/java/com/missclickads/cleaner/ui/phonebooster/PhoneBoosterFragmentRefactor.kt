@@ -68,7 +68,7 @@ class PhoneBoosterFragmentRefactor : BaseFragment() {
         //Get Ad Request
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
-
+        boolForAnim = act!!.optimizedPB
         //Get memory
         val actManager = (activity as MainActivity).getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val memInfo = ActivityManager.MemoryInfo()
