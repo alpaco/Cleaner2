@@ -124,12 +124,12 @@ class BatterySaverFragmentRefactor : Fragment(R.layout.fragment_battery_saver){
 
                         act?.viewPager?.isUserInputEnabled = true
                         btnOptimize.text = "Optimized"
+                        configGradients(1)
                         textTime.text = (batteryInfo * 1.2 * 4 / 60).toInt().toString() + " h " + (batteryInfo * 1.2 * 4 % 60).toInt().toString()+ " m"
                         btnOptimize.isClickable = true
-                        configGradients(1)
+
                         btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
-                        textProcess.visibility = View.INVISIBLE
-                        imageOk.visibility = View.VISIBLE
+                        textProcess.visibility = View.VISIBLE
                         imageView.setImageResource(R.drawable.ellipse_blue)
                         //todo change button back
                         act?.optimizedBS = true
