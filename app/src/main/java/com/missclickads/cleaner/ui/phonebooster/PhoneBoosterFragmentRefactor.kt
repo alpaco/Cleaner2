@@ -3,6 +3,7 @@ package com.missclickads.cleaner.ui.phonebooster
 import android.animation.ObjectAnimator
 import android.app.ActivityManager
 import android.content.ContentValues
+import android.content.Context
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.Bundle
@@ -65,7 +66,11 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
         binding.adView.loadAd(adRequest)
 
         //Get memory
-        val totalMemory = ceil((ActivityManager.MemoryInfo().totalMem / (1024 * 1024)).toDouble() / 1000).toInt()
+        val actManager = (activity as MainActivity).getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val memInfo = ActivityManager.MemoryInfo()
+        actManager.getMemoryInfo(memInfo)
+        val totalMemory = ceil((memInfo.totalMem / (1024 * 1024)).toDouble() / 1000).toInt()
+        //val totalMemory = ceil((ActivityManager.MemoryInfo().totalMem / (1024 * 1024)).toDouble() / 1000).toInt()
         val usageMemory = (totalMemory * act!!.usageMemoryPercentGeneral.toDouble()).roundToInt() / 100.0
 
         viewModel.viewStates.observe(viewLifecycleOwner){ state ->

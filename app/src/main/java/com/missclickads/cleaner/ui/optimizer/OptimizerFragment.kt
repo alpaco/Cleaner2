@@ -206,34 +206,21 @@ class OptimizerFragment : Fragment() {
             textResult.text = "$tempAfter°C"
             imageCircle.setImageResource(R.drawable.ellipse_blue)
             textResult.setTextColor(
-                ContextCompat.getColor(
-                    (activity as MainActivity),
-                    R.color.gradient_blue_start
-                )
-            )
+                ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start))
             imageCircle.setImageResource(R.drawable.ellipse_blue)
             (activity as MainActivity).optimizedOpt = true
             (activity as MainActivity).optimizeSmth(Screen.OPTIMIZER)
             progressBarCircle.visibility = View.GONE
             progressProc.visibility = View.INVISIBLE
             textResult.visibility = View.VISIBLE
-            btnOptimize.setTextColor(
-                ContextCompat.getColor(
-                    (activity as MainActivity),
-                    R.color.white
-                )
-            )
+            btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.white))
             val paint = textResult.paint
             val width = paint.measureText(textResult.text.toString())
             val textShader: Shader = LinearGradient(
                 0f, 0f, width, textResult.textSize, intArrayOf(
                     ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end),
-                    ContextCompat.getColor(
-                        (activity as MainActivity),
-                        R.color.gradient_blue_middle
-                    ),
+                    ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle),
                     ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
-
                 ), null, Shader.TileMode.CLAMP
             )
             textResult.paint.setShader(textShader)

@@ -12,7 +12,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.ui.batterysaver.BatterySaverFragment
 import com.missclickads.cleaner.ui.junkcleaner.JunkCleanerFragment
+import com.missclickads.cleaner.ui.junkcleaner.JunkCleanerFragmentRefactor
 import com.missclickads.cleaner.ui.optimizer.OptimizerFragment
+import com.missclickads.cleaner.ui.optimizer.OptimizerFragmentRefactor
 import com.missclickads.cleaner.ui.phonebooster.PhoneBoosterFragment
 import com.missclickads.cleaner.ui.phonebooster.PhoneBoosterFragmentRefactor
 
@@ -43,10 +45,10 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
                 BatterySaverFragment()
             }
             2 -> {
-                OptimizerFragment()
+                OptimizerFragmentRefactor()
             }
             3 -> {
-                JunkCleanerFragment()
+                JunkCleanerFragmentRefactor()
             }
             else -> {
                 PhoneBoosterFragmentRefactor()
