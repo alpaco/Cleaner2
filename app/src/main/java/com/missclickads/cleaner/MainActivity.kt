@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setupViewPagerFromFragment(viewPager2: ViewPager2){
         viewPager = viewPager2
+        setUpBottomNavWithViewPager()
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -98,16 +99,7 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        })
         navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
-        navigationView!!.setOnNavigationItemSelectedListener  {
-            //Log.e("NavSetSelected", it.toString())
-            when(it.itemId){
-                R.id.navigation_battery_saver -> viewPager?.currentItem = 1
-                R.id.navigation_phone_booster -> viewPager?.currentItem = 0
-                R.id.navigation_junk_cleaner -> viewPager?.currentItem = 3
-                R.id.navigation_optimizer -> viewPager?.currentItem = 2
-            }
-            false
-        }
+
 
 
         //navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.setIcon(R.drawable.ic_tabjc)
@@ -126,39 +118,48 @@ class MainActivity : AppCompatActivity() {
 //            //viewPager.currentItem =
 //        }
 
-        viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                when(position){
-                    0 -> {
-                        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isChecked = true
-                    }//navController.navigate(R.id.navigation_phone_booster)
-                    1 -> {
-                        //navController.navigate(R.id.navigation_battery_saver)
-                        navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isChecked = true
-                    }
-                    2 -> {
-                       // navController.navigate(R.id.navigation_optimizer)
-                        navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isChecked = true
-                    }
-                    3 -> {
-                        //navController.navigate(R.id.navigation_junk_cleaner)
-                        navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isChecked = true
-                    }
-                }
-            }
-        })
+//        viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+//            override fun onPageSelected(position: Int) {
+//                super.onPageSelected(position)
+//                when(position){
+//                    0 -> {
+//                        navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isChecked = true
+//                    }//navController.navigate(R.id.navigation_phone_booster)
+//                    1 -> {
+//                        //navController.navigate(R.id.navigation_battery_saver)
+//                        navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isChecked = true
+//                    }
+//                    2 -> {
+//                       // navController.navigate(R.id.navigation_optimizer)
+//                        navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isChecked = true
+//                    }
+//                    3 -> {
+//                        //navController.navigate(R.id.navigation_junk_cleaner)
+//                        navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isChecked = true
+//                    }
+//                }
+//            }
+//        })
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_phone_booster, R.id.navigation_battery_saver, R.id.navigation_optimizer, R.id.navigation_junk_cleaner))
-
-       // setupActionBarWithNavController(navController, appBarConfiguration)
         //navigationView?.setupWithNavController(navController)
         if(!optimizedPB) navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.icon = resources.getDrawable(R.drawable.ic_tab_booster_fire_new)
         if(!optimizedBS) navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.icon = resources.getDrawable(R.drawable.ic_tab_battery_fire_new)
         if(!optimizedOpt) navigationView?.menu?.findItem(R.id.navigation_optimizer)?.icon = resources.getDrawable(R.drawable.ic_tab_optimize_fire_new)
         if(!optimizedJC) navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.icon = resources.getDrawable(R.drawable.ic_tab_delete_fire_new)
+    }
+
+    fun setUpBottomNavWithViewPager(){
+        navigationView?.setOnNavigationItemSelectedListener  {
+            //Log.e("NavSetSelected", it.toString())
+            when(it.itemId){
+                R.id.navigation_battery_saver -> viewPager?.currentItem = 1
+                R.id.navigation_phone_booster -> viewPager?.currentItem = 0
+                R.id.navigation_junk_cleaner -> viewPager?.currentItem = 3
+                R.id.navigation_optimizer -> viewPager?.currentItem = 2
+            }
+            false
+        }
     }
 
     fun optimizeSmth(type: Screen){

@@ -1,6 +1,7 @@
 package com.missclickads.cleaner
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,11 +34,11 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.e("MainScreen", "OnViewCreated")
         act = (activity as MainActivity)
         viewPager = view.findViewById<ViewPager2>(R.id.viewPager2)
         val viewPagerAdapter = ViewPagerAdapter(act!!)
         viewPager!!.adapter = viewPagerAdapter
-
         act!!.setupViewPagerFromFragment(viewPager!!)
         viewPager!!.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
@@ -45,11 +46,17 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 choosePosition(position)
             }
         })
+        if(to != null){
+            Log.e("MainScreen", to.toString())
+            viewPager!!.currentItem = to!!
+        }
     }
 
     override fun onResume() {
         super.onResume()
+        Log.e("MainScreen", "OnResume")
         act?.navigationView?.visibility = View.VISIBLE
+        viewPager?.let { act?.setupViewPagerFromFragment(it) }
         to?.let {
 //            viewPager?.currentItem = it
 //            choosePosition(it)
