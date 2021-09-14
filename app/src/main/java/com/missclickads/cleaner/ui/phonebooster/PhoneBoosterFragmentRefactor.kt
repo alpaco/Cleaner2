@@ -27,6 +27,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.missclickads.cleaner.App
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
+import com.missclickads.cleaner.base.BaseFragment
 import com.missclickads.cleaner.databinding.CustomExitDialogBinding
 import com.missclickads.cleaner.databinding.FragmentPhoneBoosterBinding
 import com.missclickads.cleaner.states.OptimizationStates
@@ -39,7 +40,7 @@ import kotlin.math.ceil
 import kotlin.math.roundToInt
 import kotlin.properties.Delegates
 
-class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
+class PhoneBoosterFragmentRefactor : BaseFragment() {
 
     private val viewModel : PhoneBoosterViewModel by viewModels()
     private var _binding: FragmentPhoneBoosterBinding? = null
@@ -80,7 +81,9 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
             when(state){
                 is OptimizationStates.NotOptimize -> {
                     binding.apply {
-                        configAd(adRequest)
+                        configAd(adRequest, {
+                            mInterstitialAd = it
+                        }, { navigate() })
                         configGradients(0)
                         textRunningProcessesValue.text = "${act?.runningProcessGeneral}"
                         textRamUsageValue2.text = "${act?.usageMemoryPercentGeneral}%"
@@ -90,7 +93,7 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
                     }
                     if (act!!.optimizedPB) viewModel.endOptimization()
                     //Btn shake
-                    else shakeAnim()
+                    else shakeAnim(boolForAnim, binding.btnOptimize)
                 }
                 is OptimizationStates.Optimization -> {
                     binding.apply {
@@ -117,7 +120,7 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
                         }, (5 * 1000).toLong())
                         setUpBlueGradient(textProgressProc)
                     }
-                    progressText()
+                    progressText(binding.textProgressProc)
                 }
                 is OptimizationStates.Optimized -> {
                     val usageMemoryAfter  = (totalMemory * act?.usageMemoryPercentAfterGeneral!!.toDouble()).roundToInt() / 100.0
@@ -175,44 +178,6 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
         }
     }
 
-    fun setUpOrangeGradient(tvText : TextView){
-        val paint = tvText.paint
-        val width = paint.measureText(tvText.text.toString())
-        val textShader2: Shader = LinearGradient(0f, 0f, width, tvText.textSize, intArrayOf(
-            ContextCompat.getColor(act!!, R.color.gradient_orange_start) ,
-            ContextCompat.getColor(act!!, R.color.gradient_orange_middle) ,
-            ContextCompat.getColor(act!!, R.color.gradient_orange_end)
-        ), null, Shader.TileMode.CLAMP)
-        tvText.paint.setShader(textShader2)
-    }
-
-    fun setUpBlueGradient(tvText: TextView){
-        val paint = tvText.paint
-        val width = paint.measureText(tvText.text.toString())
-        val textShader2: Shader = LinearGradient(0f, 0f, width, tvText.textSize, intArrayOf(
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
-            ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
-        ), null, Shader.TileMode.CLAMP)
-        tvText.paint.setShader(textShader2)
-    }
-
-    fun shakeAnim(){
-        Handler().postDelayed({
-            Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate({
-                try {
-                    val animation = AnimationUtils.loadAnimation(act!!, R.anim.shake)
-                    if (!boolForAnim) {
-                        binding.btnOptimize.startAnimation(animation)
-                    }
-                } catch (e: Exception) {
-                    println(e)
-                }
-
-            }, 0, 5, TimeUnit.SECONDS)
-        }, (1500).toLong())
-    }
-
     fun showAd(){
         if (mInterstitialAd != null && App.isActivityVisible) {
             mInterstitialAd?.show(activity as MainActivity)
@@ -220,25 +185,6 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
         }
         else{
             navigate()
-        }
-    }
-
-    fun progressText(){
-        val progressProc = binding.textProgressProc
-        for( i in 0..99){
-            Handler().postDelayed({
-                if (i == 50) {
-                    val paint = progressProc.paint
-                    val width = paint.measureText(progressProc.text.toString())
-                    val textShader: Shader = LinearGradient(0f, 0f, width, progressProc.textSize, intArrayOf(
-                        ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_end) ,
-                        ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_middle) ,
-                        ContextCompat.getColor((activity as MainActivity), R.color.gradient_blue_start)
-
-                    ), null, Shader.TileMode.CLAMP)
-                    progressProc.paint.setShader(textShader) }
-                progressProc.text = "$i %"
-            }, (i * 50).toLong())
         }
     }
 
@@ -251,42 +197,6 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
         super.onResume()
         act?.unblockAllExcept(Screen.PHONE_BOOSTER)
         //(activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
-    }
-
-    fun configAd(adRequest : AdRequest){
-
-        InterstitialAd.load(
-            activity as MainActivity,
-            "ca-app-pub-3940256099942544/1033173712",
-            adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    Log.d(ContentValues.TAG, adError?.message)
-                    mInterstitialAd = null
-                }
-
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    Log.d(ContentValues.TAG, "Ad was loaded")
-                    mInterstitialAd = interstitialAd
-                    mInterstitialAd?.fullScreenContentCallback =
-                        object : FullScreenContentCallback() {
-                            override fun onAdDismissedFullScreenContent() {
-                                Log.d(ContentValues.TAG, "Ad was dismissed.")
-                                navigate()
-                            }
-
-                            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                                Log.d(ContentValues.TAG, "Ad failed to show.")
-                            }
-
-
-                            override fun onAdShowedFullScreenContent() {
-                                Log.d(ContentValues.TAG, "Ad showed fullscreen content.")
-                                mInterstitialAd = null
-                            }
-                        }
-                }
-            })
     }
 
     fun navigate(){

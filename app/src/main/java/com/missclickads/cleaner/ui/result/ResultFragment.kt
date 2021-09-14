@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.missclickads.cleaner.MainActivity
 import com.missclickads.cleaner.R
@@ -44,10 +45,12 @@ class ResultFragment : Fragment() {
         val btnBS = view.findViewById<Button>(R.id.appCompatButton2)
         val btnOpt = view.findViewById<Button>(R.id.appCompatButton3)
         val btnJC = view.findViewById<Button>(R.id.appCompatButton4)
+        val mAdView = view.findViewById<AdView>(R.id.adView)
         val whiteText = view.findViewById<TextView>(R.id.textView5)
         val act = activity as MainActivity
         var completed = 0
         val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
         act.navigationView?.visibility = View.GONE
         setGradient(textCount,act)
         textFrom.text = from
