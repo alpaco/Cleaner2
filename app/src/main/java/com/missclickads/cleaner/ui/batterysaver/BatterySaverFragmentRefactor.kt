@@ -76,10 +76,10 @@ class BatterySaverFragmentRefactor : Fragment(R.layout.fragment_battery_saver){
 
                     binding.apply {
                         configAd(adRequest)
-
-                        textProcess.text= "$batteryInfo %"
-                        textTime.text = (batteryInfo * 4 /60 ).toString() + "M" + (batteryInfo * 4%60 ).toString()
                         configGradients(0)
+                        textProcess.text= "$batteryInfo %"
+                        textTime.text = (batteryInfo * 4 / 60).toString() + " h " + (batteryInfo *4 % 60).toString()+ " m"
+
                         Log.e("asadsadad","SAFDsadf")
                     }
                     if (act!!.optimizedBS) viewModel.endOptimization()
@@ -166,12 +166,12 @@ class BatterySaverFragmentRefactor : Fragment(R.layout.fragment_battery_saver){
             if(id == 0){
 
                 setUpOrangeGradient(textProcess)
-
+                setUpOrangeGradient(textTime)
 
             } else {
 
                 setUpBlueGradient(textProcess)
-
+                setUpBlueGradient(textTime)
             }
 
         }
