@@ -67,8 +67,7 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
         //Get memory
         val totalMemory = ceil((ActivityManager.MemoryInfo().totalMem / (1024 * 1024)).toDouble() / 1000).toInt()
         val usageMemory = (totalMemory * act!!.usageMemoryPercentGeneral.toDouble()).roundToInt() / 100.0
-        
-        
+
         viewModel.viewStates.observe(viewLifecycleOwner){ state ->
             when(state){
                 is OptimizationStates.NotOptimize -> {
@@ -80,10 +79,10 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
                         textRamUsageHelp.text = "$usageMemory GB / $totalMemory GB"
                         textProcess.text = "$usageMemory GB"
                         progressBar.progress = act?.usageMemoryPercentGeneral!!
-                        if (act!!.optimizedPB) viewModel.endOptimization()
-                        //Btn shake
-                        else shakeAnim()
                     }
+                    if (act!!.optimizedPB) viewModel.endOptimization()
+                    //Btn shake
+                    else shakeAnim()
                 }
                 is OptimizationStates.Optimization -> {
                     binding.apply {
@@ -230,6 +229,16 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
                 progressProc.text = "$i %"
             }, (i * 50).toLong())
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
     }
 
     fun configAd(adRequest : AdRequest){

@@ -9,4 +9,12 @@ class OptimizerViewModel : ViewModel() {
 
     private val _viewStates = MutableLiveData<OptimizationStates>()
     val viewStates = _viewStates
+
+    fun startOptimization(){
+        _viewStates.value = OptimizationStates.Optimization
+    }
+
+    fun endOptimization(){
+        _viewStates.value = OptimizationStates.Optimized
+    }
 }
