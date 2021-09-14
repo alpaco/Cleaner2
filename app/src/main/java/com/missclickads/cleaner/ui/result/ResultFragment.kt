@@ -44,6 +44,7 @@ class ResultFragment : Fragment() {
         val btnBS = view.findViewById<Button>(R.id.appCompatButton2)
         val btnOpt = view.findViewById<Button>(R.id.appCompatButton3)
         val btnJC = view.findViewById<Button>(R.id.appCompatButton4)
+        val whiteText = view.findViewById<TextView>(R.id.textView5)
         val act = activity as MainActivity
         var completed = 0
         val adRequest = AdRequest.Builder().build()
@@ -80,6 +81,7 @@ class ResultFragment : Fragment() {
         }
         textCount.text = if(completed == 4) "You completed all optimizations!"
         else "$completed/4 optimization completed!"
+        if(completed == 4) whiteText.visibility = View.INVISIBLE
     }
 
     private fun setGradient(textCount: TextView, act: MainActivity){
