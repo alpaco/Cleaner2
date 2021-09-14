@@ -3,11 +3,18 @@ package com.missclickads.cleaner.ui.batterysaver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.missclickads.cleaner.states.OptimizationStates
 
 class BatterySaverViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    private val _viewStates = MutableLiveData<OptimizationStates>(OptimizationStates.NotOptimize)
+    val viewStates : LiveData<OptimizationStates> = _viewStates
+
+    fun startOptimization(){
+        _viewStates.value = OptimizationStates.Optimization
     }
-    val text: LiveData<String> = _text
+
+    fun endOptimization(){
+        _viewStates.value = OptimizationStates.Optimized
+    }
 }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.missclickads.cleaner.R
 import com.missclickads.cleaner.ui.batterysaver.BatterySaverFragment
+import com.missclickads.cleaner.ui.batterysaver.BatterySaverFragmentRefactor
 import com.missclickads.cleaner.ui.junkcleaner.JunkCleanerFragment
 import com.missclickads.cleaner.ui.junkcleaner.JunkCleanerFragmentRefactor
 import com.missclickads.cleaner.ui.optimizer.OptimizerFragment
@@ -42,7 +43,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
                 PhoneBoosterFragmentRefactor()
             }
             1 -> {
-                BatterySaverFragment()
+                BatterySaverFragmentRefactor()
             }
             2 -> {
                 OptimizerFragmentRefactor()

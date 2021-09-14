@@ -146,7 +146,7 @@ class JunkCleanerFragmentRefactor : Fragment(R.layout.fragment_junk_cleaner) {
                         textProgressProc.visibility = View.INVISIBLE
                         btnOptimize.setTextColor(ContextCompat.getColor(act!!, R.color.white))
                         act?.onBottomBar()
-                        act?.navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+                        act?.navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
 
 
                     }
