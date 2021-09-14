@@ -184,6 +184,14 @@ class MainActivity : AppCompatActivity() {
         navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
     }
 
+    fun unblockAllExcept(except: Screen){
+        onBottomBar()
+        if(except == Screen.PHONE_BOOSTER) navigationView?.menu?.findItem(R.id.navigation_phone_booster)?.isEnabled = false
+        if(except == Screen.OPTIMIZER) navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
+        if(except == Screen.JUNK_CLEANER) navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
+        if(except == Screen.BATTERY_SAVER) navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
+    }
+
     fun customExitDialog(){
 //        val dialog = Dialog(this)
 //        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)

@@ -49,6 +49,7 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
     var act : MainActivity? = null
     var boolForAnim by Delegates.notNull<Boolean>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,7 +63,7 @@ class PhoneBoosterFragmentRefactor : Fragment(R.layout.fragment_phone_booster) {
         super.onViewCreated(view, savedInstanceState)
         act = activity as MainActivity
         boolForAnim = act!!.optimizedPB
-
+        act!!.unblockAllExcept(Screen.PHONE_BOOSTER)
         //Get Ad Request
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)

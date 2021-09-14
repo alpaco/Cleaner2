@@ -68,7 +68,7 @@ class JunkCleanerFragmentRefactor : Fragment(R.layout.fragment_junk_cleaner) {
 
         act = activity as MainActivity
         boolForAnim = act!!.optimizedJC
-
+        act!!.unblockAllExcept(Screen.JUNK_CLEANER)
         //Get Ad Request
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)

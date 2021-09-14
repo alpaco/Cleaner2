@@ -65,6 +65,7 @@ class OptimizerFragmentRefactor : Fragment(R.layout.fragment_optimizer) {
         super.onViewCreated(view, savedInstanceState)
         act = activity as MainActivity
         boolForAnim = act!!.optimizedOpt
+        act!!.unblockAllExcept(Screen.OPTIMIZER)
 
         //Get Ad Request
         val adRequest = AdRequest.Builder().build()

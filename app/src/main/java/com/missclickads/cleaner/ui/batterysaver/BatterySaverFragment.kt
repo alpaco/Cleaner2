@@ -65,7 +65,7 @@ class BatterySaverFragment : Fragment() {
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
         var boolForAnim = (activity as MainActivity).optimizedBS
-
+        (activity as MainActivity).unblockAllExcept(Screen.BATTERY_SAVER)
 
         val bm = (activity as MainActivity).getSystemService(BATTERY_SERVICE) as BatteryManager
         val batteryInfo = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)

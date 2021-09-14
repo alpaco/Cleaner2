@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.missclickads.cleaner.adapters.ViewPagerAdapter
 import com.missclickads.cleaner.ui.result.TO
+import com.missclickads.cleaner.utils.Screen
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +48,12 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             }
         })
         if(to != null){
+            when (to){
+                0-> act!!.unblockAllExcept(Screen.PHONE_BOOSTER)
+                1-> act!!.unblockAllExcept(Screen.BATTERY_SAVER)
+                2-> act!!.unblockAllExcept(Screen.OPTIMIZER)
+                3-> act!!.unblockAllExcept(Screen.JUNK_CLEANER)
+            }
             Log.e("MainScreen", to.toString())
             viewPager!!.currentItem = to!!
         }
