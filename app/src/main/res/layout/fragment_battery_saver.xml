@@ -16,7 +16,7 @@
         android:textAlignment="center"
         android:fontFamily="@font/montserrat"
         android:textColor="@color/fragment_name"
-        android:textSize="@dimen/_18sdp"
+        android:textSize="@dimen/_17sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
