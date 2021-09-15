@@ -111,7 +111,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_25sdp"
-
         android:layout_marginEnd="@dimen/_40sdp"
         android:background="@drawable/ic_gradient_orange"
         android:clipToPadding="false"
