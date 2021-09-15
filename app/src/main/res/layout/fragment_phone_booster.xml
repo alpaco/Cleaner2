@@ -51,11 +51,10 @@
     </com.google.android.gms.ads.AdView>
 
 
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_122sdp"
+        android:layout_height="@dimen/_125sdp"
         android:layout_marginTop="@dimen/_85sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,13 +63,13 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_ellipse2"
+        android:layout_width="@dimen/_114sdp"
+        android:layout_height="@dimen/_109sdp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/ic_ellipse2" />
 
     <TextView
         android:id="@+id/text_running_processes"
@@ -123,7 +122,7 @@
         android:textStyle="bold"
         android:textColor="@color/gradient_orange_start"
         android:fontFamily="@font/montserrat"
-        android:textSize="@dimen/_30sdp"
+        android:textSize="@dimen/_25ssp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -168,7 +167,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_42sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_42sdp"
         android:background="@drawable/ic_gradient_orange"
         android:clipToPadding="false"
@@ -185,7 +184,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/image_ok"
@@ -201,20 +200,18 @@
     <ProgressBar
         android:id="@+id/progressBarCircle"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/_145sdp"
-        android:layout_height="@dimen/_145sdp"
-
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
         android:indeterminate="false"
         android:max="100"
         android:maxWidth="5dp"
         android:maxHeight="5dp"
         android:progressDrawable="@drawable/progress_bar_circle"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/_77sdp"
-        app:layout_constraintTop_toBottomOf="@+id/text_fragment_name"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
     <TextView
         android:id="@+id/text_progressProc"
         android:layout_width="wrap_content"
@@ -223,7 +220,7 @@
         android:textStyle="bold"
         android:textColor="@color/gradient_orange_start"
         android:fontFamily="@font/montserrat"
-        android:textSize="36sp"
+        android:textSize="@dimen/_25ssp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
