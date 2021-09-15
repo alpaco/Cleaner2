@@ -107,7 +107,7 @@ class BatterySaverFragmentRefactor : BaseFragment(){
                         boolForAnim = true
                         (activity as MainActivity).offBottomBar()
 
-                        imageView.setImageResource(R.drawable.ic_ellipse_blue)
+                        imageView.setImageResource(R.drawable.ellipse_blue)
                         btnOptimize.isClickable = false
                         btnOptimize.setTextColor(ContextCompat.getColor((activity as MainActivity), R.color.gray))
                         btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue_dark))
@@ -132,7 +132,7 @@ class BatterySaverFragmentRefactor : BaseFragment(){
 
                         btnOptimize.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.ic_gradient_blue))
                         textProcess.visibility = View.VISIBLE
-                        imageView.setImageResource(R.drawable.ic_ellipse_blue)
+                        imageView.setImageResource(R.drawable.ellipse_blue)
                         //todo change button back
                         act?.optimizedBS = true
                         act?.optimizeSmth(Screen.BATTERY_SAVER)
