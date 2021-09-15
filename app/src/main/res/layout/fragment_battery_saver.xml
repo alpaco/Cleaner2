@@ -141,8 +141,8 @@
     <ProgressBar
         android:id="@+id/progressBarCircle"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/_145sdp"
-        android:layout_height="@dimen/_145sdp"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_220sdp"
         android:indeterminate="false"
         android:max="100"
         android:maxWidth="5dp"
