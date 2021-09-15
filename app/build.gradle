@@ -51,7 +51,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation 'com.github.veeyaarVR:SuperGradientTextView:1.1'
-
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
     //ads
     implementation 'com.google.android.gms:play-services-ads:20.3.0'
     implementation 'com.google.android.gms:play-services-ads-lite:20.3.0'
