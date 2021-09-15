@@ -3,73 +3,49 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/drawable/button_quit_background.xml" value="0.30925925925925923" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/drawable/ic_dialog_background.xml" value="0.30925925925925923" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/drawable/ic_ellipse.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/drawable/ic_gradient_blue.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/drawable/ic_gradient_blue_dark.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/drawable/progress_bar_circle.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/drawable/progress_bar_hor.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/drawable/progress_bar_hor_blue.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/layout/activity_main.xml" value="0.10663627152988855" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/layout/activity_splash.xml" value="0.1884498480243161" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/layout/custom_exit_dialog.xml" value="0.2644927536231884" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/layout/fragment_battery_saver.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/layout/fragment_junk_cleaner.xml" value="0.33" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/layout/fragment_optimizer.xml" value="0.1884498480243161" />
+        <entry key="..\:/Users/420/AndroidStudioProjects/Cleaner2/app/src/main/res/layout/fragment_phone_booster.xml" value="0.1712962962962963" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2175925925925926" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable-v24/ic_phone_booster_fire_off.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable-v24/ic_tab_battery_fire.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable-v24/ic_tab_delete_fire.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable-v24/ic_tab_phone_boost.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable-v24/ic_tab_phone_boost_fire.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable-v24/ic_tab_snow_fire.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_battery_saver_fire_off.xml" value="0.2101851851851852" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2175925925925926" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_junk_fire_off.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_junk_fire_on.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2175925925925926" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_ok.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_optimizer_fire_off.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_optimizer_fire_on.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_phone_booster_fire_off.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_phone_booster_fire_on.xml" value="0.2101851851851852" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_battery.xml" value="0.2175925925925926" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_battery_fire_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_battery_new.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_battery_off.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_battery_on.xml" value="0.2175925925925926" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_booster_fire_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_booster_fire_on_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_booster_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_booster_off_fire_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_booster_off_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_booster_on_new.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete.xml" value="0.2175925925925926" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete_fire_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete_fire_off_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete_fire_on_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete_off.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete_off_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete_on.xml" value="0.2101851851851852" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_delete_on_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_optimize_fire_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_optimize_fire_off_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_optimize_fire_on_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_optimize_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_optimize_off_new.xml" value="0.2064814814814815" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_optimize_on_new.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_phone_boost.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_phone_boost_of.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_phone_boost_off.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_snow.xml" value="0.2175925925925926" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tab_snow_off.xml" value="0.2064814814814815" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tabbs.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tabjc.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tabopt.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/drawable/ic_tabpb.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/activity_main.xml" value="0.10663627152988855" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/custom_exit_dialog.xml" value="0.2509057971014493" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/fragment_battery_saver.xml" value="0.2509057971014493" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/fragment_junk_cleaner.xml" value="0.2644927536231884" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/fragment_main_screen.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/fragment_optimizer.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/fragment_phone_booster.xml" value="0.21927083333333333" />
-        <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/layout/result_fragment.xml" value="0.253125" />
         <entry key="..\:/Users/Nikita/StudioProjects/Cleaner2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21927083333333333" />
+        <entry key="app/src/main/res/drawable/progress_bar_circle.xml" value="0.2518518518518518" />
+        <entry key="app/src/main/res/drawable/progress_bar_hor.xml" value="0.2518518518518518" />
+        <entry key="app/src/main/res/layout/fragment_optimizer.xml" value="0.20380434782608695" />
+        <entry key="app/src/main/res/layout/fragment_phone_booster.xml" value="0.39265780026319513" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

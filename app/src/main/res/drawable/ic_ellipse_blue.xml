@@ -5,17 +5,17 @@
     android:viewportWidth="220"
     android:viewportHeight="220">
   <path
-      android:pathData="M110,110m-110,0a110,110 0,1 1,220 0a110,110 0,1 1,-220 0"
-      android:fillAlpha="0.9">
+      android:pathData="M82,82m-82,0a82,82 0,1 1,164 0a82,82 0,1 1,-164 0">
     <aapt:attr name="android:fillColor">
       <gradient 
-          android:startY="110"
+          android:startY="82"
           android:startX="0"
-          android:endY="110"
-          android:endX="220"
+          android:endY="82"
+          android:endX="164"
           android:type="linear">
-        <item android:offset="0" android:color="#FFFF512F"/>
-        <item android:offset="1" android:color="#FFF09819"/>
+        <item android:offset="0" android:color="#FF1FA2FF"/>
+        <item android:offset="0.5" android:color="#FF12D8FA"/>
+        <item android:offset="1" android:color="#FFA6FFCB"/>
       </gradient>
     </aapt:attr>
   </path>
