@@ -95,6 +95,7 @@ class PhoneBoosterFragmentRefactor : BaseFragment() {
                     //Btn shake
                     else shakeAnim(boolForAnim, binding.btnOptimize)
                 }
+                //fsad
                 is OptimizationStates.Optimization -> {
                     binding.apply {
                         btnOptimize.text = "Optimizing..."
