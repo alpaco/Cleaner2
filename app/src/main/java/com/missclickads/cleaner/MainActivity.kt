@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     var optimizedBS = false
     var navigationView: BottomNavigationView? = null
     var viewPager : ViewPager2? = null
+    var block = false
 
     //random values for Phone Booster
     val usageMemoryPercentGeneral = (60..95).random()
@@ -133,6 +134,7 @@ class MainActivity : AppCompatActivity() {
         navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = false
         navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = false
         navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = false
+        block = true
     }
 
     fun onBottomBar(){
@@ -140,6 +142,7 @@ class MainActivity : AppCompatActivity() {
         navigationView?.menu?.findItem(R.id.navigation_optimizer)?.isEnabled = true
         navigationView?.menu?.findItem(R.id.navigation_junk_cleaner)?.isEnabled = true
         navigationView?.menu?.findItem(R.id.navigation_battery_saver)?.isEnabled = true
+        block = false
     }
 
     fun unblockAllExcept(except: Screen){
@@ -163,6 +166,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         //super.onBackPressed()
+        if(block) return
         if(findNavController(R.id.kek).currentDestination?.id == R.id.resultFragment) super.onBackPressed()
         else {
             if(optimizedPB && optimizedJC && optimizedOpt && optimizedBS) {
