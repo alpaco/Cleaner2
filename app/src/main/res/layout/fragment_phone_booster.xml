@@ -150,7 +150,7 @@
         android:layout_width="@dimen/_240sdp"
         android:layout_height="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_41sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_41sdp"
         android:maxWidth="@dimen/_20sdp"
         android:maxHeight="@dimen/_20sdp"
